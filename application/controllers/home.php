@@ -6,7 +6,6 @@ class Home extends CI_Controller {
 		parent::__construct();
 //		$this->load->library('raintpl');
 		// VARIABLES
-//		$this->raintpl->assign('img_base', $this->template->resource_path().'img/');
 		$this->img_base = RESOURCEPATH.'img/';
 		// HEAD
 		$this->template->title('Home');
@@ -21,7 +20,6 @@ class Home extends CI_Controller {
 
 	public function index() {
 		// BODY
-		//var_dump(file_get_contents('http://maps.googleapis.com/maps/api/place/autocomplete/json?input=de&sensor=true&key=AIzaSyB1HS6CYrb5nTtaQ-bZPtzlFRzyi09Nktw')); exit;
 
 
 
