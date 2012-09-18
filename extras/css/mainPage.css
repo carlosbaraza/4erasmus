@@ -1,0 +1,30 @@
+
+body {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	background-color: #ededeb;
+}
+
+/* Main container for centering page */
+#container {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+/* Left container for navigation */
+#leftContainer {
+	width: 230px;
+	float: left;
+	height: 600px;
+	background-color: #AAA;
+}
+
+/* Right container for content */
+#rightContainer {
+	width: 970px;
+	float: left;
+	height: 600px;
+	background-color: white;
+}
