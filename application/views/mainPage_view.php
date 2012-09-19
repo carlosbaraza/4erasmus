@@ -15,10 +15,20 @@
 	</div>
 	<div id="rightContainer">
 		<div id="loginBar">
+			<p>Logged as <strong>Carlos Baraza</strong> at <strong>Waterford Institute of Technology</strong> ▼</p>
 
 		</div>
 		<div id="content">
+			<div id="leftContent">
+				<div class="bar">
 
+				</div>
+			</div>
+			<div id="rightContent">
+				<div class="bar">
+
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
