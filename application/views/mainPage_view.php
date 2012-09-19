@@ -42,13 +42,43 @@
 					<div class="button leftButton"><p>Featured Events ▼</p></div>
 					<div class="button rightButton"><p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p></div>
 				</div>
-				<div class="event"><div class="eventImg"></div></div>
-				<div class="event"><div class="eventImg"></div></div>
-				<div class="event"><div class="eventImg"></div></div>
-				<div class="event"><div class="eventImg"></div></div>
-				<div class="event"><div class="eventImg"></div></div>
-				<div class="event"><div class="eventImg"></div></div>
-				<div class="event"><div class="eventImg"></div></div>
+				<div class="event">
+					<div class="eventImg"></div>
+					<h3 class = "title">Claire's birthday party</h3>
+					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
+					<h3 class = "place">Riverwalk, block 9, apartment 18.</h3>
+				</div>
+				<div class="event">
+					<div class="eventImg"></div>
+					<h3 class = "title">Loren ipsum et dolor</h3>
+					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
+					<h3 class = "place">chasud coais dleiro</h3>
+				</div>
+				<div class="event">
+					<div class="eventImg"></div>
+					<h3 class = "title">Claire's birthday party</h3>
+					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
+					<h3 class = "place">Riverwalk, block 9, apartment 18.</h3>
+				</div>
+				<div class="event">
+					<div class="eventImg"></div>
+					<h3 class = "title">Loren ipsum et dolor</h3>
+					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
+					<h3 class = "place">chasud coais dleiro</h3>
+				</div>
+				<div class="event">
+					<div class="eventImg"></div>
+					<h3 class = "title">Claire's birthday party</h3>
+					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
+					<h3 class = "place">Riverwalk, block 9, apartment 18.</h3>
+				</div>
+				<div class="event">
+					<div class="eventImg"></div>
+					<h3 class = "title">Loren ipsum et dolor</h3>
+					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
+					<h3 class = "place">chasud coais dleiro</h3>
+				</div>
+
 
 
 

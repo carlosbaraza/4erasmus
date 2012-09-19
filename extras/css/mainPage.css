@@ -4,7 +4,7 @@ body {
 	padding: 0;
 	margin: 0;
 	width: 100%;
-	background-color: #ededeb;
+	background-color: #E0e0e0;
 }
 
 /* Main container for centering page */
@@ -125,7 +125,7 @@ body {
 	}
 
 		#content .bar {
-			border-bottom: 1px solid #ededeb;
+			border-bottom: 1px solid #E0e0e0;
 			height: 42px;
 			width: 100%;
 		}
@@ -187,13 +187,13 @@ body {
 
 
 			#content .bar .leftButton {
-				border-right: 1px solid #ededeb;
+				border-right: 1px solid #E0e0e0;
 				float: left;
 			}
 
 			#content .bar .rightButton {
-				border-left: 1px solid #ededeb;
-				border-right: 1px solid #ededeb;
+				border-left: 1px solid #E0e0e0;
+				border-right: 1px solid #E0e0e0;
 				float: right;
 			}
 
@@ -208,8 +208,8 @@ body {
 				float: left;
 				width: 294px;
 				height: 214px; /* 157+7+40 */
-				border-right: 1px solid #ededeb;
-				border-bottom: 1px solid #ededeb;
+				border-right: 1px solid #E0e0e0;
+				border-bottom: 1px solid #E0e0e0;
 
 				-webkit-transition: all .25s ease;
 				   -moz-transition: all .25s ease;
@@ -222,8 +222,36 @@ body {
 				#leftContent .event .eventImg {
 					width: 280px;
 					height: 157px;
-					margin: 7px;
+					margin: 7px 7px 0 7px;
 					background-color: #F0F0F0;
+					clear: both;
+				}
+
+				#leftContent .event .title {
+					color: #888;
+					font-size: 12px;
+					margin: 0 0 0 7px;
+					float: left;
+					font-weight: bold;
+				}
+
+				#leftContent .event .date {
+					color: #AAA;
+					font-weight: normal;
+					font-size: 12px;
+					margin: 0 7px 0 0;
+					float: right;
+				}
+
+				#leftContent .event .place {
+					color: #AAA;
+					font-weight: normal;
+					font-size: 12px;
+					margin: 0 0 0 7px;
+					float: left;
+
+					position: relative;
+					bottom: 4px;
 				}
 
 			#leftContent .event:hover {
