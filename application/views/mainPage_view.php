@@ -21,12 +21,14 @@
 		<div id="content">
 			<div id="leftContent">
 				<div class="bar">
-
+					<div class="button leftButton"><p>Featured Events ▼</p></div>
+					<div class="button rightButton"><p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p></div>
 				</div>
 			</div>
 			<div id="rightContent">
 				<div class="bar">
-
+					<div class="button leftButton"><p>All ▼</p></div>
+					
 				</div>
 			</div>
 		</div>
