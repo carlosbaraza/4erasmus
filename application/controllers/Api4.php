@@ -17,7 +17,7 @@ class Api4 extends CI_Controller {
 
 	public function index() {
 		// BODY
-		die('quit');
+		die('it works!');
 	}
 
 	public function eventsOfDate() {
@@ -30,7 +30,5 @@ class Api4 extends CI_Controller {
 			$result = $this->api->eventsOfDate($date, $start, $limit);
 			echo json_encode($result);
 		}
-		echo '<br>deneme';
-		exit;
 	}
 }

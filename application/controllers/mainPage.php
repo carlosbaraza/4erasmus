@@ -4,6 +4,7 @@ class Mainpage extends CI_Controller {
 
 	public function index()
 	{
+		$this->template->title('4erasmus');
 		//JQuery + JQuary UI with Flick Theme
 		$this->template->js('jquery-1.8.0.min');
 		$this->template->js('jquery-ui-1.8.23.custom.min');
