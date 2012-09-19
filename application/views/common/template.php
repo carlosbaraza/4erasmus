@@ -6,13 +6,10 @@
    <?= $_scripts ?>
    <?= $_styles ?> 
 </head>
-<body>
-   
+<body>  
       <?= $header ?>
       <?= $content ?>
       <?= $sidebar ?>
       <?= $footer ?>
-         
-   
 </body>
 </html>
