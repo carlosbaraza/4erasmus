@@ -61,12 +61,15 @@ class User extends CI_Model {
 			try {
 			    // Proceed knowing you have a logged in user who's authenticated.
 				$user_profile = $this->facebook->api('/me');
-				$user = $this->ci->user;
-				echo '<pre>Welcome '.$user_profile['name'].'<br>'.$user_profile['id'].'</pre>';
-				if( !$user->select(array('fbid' => $fbid))) {
-					$user->fbid = $fbid;
-					$user->register($user_profile['name'], md5(uniqid(rand())));
+				if( !$this->select(array('fbid' => $fbid))) {
+					$this->fbid = $fbid;
+					$this->register($user_profile['name'], md5(uniqid(rand())));
 				}
+				$user = $this;
+				unset($user->ci);
+				unset($user->facebook);
+				$this->ci->session->set_userdata(get_object_vars($user));
+				echo '<pre>Welcome '.$user_profile['name'].'<br>'.$user_profile['id'].'</pre>';
 			} catch (FacebookApiException $e) {
 			//	echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
 			    $user = null;
