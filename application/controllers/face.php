@@ -5,8 +5,8 @@ class Face extends CI_Controller {
 
 	public function Face() {
 		parent::__construct();
-		$this->load->model('user');
 		$this->data = new StdClass();
+		$this->ci =& get_instance();
 
 		// HEAD
 		$this->template->title('Facebook API');
@@ -19,12 +19,8 @@ class Face extends CI_Controller {
 
 	public function index() {
 		// BODY
-		$newUser = $this->user;
-		if( !$newUser->select(array('username' => 'ozantunca')) && $newUser->register('ozantunca', 'ozantunca')) {
-			echo 'Arright!';
-		} else {
-			echo 'God Dammit!';
-		}
+		$me = $this->user;
+		$me->fblogin();
 
 
 
@@ -32,7 +28,7 @@ class Face extends CI_Controller {
 		// DISPLAY
 		$this->template->write_view('header', 'common/header');
 		$this->template->write_view('footer', 'common/footer');
-		$this->template->write_view('content', 'facebook', get_object_vars($this->data));
+		$this->template->write_view('content', 'facebook', get_object_vars($this->ci->data));
 		$this->template->render();
 	}
 

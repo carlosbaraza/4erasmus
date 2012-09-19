@@ -54,15 +54,19 @@ class User extends CI_Model {
 			'secret' => 'edce64e3900bacef0ef4ba653c711de6'
 		));
 		// Check if user logged in
-		$fbuser = $this->facebook->getUser();
-		if ($fbuser) {
+		$fbid = $this->facebook->getUser();
+		if ($fbid) {
 			try {
 			    // Proceed knowing you have a logged in user who's authenticated.
 				$user_profile = $this->facebook->api('/me');
+				$user = $this->ci->user;
 				echo '<pre>Welcome '.$user_profile['name'].'<br>'.$user_profile['id'].'</pre>';
-				if( $this->select(array('fbid' => $fbuser))) {
-					
+				if( !$user->select(array('fbid' => $fbid))) {
+					$user->fbid = $fbid;
+					$user->register($user_profile['name'], md5(uniqid(rand())));
 				}
+				$this->ci->data->facebook = $this->facebook;
+				$this->ci->data->fbid = $fbid;
 			} catch (FacebookApiException $e) {
 			    echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
 			    $user = null;
@@ -80,6 +84,7 @@ class User extends CI_Model {
 		$insert = array();
 		$userobj = get_object_vars($this);
 		unset($userobj['ci']);
+		unset($userobj['facebook']);
 		foreach ($userobj as $key => $value) {
 			if( !empty($value)) 
 				$insert[$key] = $value;

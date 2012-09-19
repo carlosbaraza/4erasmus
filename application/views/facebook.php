@@ -8,7 +8,7 @@
         }());
         window.fbAsyncInit = function() {
 	        FB.init({
-	          appId: '<?=$this->facebook->getAppID()?>',
+	          appId: '<?=$facebook->getAppID()?>',
 	          cookie: true,
 	          xfbml: true,
 	          oauth: true
@@ -19,7 +19,7 @@
 	        FB.Event.subscribe('auth.logout', function(response) {
 	          window.location.reload();
 	        });
-	        FB.api('/<?=$userid?>/?fields=friends.limit(5).fields(picture,name)&access_token=AAAHhWdTpA3EBAOlA60rZCpEqvjOCPYM11vemgrqZBUKb3g19Aq6TuLYHGparZBO3jjG8F4gZAjRIss67LIfqVId1qJtbaxzeiKtPawIWZCQZDZD', function(response) { 
+	        FB.api('/<?=$fbid?>/?fields=friends.limit(5).fields(picture,name)&access_token=AAAHhWdTpA3EBAOlA60rZCpEqvjOCPYM11vemgrqZBUKb3g19Aq6TuLYHGparZBO3jjG8F4gZAjRIss67LIfqVId1qJtbaxzeiKtPawIWZCQZDZD', function(response) { 
 	        	console.log(response)
 	        	var pics = ''
 	        	for( var key in response.friends.data) {

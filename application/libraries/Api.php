@@ -45,7 +45,9 @@ class Api {
 
 	public function eventsOfDate($date, $start, $limit) {
 		$this->ci->load->model('event');
-		$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => $date));
+		$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => date('Y:m:d H:m:s', strtotime($date) + 86400)))->limit($start, $limit);
+		$query = $this->ci->db->get();
+		return $query->result();
 	}
 
 }

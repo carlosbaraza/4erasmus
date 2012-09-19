@@ -4,6 +4,7 @@ class mainPage extends CI_Controller {
 
 	public function index()
 	{
+		$this->template->js('common/jquery');
 		$this->template->js('common/bootstrap.min');
 		$this->template->css('common/bootstrap.min');
 		$this->template->css('mainPage');
