@@ -88,6 +88,7 @@
 					<div class="button leftButton"><p>All ▼</p></div>
 					
 				</div>
+
 				<div class="wallEntry">
 					<div class="picture"></div>
 					<div class="container">
@@ -104,6 +105,9 @@
 
 					</div>
 				</div>
+
+
+				
 			</div>
 		</div>
 	</div>
