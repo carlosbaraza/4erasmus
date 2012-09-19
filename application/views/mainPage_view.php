@@ -6,11 +6,19 @@
 
 <div id="container">
 	<div id="leftContainer">
+		<div class="mainTitle">
+			<h1 class="title1">4</h1>
+			<h1 class="title2">ERASMUS</h1>
+		</div>
 
+		
 	</div>
 	<div id="rightContainer">
-		<header>
+		<div id="loginBar">
 
-		</header>
+		</div>
+		<div id="content">
+
+		</div>
 	</div>
 </div>
