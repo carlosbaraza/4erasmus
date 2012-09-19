@@ -21,7 +21,7 @@ body {
 }
 	
 	#leftContainer .mainTitle {
-		margin: 20px 40px 0 0;
+		margin: 40px 40px 0 0;
 		display: inline-block;
 		float: right;
 		width: auto;
@@ -43,6 +43,7 @@ body {
 	/* Change color when mouse over div title */
 	#leftContainer .mainTitle:hover h1 {
 		color: #a0cce5 !important;
+		cursor: pointer;
 	}
 
 	#leftContainer .title1 {
@@ -70,10 +71,29 @@ body {
 	height: 600px;
 }
 	#loginBar {
+		position: relative;
 		float: left;
 		width: 100%;
 		height: 32px;
 	}
+
+		#loginBar p {
+			position: absolute;
+			margin: 0;
+			color: #AAA;
+			font-size: 11px;
+			bottom: 3px;
+			right: 0;
+		}
+
+			#loginBar p:hover {
+				cursor: pointer;
+				text-decoration: underline;
+			}
+
+		#loginBar p strong {
+			color: #666;
+		}
 
 	#content {
 		float: left;
@@ -81,3 +101,87 @@ body {
 		width: 100%;
 		height: 400px;
 	}
+
+		#content .bar {
+			border-bottom: 1px solid #ededeb;
+			height: 42px;
+			width: 100%;
+		}
+
+			#content .bar .button {
+				position: relative;
+				display: inline-block;
+				height: 100%;
+				padding: 0 20px;
+
+				-webkit-transition: all .25s ease;
+				   -moz-transition: all .25s ease;
+				    -ms-transition: all .25s ease;
+				     -o-transition: all .25s ease;
+				        transition: all .25s ease;
+				
+			}
+
+				#content .bar .button:hover {
+					cursor: pointer;
+					background-color: #FAFAFA;
+				}
+
+				#content .bar .button p {
+					position: relative;
+					top: 13px;
+					font-size: 13px;
+					color: #AAA;
+
+					-webkit-transition: all .25s ease;
+					   -moz-transition: all .25s ease;
+					    -ms-transition: all .25s ease;
+					     -o-transition: all .25s ease;
+					        transition: all .25s ease;
+					
+				}
+
+					#content .bar .button:hover p {
+						color: #555;
+					}
+
+				#content .bar .button .icon {
+					position: relative;
+					top:-2px;
+					margin-right: 4px;
+
+					-webkit-transition: all .25s ease;
+					   -moz-transition: all .25s ease;
+					    -ms-transition: all .25s ease;
+					     -o-transition: all .25s ease;
+					        transition: all .25s ease;
+					
+					opacity: .4;
+				}
+
+				#content .bar .button:hover .icon {
+					opacity: 1;
+				}
+
+
+			#content .bar .leftButton {
+				border-right: 1px solid #ededeb;
+				float: left;
+			}
+
+			#content .bar .rightButton {
+				border-left: 1px solid #ededeb;
+				float: right;
+			}
+
+		#leftContent {
+			float: left;
+			width: 590px;
+			border-right: 1px solid #ededeb;
+			height: 100%;
+		}
+
+		#rightContent {
+			float: left;
+			width: 379px;
+		}
