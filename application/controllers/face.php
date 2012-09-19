@@ -19,8 +19,7 @@ class Face extends CI_Controller {
 
 	public function index() {
 		// BODY
-		$me = $this->user;
-		$me->fblogin();
+		$this->user->fblogin();
 
 
 
