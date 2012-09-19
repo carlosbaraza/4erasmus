@@ -189,7 +189,43 @@ body {
 			#content .bar .leftButton {
 				border-right: 1px solid #E0e0e0;
 				float: left;
+				position: relative;
 			}
+
+				#content .bar .leftButton ul {
+					visibility: hidden;
+					width: 100%;
+					margin: 0;
+					
+					position: absolute;
+					
+					top: 42px;
+					left: 0;
+				}
+
+					#content .bar .leftButton li {
+						position: relative;
+						border-right: 1px solid #E0e0e0;
+						border-bottom: 1px solid #E0e0e0;
+						z-index: 1;
+						list-style: none;
+						width: 100%;
+						background-color: #FAFAFA;
+						margin: 0;
+						padding: 0 20px;
+						height: 42px;
+					}
+
+						#content .bar .leftButton li:first-child {
+							border-top: 1px solid #E0e0e0;
+						}
+
+						#content .bar .leftButton ul li p {
+							position: relative;
+							top: 13px;
+							font-size: 13px;
+							color: #AAA;
+						}
 
 			#content .bar .rightButton {
 				border-left: 1px solid #E0e0e0;

@@ -39,7 +39,14 @@
 		<div id="content">
 			<div id="leftContent">
 				<div class="bar">
-					<div class="button leftButton"><p>Featured Events ▼</p></div>
+					<div class="button leftButton">
+						<p>Featured Events ▼</p>
+						<ul>
+							<li><p>Hello</p></li>
+							<li><p>Goodbye</p></li>
+						</ul>
+
+					</div>
 					<div class="button rightButton"><p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p></div>
 				</div>
 				<div class="event">
@@ -107,7 +114,7 @@
 				</div>
 
 
-				
+
 			</div>
 		</div>
 	</div>
