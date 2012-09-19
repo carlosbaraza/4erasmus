@@ -55,6 +55,8 @@ class User extends CI_Model {
 		));
 		// Check if user logged in
 		$fbid = $this->facebook->getUser();
+		$this->ci->data->facebook = $this->facebook;
+		$this->ci->data->fbid = $fbid;
 		if ($fbid) {
 			try {
 			    // Proceed knowing you have a logged in user who's authenticated.
@@ -65,10 +67,8 @@ class User extends CI_Model {
 					$user->fbid = $fbid;
 					$user->register($user_profile['name'], md5(uniqid(rand())));
 				}
-				$this->ci->data->facebook = $this->facebook;
-				$this->ci->data->fbid = $fbid;
 			} catch (FacebookApiException $e) {
-			    echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+			//	echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
 			    $user = null;
 			}
 		}

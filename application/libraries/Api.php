@@ -29,8 +29,8 @@ class Api {
 	}
 
 	public function login($username, $password) {
-		$this->CI->db->select()->from('users')->where(array('username' => $username, 'password' => md5($password)))->limit(1);
-		$query = $this->CI->db->get();
+		$this->ci->db->select()->from('users')->where(array('username' => $username, 'password' => md5($password)))->limit(1);
+		$query = $this->ci->db->get();
 		return $query->first_row();
 	}
 
@@ -45,7 +45,7 @@ class Api {
 
 	public function eventsOfDate($date, $start, $limit) {
 		$this->ci->load->model('event');
-		$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => date('Y:m:d H:m:s', strtotime($date) + 86400)))->limit($start, $limit);
+		$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => date('Y:m:d H:m:s', strtotime($date) + 86400)))->limit($limit, $start);
 		$query = $this->ci->db->get();
 		return $query->result();
 	}

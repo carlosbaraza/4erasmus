@@ -18,7 +18,7 @@
 	        });
 	        FB.Event.subscribe('auth.logout', function(response) {
 	          window.location.reload();
-	        });
+	        });/*
 	        FB.api('/<?=$fbid?>/?fields=friends.limit(5).fields(picture,name)&access_token=AAAHhWdTpA3EBAOlA60rZCpEqvjOCPYM11vemgrqZBUKb3g19Aq6TuLYHGparZBO3jjG8F4gZAjRIss67LIfqVId1qJtbaxzeiKtPawIWZCQZDZD', function(response) { 
 	        	console.log(response)
 	        	var pics = ''
@@ -27,7 +27,7 @@
 	        		pics += '<img src="' + friend.picture.data.url + '">'
 	        	}
 	        	$('#fb-root').append(pics)
-			});
+			});*/
         };
 
 
