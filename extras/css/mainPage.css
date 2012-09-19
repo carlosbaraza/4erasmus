@@ -63,6 +63,29 @@ body {
 		display: inline-block;
 	}
 
+	/* Datepicker de jQuery UI Flick */
+	.ui-datepicker {
+		width: 180px;
+		float: right;
+		margin: 20px 40px 0 0;
+	}
+	.ui-widget-header {
+		border: none;
+		background: none;
+	}
+	.ui-datepicker th {
+		font-weight: normal;
+	}
+	.ui-widget-content {
+		border: none;
+		background: #FAFAFA;
+		color: #999;
+	}
+	.ui-widget-header {
+		color: #666;
+		font-weight: normal;
+	}
+
 
 /* Right container for content */
 #rightContainer {
@@ -99,7 +122,6 @@ body {
 		float: left;
 		background-color: white;
 		width: 100%;
-		height: 400px;
 	}
 
 		#content .bar {
@@ -171,17 +193,45 @@ body {
 
 			#content .bar .rightButton {
 				border-left: 1px solid #ededeb;
+				border-right: 1px solid #ededeb;
 				float: right;
 			}
 
 		#leftContent {
 			float: left;
 			width: 590px;
-			border-right: 1px solid #ededeb;
 			height: 100%;
 		}
 
+			#leftContent .event {
+				position: relative;
+				float: left;
+				width: 294px;
+				height: 214px; /* 157+7+40 */
+				border-right: 1px solid #ededeb;
+				border-bottom: 1px solid #ededeb;
+
+				-webkit-transition: all .25s ease;
+				   -moz-transition: all .25s ease;
+				    -ms-transition: all .25s ease;
+				     -o-transition: all .25s ease;
+				        transition: all .25s ease;
+				
+			}
+
+				#leftContent .event .eventImg {
+					width: 280px;
+					height: 157px;
+					margin: 7px;
+					background-color: #F0F0F0;
+				}
+
+			#leftContent .event:hover {
+				background-color: #FAFAFA;
+				cursor: pointer;
+			}
+
 		#rightContent {
 			float: left;
-			width: 379px;
+			width: 380px;
 		}
