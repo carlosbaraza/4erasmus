@@ -25,7 +25,7 @@ class Api {
 	*/
 	public function __construct() {
 		// Set the super object to a local variable for use throughout the class
-		$this->CI =& get_instance();
+		$this->ci =& get_instance();
 	}
 
 	public function login($username, $password) {
@@ -41,6 +41,11 @@ class Api {
 			'signdate' => date('Y-m-d H:i:s')
 		);
 		$this->CI->db->insert('users', $insert);
+	}
+
+	public function eventsOfDate($date, $start, $limit) {
+		$this->ci->load->model('event');
+		$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => $date));
 	}
 
 }

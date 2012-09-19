@@ -17,9 +17,9 @@
 
 class User extends CI_Model {
 
+	protected $password;
 	public $userid;
 	public $username;
-	public $password;
 	public $followers;
 	public $signdate;
 	public $lastupdate;
@@ -28,6 +28,10 @@ class User extends CI_Model {
 	public $latitude;
 	public $longitude;
 	public $settings;
+	public $hometown;
+	public $onlineStatus;
+	public $fbid;
+	public $ci;
    /**
 	 * Constructor
 	 *
@@ -36,18 +40,46 @@ class User extends CI_Model {
 	 * @param
 	*/
 	public function __construct() {
-		// Set the super object to a local variable for use throughout the class
 	   	parent::__construct();
+		// Set the super object to a local variable for use throughout the class
+	   	$this->ci =& get_instance();
+	}
+
+	public function fblogin() {
+		// Facebook PHP-SDK
+		require_once RESOURCEPATH.'inc/facebook.php';
+		// Initialize Facebook
+		$this->facebook = new Facebook(array(
+			'appId'  => '529250917090161',
+			'secret' => 'edce64e3900bacef0ef4ba653c711de6'
+		));
+		// Check if user logged in
+		$fbuser = $this->facebook->getUser();
+		if ($fbuser) {
+			try {
+			    // Proceed knowing you have a logged in user who's authenticated.
+				$user_profile = $this->facebook->api('/me');
+				echo '<pre>Welcome '.$user_profile['name'].'<br>'.$user_profile['id'].'</pre>';
+				if( $this->select(array('fbid' => $fbuser))) {
+					
+				}
+			} catch (FacebookApiException $e) {
+			    echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+			    $user = null;
+			}
+		}
 	}
 
 	public function login($username, $password) {
-
-		$this->load(array('username' => $username, 'password' => $password));
+		if( $this->ci->validate->username($username)) {
+			$this->select(array('username' => $username, 'password' => $password));
+		}
 	}
 
 	public function register($username, $password) {
 		$insert = array();
 		$userobj = get_object_vars($this);
+		unset($userobj['ci']);
 		foreach ($userobj as $key => $value) {
 			if( !empty($value)) 
 				$insert[$key] = $value;
@@ -55,7 +87,12 @@ class User extends CI_Model {
 		$insert['username'] = $username;
 		$insert['password'] = md5($password);
 		$insert['signdate'] = date('Y-m-d H:i:s');
-		$this->db->insert('users', $insert);
+		try {
+			$this->ci->db->insert('users', $insert);
+		} catch(Exception $e) {
+			return FALSE;
+		}
+		return TRUE;
 	}
 
 	public function update() {
@@ -69,58 +106,20 @@ class User extends CI_Model {
 		$this->db->update('users', $update);
 	}
 
-	public function load($condition) {
-		$query = $this->db->get_where('users', $condition, 1);
+	public function select($condition) {
+		$query = $this->ci->db->get_where('users', $condition, 1);
 		$user = $query->first_row();
 
-		// Pass Variables
-		$userobj = get_object_vars($user);
-		foreach ($userobj as $key => $value) {
-			$this->{$key} = $userobj->{$key};
+		if( $user) {
+			// Pass Variables
+			$userobj = get_object_vars($user);
+			foreach ($userobj as $key => $value) {
+				$this->{$key} = $userobj[$key];
+			}
+			return true;
+		} else {
+			return false;
 		}
-
-
-
-
-
-
-
-
-
-/*
-
-			$stdin = fopen('php://stdin', 'r');
-			fscanf($stdin, "%d %d\n", $n, $k);
-
-			$line = trim(fgets($stdin));
-			$init = explode(' ', $line);
-
-			$all = array();
-			for($i = 1; $i <= $n; $i++) {
-				$all[$i] = array();
-			}
-			for($i = $n; $i > 0; $i--) {
-				$all[$init[$i-1]][] = $i;
-			}
-
-			$line = trim(fgets($stdin));
-			$final = explode(' ', $line);
-
-			$count = 0; 
-			$string = '';
-
-			for($i = $n; $i >= 0; $i--) {
-				if( $init[$i] != $final[$i]) {
-					if( array_search($i, $all[$final[$i]]) == 0) {
-						$count++;
-						$all[$final[$i]]
-						$string .= '';
-					}
-				}
-			}*/
 	}
 
-	function separate($all, $final, $init, $i) {
-		
-	}
 }

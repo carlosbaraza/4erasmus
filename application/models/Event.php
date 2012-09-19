@@ -64,7 +64,7 @@ class Event extends CI_Model {
 		$this->db->update('events', $update);
 	}
 
-	public function load($condition) {
+	public function select($condition) {
 		$query = $this->db->get_where('events', $condition, 1);
 		$event = $query->first_row();
 

@@ -430,7 +430,7 @@ class CI_Template {
     * @return  TRUE on success, FALSE otherwise
     */
    
-   function add_js($script, $type = 'import', $defer = FALSE)
+   function js($script, $type = 'import', $defer = FALSE)
    {
       $success = TRUE;
       $js = NULL;
@@ -489,7 +489,7 @@ class CI_Template {
     * @return  TRUE on success, FALSE otherwise
     */
    
-   function add_css($style, $type = 'link', $media = FALSE)
+   function css($style, $type = 'link', $media = FALSE)
    {
       $success = TRUE;
       $css = NULL;
