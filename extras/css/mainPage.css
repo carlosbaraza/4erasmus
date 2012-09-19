@@ -225,6 +225,13 @@ body {
 							top: 13px;
 							font-size: 13px;
 							color: #AAA;
+
+							-webkit-transition: none;
+							   -moz-transition: none;
+							    -ms-transition: none;
+							     -o-transition: none;
+							        transition: none;
+							
 						}
 
 			#content .bar .rightButton {

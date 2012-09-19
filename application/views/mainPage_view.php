@@ -86,6 +86,20 @@
 					<h3 class = "place">chasud coais dleiro</h3>
 				</div>
 
+				<div class="event">
+					<div class="eventImg"></div>
+					<h3 class = "title">Loren ipsum et dolor</h3>
+					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
+					<h3 class = "place">chasud coais dleiro</h3>
+				</div>
+
+				<div class="event">
+					<div class="eventImg"></div>
+					<h3 class = "title">Kirsty and Annie Dublin</h3>
+					<h3 class = "date">Tue 19, 2012 6:30pm</h3>
+					<h3 class = "place">Dublin</h3>
+				</div>				
+
 
 
 
