@@ -1,8 +1,3 @@
-<?php /*
-
-	This is the main page view
-
-*/ ?>
 
 <div id="container">
 	<div id="leftContainer">
@@ -33,9 +28,48 @@
 	</div>
 	<div id="rightContainer">
 		<div id="loginBar">
-			<p>Logged as <strong>Carlos Baraza</strong> at <strong>Waterford Institute of Technology</strong> ▼</p>
-
+		<div id="fb-root">
+<script type="text/javascript">
+	$( function() {
+        (function() {
+          	var e = document.createElement('script'); e.async = true;
+          	e.src = document.location.protocol +
+          	'//connect.facebook.net/en_US/all.js';
+          	document.getElementById('fb-root').appendChild(e);
+        }());
+        window.fbAsyncInit = function() {
+	        FB.init({
+	          appId: '<?=$facebook->getAppID()?>',
+	          cookie: true,
+	          xfbml: true,
+	          oauth: true
+	        });
+	        FB.Event.subscribe('auth.login', function(response) {
+	          window.location.reload();
+	        });
+	        FB.Event.subscribe('auth.logout', function(response) {
+	          window.location.reload();
+	        });/*
+	        FB.api('/<?=$fbid?>/?fields=friends.limit(5).fields(picture,name)&access_token=AAAHhWdTpA3EBAOlA60rZCpEqvjOCPYM11vemgrqZBUKb3g19Aq6TuLYHGparZBO3jjG8F4gZAjRIss67LIfqVId1qJtbaxzeiKtPawIWZCQZDZD', function(response) { 
+	        	console.log(response)
+	        	var pics = ''
+	        	for( var key in response.friends.data) {
+	        		var friend = response.friends.data[key]
+	        		pics += '<img src="' + friend.picture.data.url + '">'
+	        	}
+	        	$('#fb-root').append(pics)
+			});*/
+        };
+	})
+</script>
+		<?php if( !isset($username)) { ?>
+			<fb:login-button></fb:login-button>
+		<?php } else { 
+				echo $username;
+			  }
+		?>
 		</div>
+	</div>
 		<div id="content">
 			<div id="leftContent">
 				<div class="bar">

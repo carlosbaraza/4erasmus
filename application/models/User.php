@@ -65,11 +65,10 @@ class User extends CI_Model {
 					$this->fbid = $fbid;
 					$this->register($user_profile['name'], md5(uniqid(rand())));
 				}
-				$user = $this;
-				unset($user->ci);
-				unset($user->facebook);
+				$user = $this->instance();
+				$this->ci->data->username = $user->username;
 				$this->ci->session->set_userdata(get_object_vars($user));
-				echo '<pre>Welcome '.$user_profile['name'].'<br>'.$user_profile['id'].'</pre>';
+			//	echo '<pre>Welcome '.$user_profile['name'].'<br>'.$user_profile['id'].'</pre>';
 			} catch (FacebookApiException $e) {
 			//	echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
 			    $user = null;
@@ -128,6 +127,17 @@ class User extends CI_Model {
 		} else {
 			return false;
 		}
+	}
+
+	public function instance() {
+		$instance = new StdClass();
+		foreach($this as $key => $value) {
+			$instance->{$key} = $value;
+		}
+		unset($instance->ci);
+		unset($instance->facebook);
+		unset($instance->password);
+		return $instance;
 	}
 
 }
