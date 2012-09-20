@@ -15,13 +15,6 @@ class Mainpage extends CI_Controller {
 		$this->template->js('common/bootstrap.min');
 		$this->template->css('common/bootstrap.min');
 
-		// FancyBox JS plugin
-		$this->template->js('fancybox/jquery.fancybox');
-		$this->template->css('fancybox/jquery.fancybox');
-		// Jquery mousewheel for fancybox
-		$this->template->js('fancybox/jquery.fancybox/jquery.mousewheel-3.0.6.pack');
-
-
 		//CSS of mainpage
 		$this->template->css('mainPage');
 
