@@ -65,7 +65,7 @@
 </script>
 	</div>
 		<?php if( !isset($username)) { ?>
-			<fb:login-button></fb:login-button>
+			<p><fb:login-button></fb:login-button></p>
 		<?php } else { 
 				echo '<p>Logged as <strong>'.$username.'</strong> at <strong>Waterford Institute of Technology</strong> ▼</p>';
 			  }
