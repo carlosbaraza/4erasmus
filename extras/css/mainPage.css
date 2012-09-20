@@ -118,6 +118,20 @@ body {
 			color: #666;
 		}
 
+		#loginForm {
+			visibility: hidden; /* Hidden default */
+
+			position: absolute;
+			right: 0;
+			top: 32px;
+			z-index: 1;
+			background-color: #FAFAFA;
+			height: 300px;
+			width: 300px;
+			border-left: 1px solid #E0e0e0;
+			border-bottom: 1px solid #E0e0e0;
+		}
+
 	#content {
 		float: left;
 		background-color: white;
@@ -225,6 +239,13 @@ body {
 							top: 13px;
 							font-size: 13px;
 							color: #AAA;
+
+							-webkit-transition: none;
+							   -moz-transition: none;
+							    -ms-transition: none;
+							     -o-transition: none;
+							        transition: none;
+							
 						}
 
 			#content .bar .rightButton {
