@@ -80,7 +80,35 @@
 					</div>
 					<div id="addEventButton" class="button rightButton"><p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p></div>
 
-					<div id="addEventDialog"> Dialog for adding events </div>
+					<div id="addEventDialog">
+						<form>
+							<p>
+							<label for="title">Title of Event: </label>
+								<input TYPE="text" id="title"><br>
+
+
+							<label for="date">Date (DD/MM/YYYY HH:MM): </label>
+								<input TYPE="text" id="date"><br>
+							<script type="text/javascript">
+								$(function(){
+
+									// Datepicker
+									$('#date').datetimepicker({inline:true});
+
+									//hover states on the static widgets
+									$('#dialog_link, ul#icons li').hover(
+										function() { $(this).addClass('ui-state-hover'); },
+										function() { $(this).removeClass('ui-state-hover'); }
+									);
+
+								});
+							</script>
+
+							<label for="place">Place: </label>
+								<input TYPE="text" id="place"><br>
+							</p>
+						</form>
+					</div>
 
 				</div>
 				<div class="event">

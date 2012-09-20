@@ -10,6 +10,8 @@ class Mainpage extends CI_Controller {
 		$this->template->js('jquery');
 		$this->template->js('jquery-ui');
 		$this->template->css('flick/jquery-ui-1.8.23.custom');
+		$this->template->js('jquery-ui-timepicker-addon');
+
 
 		// Bootstrap CSS framework
 		$this->template->js('common/bootstrap.min');
