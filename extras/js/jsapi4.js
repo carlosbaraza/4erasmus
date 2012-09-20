@@ -27,6 +27,25 @@
 		});
 
 
+		// Add Event Dialog with JQuery UI Dialog
+		$.fx.speeds._default = 400;
+		$(function() {
+			$( "#addEventDialog" ).dialog({
+				autoOpen: false,
+				title: "Add a new Event",
+				resizable: "false",
+				width: "600",
+				height: "400",
+				show: "drop",
+				hide: "drop",
+				modal: "true"
+			});
+
+			$( "#addEventButton" ).click(function() {
+				$( "#addEventDialog" ).dialog( "open" );
+				return false;
+			});
+		});
 				   
 	});
 
