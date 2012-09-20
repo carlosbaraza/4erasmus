@@ -26,8 +26,6 @@
 		 	$('#loginForm').css('visibility','hidden');
 		});
 
-<<<<<<< HEAD
-
 		// Add Event Dialog with JQuery UI Dialog
 		$.fx.speeds._default = 400;
 		$(function() {
@@ -47,7 +45,7 @@
 				return false;
 			});
 		});
-=======
+
         (function() {
           	var e = document.createElement('script'); e.async = true;
           	e.src = document.location.protocol +
@@ -71,9 +69,7 @@
 	        	console.log(response)
 	        	$('#loginBar p').prepend('<img src="'+ response.picture.data.url +'">')
 			});
-        };
->>>>>>> 5eba24f2d71e3eefbee17d439545d4859862d4c4
-				   
+        };			   
 	});
 
 

@@ -35,7 +35,6 @@
 		<div id="loginBar">
 			
 		<div id="fb-root">
-<<<<<<< HEAD
 		<script type="text/javascript">
 			$( function() {
 		        (function() {
@@ -64,8 +63,6 @@
 		        };
 			})
 		</script>
-=======
->>>>>>> 5eba24f2d71e3eefbee17d439545d4859862d4c4
 	</div>
 		<?php if( !isset($username)) { ?>
 			<p><fb:login-button></fb:login-button></p>
