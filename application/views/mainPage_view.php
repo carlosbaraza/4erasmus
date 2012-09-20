@@ -1,9 +1,3 @@
-<?php /*
-
-	This is the main page view
-
-*/ ?>
-
 <div id="container">
 	<div id="leftContainer">
 		<div class="mainTitle">
@@ -173,3 +167,25 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready( function() {
+        window.fbAsyncInit = function() {
+	        FB.init({
+	          appId: '<?=$facebook->getAppId()?>',
+	          cookie: true,
+	          xfbml: true,
+	          oauth: true
+	        });
+	        FB.Event.subscribe('auth.login', function(response) {
+	          window.location.reload();
+	        });
+	        FB.Event.subscribe('auth.logout', function(response) {
+	          window.location.reload();
+	        });
+	        FB.api('/<?=$fbid?>/?fields=picture.width(34).height(34)&access_token=<?=$facebook->getAccessToken()?>', function(response) { 
+	        	console.log(response)
+	        	$('#loginBar p').prepend('<img src="'+ response.picture.data.url +'">')
+			});
+        };
+	})
+</script>
