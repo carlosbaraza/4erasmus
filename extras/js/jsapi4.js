@@ -28,23 +28,41 @@
 
 		// Add Event Dialog with JQuery UI Dialog
 		$.fx.speeds._default = 400;
-		$(function() {
-			$( "#addEventDialog" ).dialog({
-				autoOpen: false,
-				title: "Add a new Event",
-				resizable: "false",
-				width: "600",
-				height: "400",
-				show: "drop",
-				hide: "drop",
-				modal: "true"
-			});
+		if ( $.browser.msie ){ //IExplore compatible...
+			$(function() {
+				$( "#addEventDialog" ).dialog({
+					autoOpen: false,
+					title: "Add a new Event",
+					resizable: "false",
+					width: "600",
+					height: "400",
+					modal: "true"
+				});
 
-			$( "#addEventButton" ).click(function() {
-				$( "#addEventDialog" ).dialog( "open" );
-				return false;
+				$( "#addEventButton" ).click(function() {
+					$( "#addEventDialog" ).dialog( "open" );
+					return false;
+				});
 			});
-		});
+		} else {
+			$(function() {
+				$( "#addEventDialog" ).dialog({
+					autoOpen: false,
+					title: "Add a new Event",
+					resizable: "false",
+					width: "600",
+					height: "400",
+					show: "drop",
+					hide: "drop",
+					modal: "true"
+				});
+
+				$( "#addEventButton" ).click(function() {
+					$( "#addEventDialog" ).dialog( "open" );
+					return false;
+				});
+			});
+		}
 
         (function() {
           	var e = document.createElement('script'); e.async = true;
