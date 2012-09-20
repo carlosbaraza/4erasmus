@@ -118,6 +118,20 @@ body {
 			color: #666;
 		}
 
+		#loginForm {
+			visibility: hidden; /* Hidden default */
+
+			position: absolute;
+			right: 0;
+			top: 32px;
+			z-index: 1;
+			background-color: #FAFAFA;
+			height: 300px;
+			width: 300px;
+			border-left: 1px solid #E0e0e0;
+			border-bottom: 1px solid #E0e0e0;
+		}
+
 	#content {
 		float: left;
 		background-color: white;

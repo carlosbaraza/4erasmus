@@ -35,6 +35,8 @@
 		<div id="loginBar">
 			<p>Logged as <strong>Carlos Baraza</strong> at <strong>Waterford Institute of Technology</strong> ▼</p>
 
+			<div id="loginForm"></div>
+
 		</div>
 		<div id="content">
 			<div id="leftContent">
