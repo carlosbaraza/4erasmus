@@ -26,6 +26,7 @@
 		 	$('#loginForm').css('visibility','hidden');
 		});
 
+<<<<<<< HEAD
 
 		// Add Event Dialog with JQuery UI Dialog
 		$.fx.speeds._default = 400;
@@ -46,6 +47,32 @@
 				return false;
 			});
 		});
+=======
+        (function() {
+          	var e = document.createElement('script'); e.async = true;
+          	e.src = document.location.protocol +
+          	'//connect.facebook.net/en_US/all.js';
+          	document.getElementById('fb-root').appendChild(e);
+        }());
+        window.fbAsyncInit = function() {
+	        FB.init({
+	          appId: '529250917090161',
+	          cookie: true,
+	          xfbml: true,
+	          oauth: true
+	        });
+	        FB.Event.subscribe('auth.login', function(response) {
+	          window.location.reload();
+	        });
+	        FB.Event.subscribe('auth.logout', function(response) {
+	          window.location.reload();
+	        });
+	        FB.api('/<?=$fbid?>/?fields=picture.width(34).height(34)&access_token=AAAHhWdTpA3EBAOSbW67NjsAGh92UXnk0ZBpAnWCslFmFScGRaKn1a5fZBhYxRn9rMDjcsXLiaTKsfTFLq70kFdUt7T3MX6B41jiLtK1AZDZD', function(response) { 
+	        	console.log(response)
+	        	$('#loginBar p').prepend('<img src="'+ response.picture.data.url +'">')
+			});
+        };
+>>>>>>> 5eba24f2d71e3eefbee17d439545d4859862d4c4
 				   
 	});
 
