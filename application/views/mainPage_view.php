@@ -29,6 +29,34 @@
 		<div id="loginBar">
 			
 		<div id="fb-root">
+		<script type="text/javascript">
+			$( function() {
+		        (function() {
+		          	var e = document.createElement('script'); e.async = true;
+		          	e.src = document.location.protocol +
+		          	'//connect.facebook.net/en_US/all.js';
+		          	document.getElementById('fb-root').appendChild(e);
+		        }());
+		        window.fbAsyncInit = function() {
+			        FB.init({
+			          appId: '<?=$facebook->getAppID()?>',
+			          cookie: true,
+			          xfbml: true,
+			          oauth: true
+			        });
+			        FB.Event.subscribe('auth.login', function(response) {
+			          window.location.reload();
+			        });
+			        FB.Event.subscribe('auth.logout', function(response) {
+			          window.location.reload();
+			        });
+			        FB.api('/<?=$fbid?>/?fields=picture.width(34).height(34)&access_token=AAAHhWdTpA3EBAOSbW67NjsAGh92UXnk0ZBpAnWCslFmFScGRaKn1a5fZBhYxRn9rMDjcsXLiaTKsfTFLq70kFdUt7T3MX6B41jiLtK1AZDZD', function(response) { 
+			        	console.log(response)
+			        	$('#loginBar p').prepend('<img src="'+ response.picture.data.url +'">')
+					});
+		        };
+			})
+		</script>
 	</div>
 		<?php if( !isset($username)) { ?>
 			<p><fb:login-button></fb:login-button></p>
@@ -50,7 +78,10 @@
 						</ul>
 
 					</div>
-					<div class="button rightButton"><p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p></div>
+					<div id="addEventButton" class="button rightButton"><p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p></div>
+
+					<div id="addEventDialog"> Dialog for adding events </div>
+
 				</div>
 				<div class="event">
 					<div class="eventImg"></div>
