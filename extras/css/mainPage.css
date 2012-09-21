@@ -4,7 +4,8 @@ body {
 	padding: 0;
 	margin: 0;
 	width: 100%;
-	background-color: #E0e0e0;
+	background-color: #DDD;
+
 }
 
 /* Main container for centering page */
@@ -157,8 +158,8 @@ body {
 			background-color: #FAFAFA;
 			height: 300px;
 			width: 300px;
-			border-left: 1px solid #E0e0e0;
-			border-bottom: 1px solid #E0e0e0;
+			border-left: 1px solid #CCC;
+			border-bottom: 1px solid #CCC;
 		}
 
 	#content {
@@ -168,7 +169,7 @@ body {
 	}
 
 		#content .bar {
-			border-bottom: 1px solid #E0e0e0;
+			border-bottom: 1px solid #CCC;
 			height: 42px;
 			width: 100%;
 		}
@@ -196,7 +197,7 @@ body {
 					position: relative;
 					top: 13px;
 					font-size: 13px;
-					color: #AAA;
+					color: #888;
 
 					-webkit-transition: all .25s ease;
 					   -moz-transition: all .25s ease;
@@ -207,7 +208,7 @@ body {
 				}
 
 					#content .bar .button:hover p {
-						color: #555;
+						color: #444;
 					}
 
 				#content .bar .button .icon {
@@ -230,7 +231,7 @@ body {
 
 
 			#content .bar .leftButton {
-				border-right: 1px solid #E0e0e0;
+				border-right: 1px solid #CCC;
 				float: left;
 				position: relative;
 			}
@@ -248,8 +249,8 @@ body {
 
 					#content .bar .leftButton li {
 						position: relative;
-						border-right: 1px solid #E0e0e0;
-						border-bottom: 1px solid #E0e0e0;
+						border-right: 1px solid #CCC;
+						border-bottom: 1px solid #CCC;
 						z-index: 1;
 						list-style: none;
 						width: 100%;
@@ -260,7 +261,7 @@ body {
 					}
 
 						#content .bar .leftButton li:first-child {
-							border-top: 1px solid #E0e0e0;
+							border-top: 1px solid #CCC;
 						}
 
 						#content .bar .leftButton ul li p {
@@ -278,8 +279,8 @@ body {
 						}
 
 			#content .bar .rightButton {
-				border-left: 1px solid #E0e0e0;
-				border-right: 1px solid #E0e0e0;
+				border-left: 1px solid #CCC;
+				border-right: 1px solid #CCC;
 				float: right;
 			}
 
@@ -294,8 +295,8 @@ body {
 				float: left;
 				width: 294px;
 				height: 214px; /* 157+7+40 */
-				border-right: 1px solid #E0e0e0;
-				border-bottom: 1px solid #E0e0e0;
+				border-right: 1px solid #CCC;
+				border-bottom: 1px solid #CCC;
 
 				-webkit-transition: all .25s ease;
 				   -moz-transition: all .25s ease;
@@ -306,6 +307,7 @@ body {
 			}
 
 				#leftContent .event .eventImg {
+					position: relative;
 					width: 280px;
 					height: 157px;
 					margin: 7px 7px 0 7px;
@@ -313,8 +315,37 @@ body {
 					clear: both;
 				}
 
+				#leftContent .event .eventImg img {
+					opacity: .9;
+
+					-webkit-transition: all .25s ease;
+					   -moz-transition: all .25s ease;
+					    -ms-transition: all .25s ease;
+					     -o-transition: all .25s ease;
+					        transition: all .25s ease;
+					
+				}
+
+					.eventImgBorder {
+						border: 7px solid white;
+						width: 266px;
+						height: 143px;
+						position: absolute;
+						top: 0;
+						left: 0;
+						opacity: .5;
+						z-index: 2;
+
+						-webkit-transition: all .25s ease;
+						   -moz-transition: all .25s ease;
+						    -ms-transition: all .25s ease;
+						     -o-transition: all .25s ease;
+						        transition: all .25s ease;
+						
+					}
+
 				#leftContent .event .title {
-					color: #666;
+					color: #222;
 					font-size: 12px;
 					margin: 0 0 0 7px;
 					float: left;
@@ -322,7 +353,7 @@ body {
 				}
 
 				#leftContent .event .date {
-					color: #AAA;
+					color: #777;
 					font-weight: normal;
 					font-size: 12px;
 					margin: 0 7px 0 0;
@@ -330,7 +361,7 @@ body {
 				}
 
 				#leftContent .event .place {
-					color: #AAA;
+					color: #777;
 					font-weight: normal;
 					font-size: 12px;
 					margin: 0 0 0 7px;
@@ -341,9 +372,17 @@ body {
 				}
 
 			#leftContent .event:hover {
-				background-color: #FAFAFA;
+				background-color: #EEE;
 				cursor: pointer;
 			}
+
+				#leftContent .event:hover .eventImg img {
+					opacity: 1;
+				}
+
+				#leftContent .event:hover .eventImg .eventImgBorder {
+					opacity: 0;
+				}
 
 		#rightContent {
 			float: left;
