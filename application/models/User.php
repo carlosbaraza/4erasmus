@@ -63,7 +63,7 @@ class User extends CI_Model {
 				$user_profile = $this->facebook->api('/me');
 				if( !$this->select(array('fbid' => $fbid))) {
 					$this->fbid = $fbid;
-					$this->register($user_profile['name'], md5(uniqid(rand())));
+					$this->register($user_profile['username'], null);
 				}
 				$user = $this->instance();
 				$this->ci->data->username = $user->username;
@@ -83,16 +83,16 @@ class User extends CI_Model {
 	}
 
 	public function register($username, $password) {
-		$insert = array();
-		$userobj = get_object_vars($this);
-		unset($userobj['ci']);
-		unset($userobj['facebook']);
-		foreach ($userobj as $key => $value) {
-			if( !empty($value)) 
-				$insert[$key] = $value;
+		$insert = get_object_vars($this->instance());
+		if( $this->fbid != null) {
+			$insert['username'] = 'fb-'.md5(uniqid(rand()));
+			$insert['password'] = md5(uniqid(rand()));
+			$insert['fbname']   = $username;
+		} 
+		else {
+			$insert['username'] = $username;
+			$insert['password'] = md5($password);
 		}
-		$insert['username'] = $username;
-		$insert['password'] = md5($password);
 		$insert['signdate'] = date('Y-m-d H:i:s');
 		try {
 			$this->ci->db->insert('users', $insert);
