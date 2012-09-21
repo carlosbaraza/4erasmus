@@ -91,7 +91,7 @@
 								$(function(){
 
 									// Datepicker
-									$('#addEventDate').datetimepicker({inline:true});
+									$('#addEventDate').datetimepicker();
 
 									//hover states on the static widgets
 									$('#dialog_link, ul#icons li').hover(
@@ -109,6 +109,40 @@
 									<option value="all">All my groups</option>
 									<option value="custom">Custom</option>
 								</select>
+
+							<label for="addEventCategory">Category: </label>
+								<select name="addEventCategory">
+									<option value="party">Party</option>
+									<option value="sport">Sport</option>
+									<option value="trip">Trip</option>
+									<option value="other" selected="selected">Other</option>
+								</select>
+
+							<div id="addEventGalleryContainer">
+								<label for="addEventGallery">Select an image for event:</label>
+								<div id="addEventGallery">
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+								</div>
+							</div>
+
 							</p>
 						</form>
 

@@ -53,7 +53,7 @@
 					autoOpen: false,
 					title: "Add a new Event",
 					resizable: "false",
-					width: "600",
+					width: "730",
 					height: "400",
 					show: "drop",
 					hide: "drop",
@@ -93,7 +93,25 @@
 	        	console.log(response)
 	        	$('#loginBar p').prepend('<img src="'+ response.picture.data.url +'">')
 			});
-        };			   
+        };
+
+
+        /* Add Add Event Gallery to the form */
+        $("#addEventGallery").mCustomScrollbar({
+			scrollButtons:{
+				enable:true
+			}
+		});
+		$(".addEventGalleryPic").click(function(){
+			$(".addEventGalleryPic").removeClass("selected");
+			$(".addEventGalleryPic").addClass("notSelected");
+			$(this).removeClass("notSelected");
+			$(this).addClass("selected");
+		});
+
+
+
+
 	});
 
 

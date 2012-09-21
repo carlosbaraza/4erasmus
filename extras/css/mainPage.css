@@ -80,7 +80,7 @@ body {
 	.ui-widget-content {
 		border: none;
 		background: #FAFAFA;
-		color: #999;
+		color: #666;
 	}
 	.ui-widget-header {
 		color: #666;
@@ -283,6 +283,13 @@ body {
 				border-right: 1px solid #CCC;
 				float: right;
 			}
+
+				#addEventGalleryContainer {
+					position: absolute;
+					right: 7px;
+					top: 7px;
+					
+				}
 
 		#leftContent {
 			float: left;
