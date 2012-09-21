@@ -36,11 +36,14 @@
 					resizable: "false",
 					width: "600",
 					height: "400",
-					modal: "true"
+					modal: "true",
 				});
 
 				$( "#addEventButton" ).click(function() {
 					$( "#addEventDialog" ).dialog( "open" );
+					$(".ui-widget-overlay").click( function(){
+						$('#addEventDialog').dialog("close");
+					});
 					return false;
 				});
 			});
@@ -59,6 +62,9 @@
 
 				$( "#addEventButton" ).click(function() {
 					$( "#addEventDialog" ).dialog( "open" );
+					$(".ui-widget-overlay").click( function(){
+						$('#addEventDialog').dialog("close");
+					});
 					return false;
 				});
 			});
