@@ -71,7 +71,7 @@
 			<div id="leftContent">
 				<div class="bar">
 					<div class="button leftButton">
-						<p>Featured Events ▼</p>
+						<p>Top Events ▼</p>
 						<ul>
 							<li><p>Hello</p></li>
 							<li><p>Goodbye</p></li>
@@ -80,7 +80,38 @@
 					</div>
 					<div id="addEventButton" class="button rightButton"><p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p></div>
 
-					<div id="addEventDialog"> Dialog for adding events </div>
+					<div id="addEventDialog">
+						<form>
+							<p>
+							<label for="title">Title of Event: </label>
+								<input TYPE="text" id="title"><br>
+							<label for="date">Date (DD/MM/YYYY HH:MM): </label>
+								<input TYPE="text" id="date"><br>
+							<script type="text/javascript">
+								$(function(){
+
+									// Datepicker
+									$('#date').datetimepicker({inline:true});
+
+									//hover states on the static widgets
+									$('#dialog_link, ul#icons li').hover(
+										function() { $(this).addClass('ui-state-hover'); },
+										function() { $(this).removeClass('ui-state-hover'); }
+									);
+
+								});
+							</script>
+							<label for="place">Place: </label>
+								<input TYPE="text" id="place"><br>
+							<label for="sharewith">Share event with: </label>
+								<select name="sharewith">
+									<option value="public" selected="selected">Public events</option>
+									<option value="all">All my groups</option>
+									<option value="custom">Custom</option>
+								</select>
+							</p>
+						</form>
+					</div>
 
 				</div>
 				<div class="event">
