@@ -31,4 +31,22 @@ class Api4 extends CI_Controller {
 			echo json_encode($result);
 		}
 	}
+
+	public function newEvent() {
+		$this->load->model('place');
+		$eventname  = $this->input->post('eventname', true);
+		$eventdesc  = $this->input->post('eventdesc', true);
+		$placeid    = $this->input->post('placeid', true);
+		$placename  = $this->input->post('placename', true);
+		$eventdate  = $this->input->post('eventdate', true);
+		$privacy	= $this->input->post('privacy', true);
+
+		if( !$eventname || !$placeid || !$eventdesc || !$placename || !$eventdate || !$privacy) {
+			return;
+		}
+		if( !$placeid) {
+			$this->place->placename;
+			$this->place->create();
+		}
+	}
 }

@@ -15,16 +15,16 @@
 
 // --------------------------------------------------------------------
 
-class Event extends CI_Model {
+class Place extends CI_Model {
 
-	public $eventid;
-	public $eventname;
-	public $eventdesc;
+	public $placeid;
+	public $placename;
+	public $placedesc;
+	public $placeaddress;
 	public $creatorid;
 	public $creatorname;
-	public $eventstart;
-	public $eventfinish;
-	public $views;
+	public $peoplewashere;
+	public $eventswashere;
 	public $adddate;
 	public $lastupdate;
 	public $thumbnailurl;
@@ -46,35 +46,45 @@ class Event extends CI_Model {
 	}
 
 	public function create() {
-		$insert = array();
-		unset($this->ci);
-		$userobj = get_object_vars($this);
-		foreach ($userobj as $key => $value) {
-			if( !empty($value)) 
-				$insert[$key] = $value;
-		}
-		$this->ci->db->insert('events', $insert);
+		$place = $this->instance();
+		$place->creatorid 	= $this->session->userdata('userid');
+		$place->creatorname = $this->session->userdata('username');
+		$place->adddate		= date('Y-m-d H:m:s'); 
+		
+		unset($place->ci);
+		$insert = get_object_vars($place);
+		$this->ci->db->insert('places', $insert);
 	}
 
 	public function update() {
 		$update = array();
-		$eventobj = get_object_vars($this);
+		$place = $this->instance();
+		$eventobj = get_object_vars($place);
 		foreach ($eventobj as $key => $value) {
 			if( !empty($value)) 
 				$update[$key] = $value;
 		}
-		$this->ci->db->where('eventid', $this->eventids);
-		$this->ci->db->update('events', $update);
+		$this->ci->db->where('placeid', $this->placeid);
+		$this->ci->db->update('places', $update);
 	}
 
 	public function select($condition) {
-		$query = $this->db->get_where('events', $condition, 1);
-		$event = $query->first_row();
+		$query = $this->db->get_where('places', $condition, 1);
+		$place = $query->first_row();
 
 		// Pass Variables
-		$eventobj = get_object_vars($event);
-		foreach ($eventobj as $key => $value) {
-			$this->{$key} = $eventobj->{$key};
+		$placeobj = get_object_vars($place);
+		foreach ($placeobj as $key => $value) {
+			$this->{$key} = $placeobj->{$key};
 		}
+	}
+
+	public function instance() {
+		$instance = new StdClass();
+		foreach($this as $key => $value) {
+			$instance->{$key} = $value;
+		}
+		unset($instance->ci);
+		return $instance;
 	}
 }
