@@ -83,15 +83,15 @@
 					<div id="addEventDialog">
 						<form>
 							<p>
-							<label for="title">Title of Event: </label>
-								<input TYPE="text" id="title"><br>
-							<label for="date">Date (DD/MM/YYYY HH:MM): </label>
-								<input TYPE="text" id="date"><br>
+							<label for="addEventTitle">Title of Event: </label>
+								<input TYPE="text" id="addEventTitle"><br>
+							<label for="addEventDate">Date (MM/DD/YYYY HH:MM): </label>
+								<input TYPE="text" id="addEventDate"><br>
 							<script type="text/javascript">
 								$(function(){
 
 									// Datepicker
-									$('#date').datetimepicker({inline:true});
+									$('#addEventDate').datetimepicker();
 
 									//hover states on the static widgets
 									$('#dialog_link, ul#icons li').hover(
@@ -101,65 +101,102 @@
 
 								});
 							</script>
-							<label for="place">Place: </label>
-								<input TYPE="text" id="place"><br>
-							<label for="sharewith">Share event with: </label>
-								<select name="sharewith">
+							<label for="addEventPlace">Place: </label>
+								<input TYPE="text" id="addEventPlace"><br>
+							<label for="addEventShareWith">Share event with: </label>
+								<select name="addEventShareWith">
 									<option value="public" selected="selected">Public events</option>
 									<option value="all">All my groups</option>
 									<option value="custom">Custom</option>
 								</select>
+
+							<label for="addEventCategory">Category: </label>
+								<select name="addEventCategory">
+									<option value="party">Party</option>
+									<option value="sport">Sport</option>
+									<option value="trip">Trip</option>
+									<option value="other" selected="selected">Other</option>
+								</select>
+
+							<div id="addEventGalleryContainer">
+								<label for="addEventGallery">Select an image for event:</label>
+								<div id="addEventGallery">
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+								</div>
+							</div>
+
 							</p>
 						</form>
+
+						<a href="#" onclick="4E.newEvent(new Array('#addEventTitle, #addEventPlace'))">Add Event</a>
+
 					</div>
 
 				</div>
 				<div class="event">
-					<div class="eventImg"></div>
+					<div class="eventImg"><div class="eventImgBorder"></div><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
 					<h3 class = "title">Claire's birthday party</h3>
 					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
 					<h3 class = "place">Riverwalk, block 9, apartment 18.</h3>
 				</div>
 				<div class="event">
-					<div class="eventImg"></div>
+					<div class="eventImg"><div class="eventImgBorder"></div><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
 					<h3 class = "title">Loren ipsum et dolor</h3>
 					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
 					<h3 class = "place">chasud coais dleiro</h3>
 				</div>
 				<div class="event">
-					<div class="eventImg"></div>
+					<div class="eventImg"><div class="eventImgBorder"></div><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
 					<h3 class = "title">Claire's birthday party</h3>
 					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
 					<h3 class = "place">Riverwalk, block 9, apartment 18.</h3>
 				</div>
 				<div class="event">
-					<div class="eventImg"></div>
+					<div class="eventImg"><div class="eventImgBorder"></div><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
 					<h3 class = "title">Loren ipsum et dolor</h3>
 					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
 					<h3 class = "place">chasud coais dleiro</h3>
 				</div>
 				<div class="event">
-					<div class="eventImg"></div>
+					<div class="eventImg"><div class="eventImgBorder"></div><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
 					<h3 class = "title">Claire's birthday party</h3>
 					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
 					<h3 class = "place">Riverwalk, block 9, apartment 18.</h3>
 				</div>
 				<div class="event">
-					<div class="eventImg"></div>
+					<div class="eventImg"><div class="eventImgBorder"></div><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
 					<h3 class = "title">Loren ipsum et dolor</h3>
 					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
 					<h3 class = "place">chasud coais dleiro</h3>
 				</div>
 
 				<div class="event">
-					<div class="eventImg"></div>
+					<div class="eventImg"><div class="eventImgBorder"></div></div>
 					<h3 class = "title">Loren ipsum et dolor</h3>
 					<h3 class = "date">Mon 16, 2012 8:30pm</h3>
 					<h3 class = "place">chasud coais dleiro</h3>
 				</div>
 
 				<div class="event">
-					<div class="eventImg"></div>
+					<div class="eventImg"><div class="eventImgBorder"></div></div>
 					<h3 class = "title">Kirsty and Annie Dublin</h3>
 					<h3 class = "date">Tue 19, 2012 6:30pm</h3>
 					<h3 class = "place">Dublin</h3>

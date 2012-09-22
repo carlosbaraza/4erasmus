@@ -1,0 +1,40 @@
+#addEventGallery {
+	position: relative;
+	width: 470px;
+	height: 300px;
+	overflow: hidden;
+}
+
+.addEventGalleryPic {
+	padding: 7px;
+	position: relative;
+	float: left;
+	height: 70px;
+
+	-webkit-transition: all .25s ease;
+	   -moz-transition: all .25s ease;
+	    -ms-transition: all .25s ease;
+	     -o-transition: all .25s ease;
+	        transition: all .25s ease;
+	
+}
+
+.addEventGalleryPic.selected {
+	background-color: #3da1da;
+}
+
+.addEventGalleryPic.notSelected {
+	opacity: .5;	
+}
+
+.addEventGalleryPic:hover {
+	background-color: #CCC;
+	cursor: pointer;
+}
+
+.addEventGalleryPic img {
+	width: 136px;
+	height: 70px;
+}
+
+

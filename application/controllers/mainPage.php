@@ -12,6 +12,12 @@ class Mainpage extends CI_Controller {
 		$this->template->css('flick/jquery-ui-1.8.23.custom');
 		$this->template->js('jquery-ui-timepicker-addon');
 
+		//mousewheel plugin for jquery
+		$this->template->js('jquery.mousewheel.min');
+
+		//custom scroll for the add event pic gallery
+		$this->template->js('jquery.mCustomScrollbar');
+		$this->template->css('jquery.mCustomScrollbar');
 
 		// Bootstrap CSS framework
 		$this->template->js('common/bootstrap.min');
@@ -19,6 +25,8 @@ class Mainpage extends CI_Controller {
 
 		//CSS of mainpage
 		$this->template->css('mainPage');
+		// Gallery plugin CSS
+		$this->template->css('addEventGalleryPlugin');
 
 		//JS 
 		$this->template->js('api4');
