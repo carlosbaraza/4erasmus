@@ -1,39 +1,36 @@
 
-var fourErasmus = new function() {
+var forErasmus = new function() {
 
 	// GOOGLE ANALYTICS
-	(function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
 
 	// VARIABLES
-	var api = this
-	var log = ''
+	var that = this
 
-	this.newEvent = function(selectorArray) {
-		var dataArr = new Array()
-		for( var key in selectorArray) {
-			var selector = selectorArray[key]
-			if( $(selector).val() != '') {
-				dataArr[dataArr.length] = $(selector).val()
+	this.init = function() {
+		that.logtext = ''
+		that.arrdata = {}
+	}
+
+	this.newEvent = function(textArray) {
+		var dataArr = {}
+		for( var key in textArray) {
+			var text = textArray[key]
+			if( text != '') {
+				dataArr[key] = text
 			}
 		}
 
-		$.ajax({
-			url  : "/api4/newEvent",
-			type : "post",
-			data : dataArr,
-			success : function(response) {
-
+		console.log(dataArr)
+		$.post("/index.php/that4/newEvent", dataArr,
+			function(response) {
+				console.log(response)
 			}
-		})
+		)
 	}
 
 	this.autocompletePlace = function(needle, autocomp) {
 		$.ajax({
-			url	 : "/api4/autocompletePlace",
+			url	 : "/that4/autocompletePlace",
 			type : "post",
 			data : {
 				needle : needle
@@ -42,7 +39,7 @@ var fourErasmus = new function() {
 				var place = $.parseJSON(response);
 				if( typeof place.error != undefined) {
 					console.log(place.error)
-					api.log(place.error)
+					that.log(place.error)
 				} else {
 					autocomp.process(response)
 				}
@@ -51,10 +48,6 @@ var fourErasmus = new function() {
 	}
 
 	this.log = function(title, msg) {
-		api.log += title + ':  ' + msg + "\n"
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-35018312-1'])
-		_gaq.push(['_setDomainName', '4erasmus.com'])
-		_gaq.push(['_trackPageview'])
+		that.logtext += title + ':  ' + msg + "\n"
 	}
 }

@@ -54,7 +54,7 @@ class Event extends CI_Model {
 		unset($event->ci);
 		$insert = get_object_vars($event);
 		$this->ci->db->insert('events', $insert);
-		$this->select(array('eventname', $place->eventname));
+		$this->select(array('eventname' => $event->eventname));
 	}
 
 	public function update() {
@@ -76,11 +76,21 @@ class Event extends CI_Model {
 			// Pass Variables
 			$eventobj = get_object_vars($event);
 			foreach ($eventobj as $key => $value) {
-				$this->{$key} = $eventobj->{$key};
+				$this->{$key} = $eventobj[$key];
 			}
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	public function instance() {
+		$instance = new StdClass();
+		foreach($this as $key => $value) {
+			if( $value != NULL)
+				$instance->{$key} = $value;
+		}
+		unset($instance->ci);
+		return $instance;
 	}
 }

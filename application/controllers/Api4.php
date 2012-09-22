@@ -32,30 +32,47 @@ class Api4 extends CI_Controller {
 			$result = $this->api->eventsOfDate($date, $start, $limit);
 			echo json_encode($result);
 		}
+		else {
+			echo 'wrong';
+		}
 	}
 
 	public function newEvent() {
+		// Include Stuff
 		$this->load->model('place');
 		$this->load->model('event');
-		$this->load->helper('date');
+		$this->load->library('validate');
+		// Receive Post Data
+		if( !$this->input->is_ajax_request())
+			exit;
 		$eventname  = $this->input->post('eventname', true);
 		$eventdesc  = $this->input->post('eventdesc', true);
-		$placename  = $this->input->post('placename', true);
-		$eventstart = $this->input->post('eventstart', true);
-		$privacy	= $this->input->post('privacy', true);
+		$placename  = $this->input->post('place', true);
+		$eventstart = $this->input->post('eventdate', true);
+		$privacy	= $this->input->post('sharewith', true);
+		$imagename	= $this->input->post('imagename', true);
 
-		if( !$eventname || !$eventdesc || !$placename || !$eventdate || !$privacy) {
-			return;
+		// Validate
+		if( !$eventname || !$placename || !$eventstart || !$privacy || !$imagename || !$this->validate->privacy($privacy)) {
+			var_dump($eventname);
+			var_dump($placename);
+			var_dump($eventstart);
+			var_dump($privacy);
+			show_error('missing info')
 		}
+		// Validate Place
 		if( !$this->place->select(array('placename' => $placename))) {
-			$this->place->placename;
+			$this->place->placename = $placename;
 			$this->place->create();
 		}
+		// Create Event
 		$this->event->eventname  = $eventname;
-		$this->event->eventdesc  = $eventdesc;
+		$this->event->eventdesc  = $eventdesc != false ? $eventdesc : NULL;
 		$this->event->placeid	 = $this->place->placeid;
-		$this->event->eventstart = $date->guiToMysql($eventstart);
-		$this->event->privacy    = $privacy;
+		$this->event->privacy 	 = $privacy;
+		if( !$eventstart = $this->validate->eventDate($eventstart)) 
+			show_error('eventdate');
+		$this->event->eventstart = $eventstart;
 		$this->event->create();
 	}
 }

@@ -36,4 +36,20 @@ class Validate {
 			return false;
 		}
 	}
+
+	public function eventDate($date) {
+		$reg = '@([0-9]+)\/([0-9]+)\/([0-9]+) ([0-9]+):([0-9]+)@';
+		if( !preg_match($reg, $date, $match))
+			return false;
+		else {
+			if( checkdate($match[1], $match[2], $match[3]) && $match[4] < 24 && $match[4] >= 0 && $match[5] < 60 && $match[5] >= 0) {
+				return $match[3].'-'.$match[1].'-'.$match[2].' '.$match[4].':'.$match[5].':00';
+			}
+			return false;
+		}
+	}
+
+	public function privacy($privacy){
+		return true;
+	}
 }

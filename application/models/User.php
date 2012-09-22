@@ -20,6 +20,7 @@ class User extends CI_Model {
 	protected $password;
 	public $userid;
 	public $username;
+	public $fbname;
 	public $followers;
 	public $signdate;
 	public $lastupdate;
@@ -32,7 +33,6 @@ class User extends CI_Model {
 	public $onlineStatus;
 	public $fbid;
 	public $ci;
-	public $fbname;
    /**
 	 * Constructor
 	 *
@@ -47,6 +47,9 @@ class User extends CI_Model {
 	}
 
 	public function fblogin() {
+		if( $this->ci->session->userdata('userid')) {
+			return;
+		}
 		// Facebook PHP-SDK
 		require_once RESOURCEPATH.'inc/facebook.php';
 		// Initialize Facebook

@@ -77,7 +77,7 @@ class Place extends CI_Model {
 			// Pass Variables
 			$placeobj = get_object_vars($place);
 			foreach ($placeobj as $key => $value) {
-				$this->{$key} = $placeobj->{$key};
+				$this->{$key} = $placeobj[$key];
 			}
 			return true;
 		} else {

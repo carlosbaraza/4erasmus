@@ -29,34 +29,6 @@
 		<div id="loginBar">
 			
 		<div id="fb-root">
-		<script type="text/javascript">
-			$( function() {
-		        (function() {
-		          	var e = document.createElement('script'); e.async = true;
-		          	e.src = document.location.protocol +
-		          	'//connect.facebook.net/en_US/all.js';
-		          	document.getElementById('fb-root').appendChild(e);
-		        }());
-		        window.fbAsyncInit = function() {
-			        FB.init({
-			          appId: '<?=$facebook->getAppID()?>',
-			          cookie: true,
-			          xfbml: true,
-			          oauth: true
-			        });
-			        FB.Event.subscribe('auth.login', function(response) {
-			          
-			        });
-			        FB.Event.subscribe('auth.logout', function(response) {
-			          window.location.reload();
-			        });
-			        FB.api('/<?=$fbid?>/?fields=picture.width(34).height(34)&access_token=AAAHhWdTpA3EBAOSbW67NjsAGh92UXnk0ZBpAnWCslFmFScGRaKn1a5fZBhYxRn9rMDjcsXLiaTKsfTFLq70kFdUt7T3MX6B41jiLtK1AZDZD', function(response) { 
-			        	console.log(response)
-			        	$('#loginBar p').prepend('<img src="'+ response.picture.data.url +'">')
-					});
-		        };
-			})
-		</script>
 	</div>
 		<?php if( !isset($username)) { ?>
 			<p><fb:login-button></fb:login-button></p>
@@ -239,10 +211,11 @@
 	</div>
 </div>
 <script type="text/javascript">
-	$(document).ready( function() {
+	$(document).ready( function() { 
+	/*
         window.fbAsyncInit = function() {
 	        FB.init({
-	          appId: '<?=$facebook->getAppId()?>',
+	          appId: '$facebook->getAppId()',
 	          cookie: true,
 	          xfbml: true,
 	          oauth: true
@@ -253,10 +226,29 @@
 	        FB.Event.subscribe('auth.logout', function(response) {
 	          window.location.reload();
 	        });
-	        FB.api('/<?=$fbid?>/?fields=picture.width(34).height(34)&access_token=<?=$facebook->getAccessToken()?>', function(response) { 
+	        FB.api('/$fbid/?fields=picture.width(34).height(34)&access_token=$facebook->getAccessToken()', function(response) { 
 	        	console.log(response)
 	        	$('#loginBar p').prepend('<img src="'+ response.picture.data.url +'">')
 			});
-        };
+        };*/
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-35018312-1'])
+		_gaq.push(['_setDomainName', '4erasmus.com'])
+		_gaq.push(['_trackPageview'])
+		forErasmus.init()
 	})
+	function send() {
+		forErasmus.newEvent({
+			'eventname' : $('#addEventTitle').val(), 
+			'eventdate'	: $('#addEventDate').val(), 
+			'place' 	: $('#addEventPlace').val(), 
+			'sharewith' : $('select[name=addEventShareWith] option:selected').val()
+		})
+	}
+
 </script>
