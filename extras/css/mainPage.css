@@ -174,7 +174,7 @@ body {
 			width: 100%;
 		}
 
-			#content .bar .button {
+			.button {
 				position: relative;
 				display: inline-block;
 				height: 100%;
@@ -188,12 +188,13 @@ body {
 				
 			}
 
-				#content .bar .button:hover {
+				.button:hover {
 					cursor: pointer;
 					background-color: #FAFAFA;
+					text-decoration: none;
 				}
 
-				#content .bar .button p {
+				.button p {
 					position: relative;
 					top: 13px;
 					font-size: 13px;
@@ -207,7 +208,7 @@ body {
 					
 				}
 
-					#content .bar .button:hover p {
+					.button:hover p {
 						color: #444;
 					}
 
@@ -278,17 +279,38 @@ body {
 							
 						}
 
-			#content .bar .rightButton {
+			.rightButton {
 				border-left: 1px solid #CCC;
-				border-right: 1px solid #CCC;
 				float: right;
 			}
 
+			#content .bar .rightButton {
+				border-right: 1px solid #CCC;
+			}
+
+				/* Event Dialog CSS config*/
 				#addEventGalleryContainer {
 					position: absolute;
 					right: 7px;
-					top: 7px;
-					
+					top: 6px;
+				}
+
+				#addEventDialogFooter {
+					position: absolute;
+					bottom: 0;
+					left: 0px;
+					height: 42px;
+					width: 100%;
+					border-top: 1px solid #BBB;
+				}
+
+				#addEventDialogFooter .button {
+					font-weight: bold;
+				}
+
+				#addEventDialogFooter .button:hover {
+					background-color: #EEE;
+					color: black;
 				}
 
 		#leftContent {

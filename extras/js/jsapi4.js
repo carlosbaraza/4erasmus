@@ -53,8 +53,8 @@
 					autoOpen: false,
 					title: "Add a new Event",
 					resizable: "false",
-					width: "730",
-					height: "400",
+					width: "750",
+					height: "500",
 					show: "drop",
 					hide: "drop",
 					modal: "true"

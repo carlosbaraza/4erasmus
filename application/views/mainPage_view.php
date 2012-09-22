@@ -110,15 +110,17 @@
 									<option value="custom">Custom</option>
 								</select>
 
-							<label for="addEventCategory">Category: </label>
-								<select name="addEventCategory">
-									<option value="party">Party</option>
-									<option value="sport">Sport</option>
-									<option value="trip">Trip</option>
-									<option value="other" selected="selected">Other</option>
-								</select>
+
 
 							<div id="addEventGalleryContainer">
+								<label for="addEventCategory">Category: </label>
+									<select name="addEventCategory">
+										<option value="party">Party</option>
+										<option value="sport">Sport</option>
+										<option value="trip">Trip</option>
+										<option value="other" selected="selected">Other</option>
+									</select>
+
 								<label for="addEventGallery">Select an image for event:</label>
 								<div id="addEventGallery">
 									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
@@ -146,8 +148,9 @@
 							</p>
 						</form>
 
-						<a href="#" onclick="4E.newEvent(new Array('#addEventTitle, #addEventPlace'))">Add Event</a>
-
+						<div id="addEventDialogFooter">
+							<a class="rightButton button" href="#" onclick="4E.newEvent(new Array('#addEventTitle, #addEventPlace'))"><p>Add Event</p></a>
+						</div>
 					</div>
 
 				</div>
