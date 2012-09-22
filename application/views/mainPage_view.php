@@ -82,9 +82,10 @@
 
 					<div id="addEventDialog">
 						<form>
-							<p>
+							
 							<label for="addEventTitle">Title of Event: </label>
 								<input TYPE="text" id="addEventTitle"><br>
+
 							<label for="addEventDate">Date (MM/DD/YYYY HH:MM): </label>
 								<input TYPE="text" id="addEventDate"><br>
 							<script type="text/javascript">
@@ -101,16 +102,12 @@
 
 								});
 							</script>
+
 							<label for="addEventPlace">Place: </label>
 								<input TYPE="text" id="addEventPlace"><br>
-							<label for="addEventShareWith">Share event with: </label>
-								<select name="addEventShareWith">
-									<option value="public" selected="selected">Public events</option>
-									<option value="all">All my groups</option>
-									<option value="custom">Custom</option>
-								</select>
 
-
+							<label for="addEventDescription">Description: <em>(Optional)</em></label>
+								<textarea id="addEventDescription"></textarea>
 
 							<div id="addEventGalleryContainer">
 								<label for="addEventCategory">Category: </label>
@@ -145,7 +142,14 @@
 								</div>
 							</div>
 
-							</p>
+							<div id="addEventShareWithContainer">
+								<label for="addEventShareWith">Share event with: </label>
+									<select name="addEventShareWith">
+										<option value="public" selected="selected">Public events</option>
+										<option value="all">All my groups</option>
+									</select>
+							</div>
+
 						</form>
 
 						<div id="addEventDialogFooter">

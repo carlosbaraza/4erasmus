@@ -289,6 +289,21 @@ body {
 			}
 
 				/* Event Dialog CSS config*/
+				#addEventDialog input,#addEventDialog textarea {
+					width: 370px;
+				}
+
+				#addEventDialog textarea {
+					height: 170px;
+				}
+
+				#addEventShareWithContainer {
+					position: absolute;
+					top: 6px;
+					right: 14px;
+					z-index: 2000;
+				}
+
 				#addEventGalleryContainer {
 					position: absolute;
 					right: 7px;
