@@ -20,7 +20,8 @@ class Mainpage extends CI_Controller {
 		//CSS of mainpage
 		$this->template->css('mainPage');
 
-		//JS
+		//JS 
+		$this->template->js('api4');
 		$this->template->js('jsapi4');
 	}
 
