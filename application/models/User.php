@@ -32,6 +32,7 @@ class User extends CI_Model {
 	public $onlineStatus;
 	public $fbid;
 	public $ci;
+	public $fbname;
    /**
 	 * Constructor
 	 *
@@ -89,7 +90,7 @@ class User extends CI_Model {
 	public function register($username, $password) {
 		$insert = get_object_vars($this->instance());
 		if( $this->fbid != null) {
-			$insert['username'] = 'fb-'.md5(uniqid(rand()));
+			$insert['username'] = 'fb-'.$this->fbid;
 			$insert['password'] = md5(uniqid(rand()));
 			$insert['fbname']   = $username;
 		} 
@@ -101,9 +102,9 @@ class User extends CI_Model {
 		try {
 			$this->ci->db->insert('users', $insert);
 		} catch(Exception $e) {
-			return FALSE;
+			return false;
 		}
-		return TRUE;
+		return true;
 	}
 
 	public function update() {
