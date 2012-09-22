@@ -46,14 +46,15 @@ class Event extends CI_Model {
 	}
 
 	public function create() {
-		$insert = array();
-		unset($this->ci);
-		$userobj = get_object_vars($this);
-		foreach ($userobj as $key => $value) {
-			if( !empty($value)) 
-				$insert[$key] = $value;
-		}
+		$event = $this->instance();
+		$event->creatorid 	= $this->session->userdata('userid');
+		$event->creatorname = $this->session->userdata('username');
+		$event->adddate		= date('Y-m-d H:m:s'); 
+		
+		unset($event->ci);
+		$insert = get_object_vars($event);
 		$this->ci->db->insert('events', $insert);
+		$this->select(array('eventname', $place->eventname));
 	}
 
 	public function update() {
@@ -71,10 +72,15 @@ class Event extends CI_Model {
 		$query = $this->db->get_where('events', $condition, 1);
 		$event = $query->first_row();
 
-		// Pass Variables
-		$eventobj = get_object_vars($event);
-		foreach ($eventobj as $key => $value) {
-			$this->{$key} = $eventobj->{$key};
+		if( $event) {
+			// Pass Variables
+			$eventobj = get_object_vars($event);
+			foreach ($eventobj as $key => $value) {
+				$this->{$key} = $eventobj->{$key};
+			}
+			return true;
+		} else {
+			return false;
 		}
 	}
 }

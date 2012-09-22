@@ -28,7 +28,8 @@ class Mainpage extends CI_Controller {
 		// Gallery plugin CSS
 		$this->template->css('addEventGalleryPlugin');
 
-		//JS
+		//JS 
+		$this->template->js('api4');
 		$this->template->js('jsapi4');
 	}
 

@@ -54,6 +54,7 @@ class Place extends CI_Model {
 		unset($place->ci);
 		$insert = get_object_vars($place);
 		$this->ci->db->insert('places', $insert);
+		$this->select(array('placename', $place->placename));
 	}
 
 	public function update() {
@@ -72,10 +73,15 @@ class Place extends CI_Model {
 		$query = $this->db->get_where('places', $condition, 1);
 		$place = $query->first_row();
 
-		// Pass Variables
-		$placeobj = get_object_vars($place);
-		foreach ($placeobj as $key => $value) {
-			$this->{$key} = $placeobj->{$key};
+		if( $place) {
+			// Pass Variables
+			$placeobj = get_object_vars($place);
+			foreach ($placeobj as $key => $value) {
+				$this->{$key} = $placeobj->{$key};
+			}
+			return true;
+		} else {
+			return false;
 		}
 	}
 

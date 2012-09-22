@@ -1,12 +1,21 @@
 
-var 4E = new function() {
+var fourErasmus = new function() {
+
+	// GOOGLE ANALYTICS
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+	// VARIABLES
 	var api = this
 	var log = ''
 
-	this.newEvent = function(Arr) {
+	this.newEvent = function(selectorArray) {
 		var dataArr = new Array()
-		for( var key in Arr) {
-			var selector = Arr[key]
+		for( var key in selectorArray) {
+			var selector = selectorArray[key]
 			if( $(selector).val() != '') {
 				dataArr[dataArr.length] = $(selector).val()
 			}
@@ -41,7 +50,11 @@ var 4E = new function() {
 		})
 	}
 
-	this.log = function(msg) {
-		api.log += msg + "\n"
+	this.log = function(title, msg) {
+		api.log += title + ':  ' + msg + "\n"
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-35018312-1'])
+		_gaq.push(['_setDomainName', '4erasmus.com'])
+		_gaq.push(['_trackPageview'])
 	}
 }

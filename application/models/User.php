@@ -63,17 +63,21 @@ class User extends CI_Model {
 				$user_profile = $this->facebook->api('/me');
 				if( !$this->select(array('fbid' => $fbid))) {
 					$this->fbid = $fbid;
-					$this->register($user_profile['username'], null);
+					$this->register($user_profile['name'], null);
 				}
-				$user = $this->instance();
-				$this->ci->data->username = $user->username;
-				$this->ci->session->set_userdata(get_object_vars($user));
-			//	echo '<pre>Welcome '.$user_profile['name'].'<br>'.$user_profile['id'].'</pre>';
+				$this->ci->data->username = $this->fbname;
+				$this->seslogin();
 			} catch (FacebookApiException $e) {
-			//	echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
-			    $user = null;
+				echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
 			}
 		}
+	}
+
+	public function seslogin() {
+		$user = $this->instance();
+		$user->access_token = md5(uniqid(rand()));
+		$this->ci->data->access_token = $user->access_token;
+		$this->ci->session->set_userdata(get_object_vars($user));
 	}
 
 	public function login($username, $password) {
@@ -132,7 +136,8 @@ class User extends CI_Model {
 	public function instance() {
 		$instance = new StdClass();
 		foreach($this as $key => $value) {
-			$instance->{$key} = $value;
+			if( $value != NULL)
+				$instance->{$key} = $value;
 		}
 		unset($instance->ci);
 		unset($instance->facebook);

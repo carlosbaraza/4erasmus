@@ -3,4 +3,7 @@
 
 class DateHelper {
 	
+	public function guiToMysql($date) {
+		
+	}
 }

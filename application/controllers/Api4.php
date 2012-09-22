@@ -6,6 +6,8 @@ class Api4 extends CI_Controller {
 	public function Face() {
 		parent::__construct();
 		$this->data = new StdClass();
+		$this->user->select(array('username' => 'ozantunca'));
+		$this->user->seslogin();
 
 		// HEAD
 		$this->template->title('4erasmus API');
@@ -34,19 +36,26 @@ class Api4 extends CI_Controller {
 
 	public function newEvent() {
 		$this->load->model('place');
+		$this->load->model('event');
+		$this->load->helper('date');
 		$eventname  = $this->input->post('eventname', true);
 		$eventdesc  = $this->input->post('eventdesc', true);
-		$placeid    = $this->input->post('placeid', true);
 		$placename  = $this->input->post('placename', true);
-		$eventdate  = $this->input->post('eventdate', true);
+		$eventstart = $this->input->post('eventstart', true);
 		$privacy	= $this->input->post('privacy', true);
 
-		if( !$eventname || !$placeid || !$eventdesc || !$placename || !$eventdate || !$privacy) {
+		if( !$eventname || !$eventdesc || !$placename || !$eventdate || !$privacy) {
 			return;
 		}
-		if( !$placeid) {
+		if( !$this->place->select(array('placename' => $placename))) {
 			$this->place->placename;
 			$this->place->create();
 		}
+		$this->event->eventname  = $eventname;
+		$this->event->eventdesc  = $eventdesc;
+		$this->event->placeid	 = $this->place->placeid;
+		$this->event->eventstart = $date->guiToMysql($eventstart);
+		$this->event->privacy    = $privacy;
+		$this->event->create();
 	}
 }
