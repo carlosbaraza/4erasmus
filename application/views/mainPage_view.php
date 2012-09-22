@@ -111,7 +111,7 @@
 
 							<div id="addEventGalleryContainer">
 								<label for="addEventCategory">Category: </label>
-									<select name="addEventCategory">
+									<select id="addEventCategory">
 										<option value="party">Party</option>
 										<option value="sport">Sport</option>
 										<option value="trip">Trip</option>
@@ -120,7 +120,7 @@
 
 								<label for="addEventGallery">Select an image for event:</label>
 								<div id="addEventGallery">
-									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
+									<div class="addEventGalleryPic selected"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
 									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
 									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
 									<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
@@ -144,7 +144,7 @@
 
 							<div id="addEventShareWithContainer">
 								<label for="addEventShareWith">Share event with: </label>
-									<select name="addEventShareWith">
+									<select id="addEventShareWith">
 										<option value="public" selected="selected">Public events</option>
 										<option value="all">All my groups</option>
 									</select>
@@ -153,7 +153,7 @@
 						</form>
 
 						<div id="addEventDialogFooter">
-							<a class="rightButton button" href="#" onclick="4E.newEvent(new Array('#addEventTitle, #addEventPlace'))"><p>Add Event</p></a>
+							<a class="rightButton button" href="#" onclick="addEventSendAJAX();"><p>Add Event</p></a>
 						</div>
 					</div>
 

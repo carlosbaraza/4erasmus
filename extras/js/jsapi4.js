@@ -114,15 +114,19 @@
 
 	});
 
+	// Add Event AJAX
+	//
+	function addEventSendAJAX() {
+		var title = $("#addEventTitle").val();
+		var date = $("#addEventDate").val();
+		var place = $("#addEventPlace").val();
+		var description = $("#addEventDescription").val();
+		var category = $("#addEventCategory").val();
+		var sharewith = $("#addEventShareWith").val();
 
-/*		$('.leftButton').bind('mousein', openSubMenu);
-		$('.leftButton').bind('mouseout', closeSubMenu);
-		
-		function openSubMenu() {
-			$(this).find('ul').css('visibility', 'visible');	
-		};
-		
-		function closeSubMenu() {
-			$(this).find('ul').css('visibility', 'hidden');	
-		};
-*/
+		var selectedPic = $(".addEventGalleryPic.selected img").attr('src').split('/');
+		selectedPic = selectedPic[selectedPic.length-2]+'/'+selectedPic[selectedPic.length-1];
+
+		$("#addEventDescription").val(title+' '+date+' '+place+' '+category+' '+sharewith+' '+selectedPic);
+	}
+
