@@ -26,6 +26,42 @@
 		 	$('#loginForm').css('visibility','hidden');
 		});
 
+
+		//Event Animation for show description
+
+		var myTimeout;
+		$('.event').hover( function() {
+			var that = this;
+		    myTimeout = setTimeout(function() {
+		        $(that).children('.page1,.page2').animate({top: '-164'}, 500);
+		    }, 500);
+		}, function() {
+		    clearTimeout(myTimeout);
+		    $(this).children('.page2,.page1').animate({top: '0'}, 500);
+		});
+
+		/*
+		$('.event').hover( function() {
+			$(this).children('.page1,.page2').animate({top: '-=164'}, 500);
+		}, function() {
+			$(this).children('.page2,.page1').animate({top: '+=164'}, 500)
+		})
+		*/
+
+		/*
+		$('.event').bind('mouseover', function() {
+			$(this).find('.page1,.page2').animate({top: '-=164'},500,function(){});
+			console.log('in');
+		});
+
+		//Event Animation for show description
+		$('.event').bind('mouseout', function() {
+			$(this).find('.page1,.page2').animate({top: '+=164'},500,function(){});
+			console.log('out');
+		});
+*/
+
+
 		// Add Event Dialog with JQuery UI Dialog
 		$.fx.speeds._default = 400;
 		if ( $.browser.msie ){ //IExplore compatible...
@@ -34,8 +70,8 @@
 					autoOpen: false,
 					title: "Add a new Event",
 					resizable: "false",
-					width: "600",
-					height: "400",
+					width: "900",
+					height: "482",
 					modal: "true",
 				});
 
@@ -53,8 +89,8 @@
 					autoOpen: false,
 					title: "Add a new Event",
 					resizable: "false",
-					width: "750",
-					height: "500",
+					width: "900",
+					height: "482",
 					show: "drop",
 					hide: "drop",
 					modal: "true"
@@ -96,15 +132,19 @@
 
 	});
 
+	// Add Event AJAX
+	//
+	function addEventSendAJAX() {
+		var title = $("#addEventTitle").val();
+		var date = $("#addEventDate").val();
+		var place = $("#addEventPlace").val();
+		var description = $("#addEventDescription").val();
+		var category = $("#addEventCategory").val();
+		var sharewith = $("#addEventShareWith").val();
 
-/*		$('.leftButton').bind('mousein', openSubMenu);
-		$('.leftButton').bind('mouseout', closeSubMenu);
-		
-		function openSubMenu() {
-			$(this).find('ul').css('visibility', 'visible');	
-		};
-		
-		function closeSubMenu() {
-			$(this).find('ul').css('visibility', 'hidden');	
-		};
-*/
+		var selectedPic = $(".addEventGalleryPic.selected img").attr('src').split('/');
+		selectedPic = selectedPic[selectedPic.length-2]+'/'+selectedPic[selectedPic.length-1];
+
+		$("#addEventDescription").val(title+' '+date+' '+place+' '+category+' '+sharewith+' '+selectedPic);
+	}
+

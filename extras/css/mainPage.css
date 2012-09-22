@@ -289,6 +289,21 @@ body {
 			}
 
 				/* Event Dialog CSS config*/
+				#addEventDialog input,#addEventDialog textarea {
+					width: 375px;
+				}
+
+				#addEventDialog textarea {
+					height: 170px;
+				}
+
+				#addEventShareWithContainer {
+					position: absolute;
+					top: 6px;
+					right: 14px;
+					z-index: 2000;
+				}
+
 				#addEventGalleryContainer {
 					position: absolute;
 					right: 7px;
@@ -323,9 +338,11 @@ body {
 				position: relative;
 				float: left;
 				width: 294px;
-				height: 214px; /* 157+7+40 */
+				height: 214px; /* (157+7+40)x2 */
 				border-right: 1px solid #CCC;
 				border-bottom: 1px solid #CCC;
+
+				overflow: hidden;
 
 				-webkit-transition: all .25s ease;
 				   -moz-transition: all .25s ease;
@@ -333,6 +350,21 @@ body {
 				     -o-transition: all .25s ease;
 				        transition: all .25s ease;
 				
+			}
+
+			.event .page1 {
+				position: relative;
+			}
+
+			.event .page2 {
+				position: relative;
+			}
+			.event .page2 p {
+				width: 280px;
+				height: 159px;
+				padding: 7px;
+				border-top: 1px solid #CCC;
+				overflow: hidden;
 			}
 
 				#leftContent .event .eventImg {
@@ -374,6 +406,8 @@ body {
 					}
 
 				#leftContent .event .title {
+					position: relative;
+					
 					color: #222;
 					font-size: 12px;
 					margin: 0 0 0 7px;
@@ -382,6 +416,8 @@ body {
 				}
 
 				#leftContent .event .date {
+					position: relative;
+					
 					color: #777;
 					font-weight: normal;
 					font-size: 12px;
