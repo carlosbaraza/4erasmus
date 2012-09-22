@@ -34,8 +34,8 @@
 					autoOpen: false,
 					title: "Add a new Event",
 					resizable: "false",
-					width: "600",
-					height: "400",
+					width: "900",
+					height: "482",
 					modal: "true",
 				});
 
@@ -54,7 +54,7 @@
 					title: "Add a new Event",
 					resizable: "false",
 					width: "900",
-					height: "500",
+					height: "482",
 					show: "drop",
 					hide: "drop",
 					modal: "true"

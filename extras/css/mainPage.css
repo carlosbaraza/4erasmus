@@ -290,7 +290,7 @@ body {
 
 				/* Event Dialog CSS config*/
 				#addEventDialog input,#addEventDialog textarea {
-					width: 370px;
+					width: 375px;
 				}
 
 				#addEventDialog textarea {
