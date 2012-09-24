@@ -25,6 +25,7 @@ class Mainpage extends CI_Controller {
 
 		//CSS of mainpage
 		$this->template->css('mainPage');
+		$this->template->js('less-1.3.0.min');
 		// Gallery plugin CSS
 		$this->template->css('addEventGalleryPlugin');
 
