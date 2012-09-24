@@ -30,7 +30,7 @@ var FE = new function() {
 		)
 	}
 
-	this.autocompletePlace = function(needle, autocomp) {
+	this.autocompletePlace = function(needle) {
 		$.ajax({
 			url	 : "/index.php/api4/autocompletePlace",
 			type : "post",
@@ -39,6 +39,7 @@ var FE = new function() {
 			},
 			success : function(response) {
 				var place = $.parseJSON(response);
+				console.log(place)
 				if( typeof place.error != undefined) {
 					console.log(place.error)
 					that.log(place.error)

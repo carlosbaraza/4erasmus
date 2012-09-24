@@ -103,6 +103,7 @@ class User extends CI_Model {
 		$insert['signdate'] = date('Y-m-d H:i:s');
 		try {
 			$this->ci->db->insert('users', $insert);
+			$this->ci->db->select(array('username' => $username));
 		} catch(Exception $e) {
 			return false;
 		}
