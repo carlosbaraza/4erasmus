@@ -24,7 +24,10 @@ class Mainpage extends CI_Controller {
 		$this->template->css('common/bootstrap.min');
 
 		//CSS of mainpage
-		$this->template->css('mainPage');
+		//$this->template->css('mainPage');
+		echo '<link rel="stylesheet/less" type="text/css" href="extras/less/mainPage.less">';
+		echo '<script src="extras/js/less-1.3.0.min.js" type="text/javascript"></script>';
+		//$this->template->js('less-1.3.0.min');
 		// Gallery plugin CSS
 		$this->template->css('addEventGalleryPlugin');
 
