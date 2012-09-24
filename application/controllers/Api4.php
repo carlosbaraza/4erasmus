@@ -9,6 +9,8 @@ class Api4 extends CI_Controller {
 	}
 
 	public function eventsOfDate() {
+		// Validate Request
+		$this->validateRequest();
 		$this->load->library('api');
 		$start = $this->input->get('start', true);
 		$limit = $this->input->get('limit', true);
@@ -24,15 +26,8 @@ class Api4 extends CI_Controller {
 	}
 
 	public function newEvent() {
-		// Is AJAX Validation
-		if( !$this->input->is_ajax_request())
-			exit;
-		// Session Validation
-		if( !$this->session->userdata('session_id')) 
-			exit;
-		// Access Token Validation
-		if( $this->input->post('access_token', true) != $this->session->userdata('session_id'))
-			exit;
+		// Validate Request
+		$this->validateRequest();
 		// Include Stuff
 		$this->load->model('place');
 		$this->load->model('event');
@@ -45,11 +40,10 @@ class Api4 extends CI_Controller {
 		$privacy	= $this->input->post('sharewith', true);
 		$category	= $this->input->post('category'	, true);
 		$imagename	= $this->input->post('imagename', true);
-		$imagename 	= $imagename ? RESOURCEPATH . 'img/GalleryDefPics/'. $imagename : exit;
 
 		// All Info Received Validation
-		if( !$eventname || !$placename || !$eventstart || !$privacy || !$category || !$this->validate->privacy($privacy) || !$this->validate->category($category)) {
-			$this->result('fail');
+		if( !$eventname || !$placename || !$eventstart || !$privacy || !$category || !$imagename || !$this->validate->privacy($privacy) || !$this->validate->category($category)) {
+			$this->result('info fail');
 		}
 		// Place Validation | Creation
 		if( !$this->place->select(array('placename' => $placename))) {
@@ -63,19 +57,39 @@ class Api4 extends CI_Controller {
 		$this->event->privacy 	 = $privacy;
 		$this->event->category	 = $category;
 
-		if( !file_exists($imagename))
-			$this->result('fail');
+		if( !file_exists(RESOURCEPATH . 'img/GallerysDefPics/'. $imagename))
+			$this->result('image fail '.$imagename);
 		$this->event->imageurl = $imagename;
 		if( !$eventstart = $this->validate->eventDate($eventstart)) 
-			$this->result('fail');
+			$this->result('date fail');
 		$this->event->eventstart = $eventstart;
 		$this->event->create();
 		$this->result('success');
 	}
 
-	public function result($msg) {
+	protected function result($msg) {
 		$res = array();
 		$res['status'] = $msg;
 		die(json_encode($res));
+	}
+
+	public function autocompletePlace() {
+		// Validate Request
+		$this->validateRequest();
+		// Variables
+		$needle = $this->
+	}
+
+	protected function validateRequest() {
+		// Is AJAX Validation
+		if( !$this->input->is_ajax_request())
+			exit;
+		// Session Validation
+		$sessid = $this->session->userdata('session_id');
+		if( !$sessid) 
+			exit;
+		// Access Token Validation
+		if( $this->input->post('access_token', true) != $sessid)
+			exit;
 	}
 }
