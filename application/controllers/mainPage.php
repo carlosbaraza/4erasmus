@@ -21,7 +21,7 @@ class Mainpage extends CI_Controller {
 
 		// Bootstrap CSS framework
 		$this->template->js('common/bootstrap.min');
-		$this->template->css('common/bootstrap.min');
+		//$this->template->css('common/bootstrap.min');
 
 		//CSS of mainpage
 		//$this->template->css('mainPage');
