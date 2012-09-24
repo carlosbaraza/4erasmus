@@ -79,8 +79,7 @@ class User extends CI_Model {
 
 	public function seslogin() {
 		$user = $this->instance();
-		$user->access_token = md5(uniqid(rand()));
-		$this->ci->data->access_token = $user->access_token;
+		$this->ci->data->access_token = $this->ci->session->userdata('session_id');
 		$this->ci->session->set_userdata(get_object_vars($user));
 	}
 

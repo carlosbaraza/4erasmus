@@ -27,7 +27,7 @@ class Place extends CI_Model {
 	public $eventswashere;
 	public $adddate;
 	public $lastupdate;
-	public $thumbnailurl;
+	public $imageurl;
 	public $followers;
 	public $latitude;
 	public $longitude;

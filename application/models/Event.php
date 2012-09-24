@@ -27,10 +27,9 @@ class Event extends CI_Model {
 	public $views;
 	public $adddate;
 	public $lastupdate;
-	public $thumbnailurl;
+	public $imageurl;
 	public $followers;
-	public $latitude;
-	public $longitude;
+	public $category;
 	public $ci;
    /**
 	 * Constructor

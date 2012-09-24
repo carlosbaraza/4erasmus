@@ -127,7 +127,7 @@
 			$(this).addClass("selected");
 		});
 
-
+		FE.token = '<?=$access_token?>'
 
 
 	});
@@ -138,7 +138,6 @@
 		var title = $("#addEventTitle").val();
 		var date = $("#addEventDate").val();
 		var place = $("#addEventPlace").val();
-		var description = $("#addEventDescription").val();
 		var category = $("#addEventCategory").val();
 		var sharewith = $("#addEventShareWith").val();
 
@@ -146,5 +145,16 @@
 		selectedPic = selectedPic[selectedPic.length-2]+'/'+selectedPic[selectedPic.length-1];
 
 		$("#addEventDescription").val(title+' '+date+' '+place+' '+category+' '+sharewith+' '+selectedPic);
+		var description = $("#addEventDescription").val();
+
+		FE.newEvent({
+			'eventname' : title, 
+			'eventdate'	: date, 
+			'place' 	: place,
+			'sharewith' : sharewith,
+			'eventdesc'	: description,
+			'category'	: category
+			'imagename'	: selectedPic
+		})
 	}
 

@@ -1,5 +1,5 @@
 
-var forErasmus = new function() {
+var FE = new function() {
 
 	// GOOGLE ANALYTICS
 
@@ -20,8 +20,9 @@ var forErasmus = new function() {
 			}
 		}
 
+		dataArr['access_token'] = that.token
 		console.log(dataArr)
-		$.post("/index.php/that4/newEvent", dataArr,
+		$.post("/index.php/api4/newEvent", dataArr,
 			function(response) {
 				console.log(response)
 			}
@@ -30,7 +31,7 @@ var forErasmus = new function() {
 
 	this.autocompletePlace = function(needle, autocomp) {
 		$.ajax({
-			url	 : "/that4/autocompletePlace",
+			url	 : "/index.php/api4/autocompletePlace",
 			type : "post",
 			data : {
 				needle : needle

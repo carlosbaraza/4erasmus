@@ -52,4 +52,8 @@ class Validate {
 	public function privacy($privacy){
 		return true;
 	}
+
+	public function category($category) {
+		return true;
+	} 
 }

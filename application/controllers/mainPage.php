@@ -38,7 +38,6 @@ class Mainpage extends CI_Controller {
 		$this->user->select(array('username' => 'ozan'));
 		$this->user->seslogin();
 		$this->data->username = $this->user->username;
-		var_dump($this->data);
 
 		$this->template->write_view('content', 'mainPage_view', get_object_vars($this->data));
 		$this->template->render();
