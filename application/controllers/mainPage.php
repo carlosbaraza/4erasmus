@@ -9,7 +9,7 @@ class Mainpage extends CI_Controller {
 		//JQuery + JQuary UI with Flick Theme
 		$this->template->js('jquery');
 		$this->template->js('jquery-ui');
-		$this->template->css('flick/jquery-ui-1.8.23.custom');
+		//$this->template->css('flick/jquery-ui-1.8.23.custom');
 		$this->template->js('jquery-ui-timepicker-addon');
 
 		//mousewheel plugin for jquery
@@ -25,7 +25,7 @@ class Mainpage extends CI_Controller {
 
 		//CSS of mainpage
 		//$this->template->css('mainPage');
-		echo '<link rel="stylesheet/less" type="text/css" href="extras/less/mainPage.less">';
+		echo '<link rel="stylesheet/less" type="text/css" href="extras/less/4erasmus.less">';
 		echo '<script src="extras/js/less-1.3.0.min.js" type="text/javascript"></script>';
 		//$this->template->js('less-1.3.0.min');
 		// Gallery plugin CSS
