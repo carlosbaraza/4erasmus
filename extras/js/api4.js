@@ -21,9 +21,10 @@ var FE = new function() {
 		}
 
 		dataArr['access_token'] = that.token
-		console.log(dataArr)
 		$.post("/index.php/api4/newEvent", dataArr,
 			function(response) {
+				if( response.status == 'success') 
+					alert('Event Created!');
 				console.log(response)
 			}
 		)

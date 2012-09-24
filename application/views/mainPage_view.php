@@ -260,7 +260,7 @@
 		_gaq.push(['_setAccount', 'UA-35018312-1'])
 		_gaq.push(['_setDomainName', '4erasmus.com'])
 		_gaq.push(['_trackPageview'])
-		forErasmus.init()
+		FE.token = '<?=$access_token?>'
 	})
 	function send() {
 		forErasmus.newEvent({

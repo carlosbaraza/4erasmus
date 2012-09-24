@@ -3,20 +3,6 @@
 
 class Api4 extends CI_Controller {
 
-	public function Face() {
-		parent::__construct();
-		$this->data = new StdClass();
-		$this->user->select(array('username' => 'ozantunca'));
-		$this->user->seslogin();
-
-		// HEAD
-		$this->template->title('4erasmus API');
-		$this->template->js('common/jquery');
-		$this->template->js('common/common');
-		$this->template->css('common/bootstrap.min');
-		$this->template->css('common/common');
-	}
-
 	public function index() {
 		// BODY
 		die('it works!');
@@ -59,12 +45,11 @@ class Api4 extends CI_Controller {
 		$privacy	= $this->input->post('sharewith', true);
 		$category	= $this->input->post('category'	, true);
 		$imagename	= $this->input->post('imagename', true);
-		$imagename 	= $imagename ? RESOURCEPATH . 'img/GalleryDefPics/'. $this->security->sanitize_filename($imagename) : exit;
+		$imagename 	= $imagename ? RESOURCEPATH . 'img/GalleryDefPics/'. $imagename : exit;
 
 		// All Info Received Validation
 		if( !$eventname || !$placename || !$eventstart || !$privacy || !$category || !$this->validate->privacy($privacy) || !$this->validate->category($category)) {
-			var_dump($category);
-			show_error('missing info');
+			$this->result('fail');
 		}
 		// Place Validation | Creation
 		if( !$this->place->select(array('placename' => $placename))) {
@@ -79,11 +64,18 @@ class Api4 extends CI_Controller {
 		$this->event->category	 = $category;
 
 		if( !file_exists($imagename))
-			show_error('image not exists');
-			$this->event->imageurl = $imagename;
+			$this->result('fail');
+		$this->event->imageurl = $imagename;
 		if( !$eventstart = $this->validate->eventDate($eventstart)) 
-			show_error('eventdate');
+			$this->result('fail');
 		$this->event->eventstart = $eventstart;
 		$this->event->create();
+		$this->result('success');
+	}
+
+	public function result($msg) {
+		$res = array();
+		$res['status'] = $msg;
+		die(json_encode($res));
 	}
 }
