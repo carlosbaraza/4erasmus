@@ -85,7 +85,7 @@ class Event extends CI_Model {
 
 	public function instance() {
 		$instance = new StdClass();
-		foreach($this as $key => $value) {
+		foreach($this sas $key => $value) {
 			if( $value != NULL)
 				$instance->{$key} = $value;
 		}
