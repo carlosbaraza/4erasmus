@@ -214,6 +214,8 @@
 					
 				</div>
 
+				
+
 				<div class="wallEntry">
 					<div class="picture"></div>
 					<div class="container">
@@ -235,6 +237,7 @@
 
 			</div>
 			<div class="clear"></div>
+			<div id="rightColorStrip"></div>
 		</div>
 	</div>
 </div>
