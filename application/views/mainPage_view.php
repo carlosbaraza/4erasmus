@@ -1,8 +1,9 @@
 <div id="container">
 	<div id="leftContainer">
 		<div class="mainTitle">
-			<h1 class="title1">4</h1>
-			<h1 class="title2">ERASMUS</h1>
+			<!--<h1 class="title1">4</h1>
+			<h1 class="title2">ERASMUS</h1>-->
+			<img src="extras/img/logo.png">
 		</div>
 
 		<script type="text/javascript">
@@ -21,8 +22,12 @@
 
 			});
 		</script>
+		
+		<div id="datepickerTopColorStrip"></div>
 		<div id="datepicker"></div>
+		<div id="datepickerBottomColorStrip"></div>
 
+		<div id="europeMap"></div>
 		
 	</div>
 	<div id="rightContainer">

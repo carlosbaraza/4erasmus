@@ -34,6 +34,8 @@ class Mainpage extends CI_Controller {
 		';
 		echo '<script src="extras/js/less-1.3.0.min.js" type="text/javascript"></script>';
 		//$this->template->js('less-1.3.0.min');
+		//$this->template->css('4erasmus');
+
 		// Gallery plugin CSS
 		$this->template->css('addEventGalleryPlugin');
 

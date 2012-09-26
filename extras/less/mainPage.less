@@ -1,10 +1,17 @@
 
 body {
-	position: absolute;
+	position: relative;
+	
 	padding: 0;
 	margin: 0;
 	width: 100%;
-	background-color: @color1 !important;
+	/*background-color: @color1 !important;*/
+	background-image: -webkit-linear-gradient(top, lighten(@color1 ,5%), @color1);
+	background-image:    -moz-linear-gradient(top, lighten(@color1 ,5%), @color1);
+	background-image:     -ms-linear-gradient(top, lighten(@color1 ,5%), @color1);
+	background-image:      -o-linear-gradient(top, lighten(@color1 ,5%), @color1);
+	background-image:         linear-gradient(top, lighten(@color1 ,5%), @color1);
+	
 
 }
 
@@ -26,7 +33,7 @@ body {
 }
 	
 	#leftContainer .mainTitle {
-		margin: 40px 40px 0 0;
+		margin: 41px 40px 0 0;
 		display: inline-block;
 		float: right;
 		width: auto;
@@ -54,7 +61,7 @@ body {
 	#leftContainer .title1 {
 		position: relative;
 		right: -3px; /*Move the 4 to right to be closer to Erasmus */
-		color: @color3;
+		color: @color4Erasmus4;
 		font-size: 48px;
 		font-family: Arial;
 		display: inline-block;
@@ -62,17 +69,26 @@ body {
 
 	#leftContainer .title2 {
 		position: relative;
-		color: @color2;
+		color: @color4ErasmusErasmus;
 		font-size: 28px;
 		font-family: Arial;
 		display: inline-block;
 	}
 
 	/* Datepicker de jQuery UI Flick */
+	#datepickerTopColorStrip {
+		position: relative;
+		width: 90px;
+		margin: 20px 40px 0 0;
+		background-color: #b4d436;
+		height: 7px;
+		float: right;
+	}
+
 	.ui-datepicker {
 		width: 180px !important;
 		float: right !important;
-		margin: 20px 40px 0 0 !important;
+		margin: 0px 40px 0 0 !important;
 	}
 	.ui-widget-header {
 		border: none !important;
@@ -89,6 +105,16 @@ body {
 		color: #666 !important;
 		font-weight: normal !important;
 	}
+
+	#datepickerBottomColorStrip {
+		position: relative;
+		width: 90px;
+		margin: 0 40px+90px+6px 0 0;
+		background-color: #d43636;
+		height: 7px;
+		float: right;
+	}
+
 	/* Date Time Picker addon */
 	.ui-timepicker-div .ui-widget-header { margin-bottom: 8px !important; }
 	.ui-timepicker-div dl { text-align: left !important; }
@@ -110,6 +136,18 @@ body {
 		border: 1px solid #888 !important;
 	}
 
+
+	#europeMap {
+		background-image: url("../img/europeMap600.png");
+		width: 600px;
+		height: 366px;
+		position: absolute;
+		z-index: -100;
+		top: 200px;
+		left: -50px;
+
+		opacity: 0.5;
+	}
 
 /* Right container for content */
 #rightContainer {
@@ -168,6 +206,11 @@ body {
 		float: left;
 		background-color: white;
 		width: 100%;
+
+		border: 1px solid #DDD;
+		position: relative;
+		top: -1px;
+		left: -1px;		
 	}
 
 		#content .bar {
@@ -366,6 +409,7 @@ body {
 				padding: 7px;
 				border-top: 1px solid #CCC;
 				overflow: hidden;
+				float: left;
 			}
 
 				#leftContent .event .eventImg {
