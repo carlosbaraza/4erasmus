@@ -148,5 +148,4 @@ class User extends CI_Model {
 		unset($instance->password);
 		return $instance;
 	}
-
 }

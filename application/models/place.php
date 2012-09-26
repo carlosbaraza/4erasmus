@@ -52,21 +52,16 @@ class Place extends CI_Model {
 		$place->adddate		= date('Y-m-d H:m:s'); 
 		
 		unset($place->ci);
+		$place->placename = ucfirst($place->placename);
 		$insert = get_object_vars($place);
 		$this->ci->db->insert('places', $insert);
 		$this->select(array('placename' => $place->placename));
 	}
 
 	public function update() {
-		$update = array();
 		$place = $this->instance();
-		$eventobj = get_object_vars($place);
-		foreach ($eventobj as $key => $value) {
-			if( !empty($value)) 
-				$update[$key] = $value;
-		}
 		$this->ci->db->where('placeid', $this->placeid);
-		$this->ci->db->update('places', $update);
+		$this->ci->db->update('places', $place);
 	}
 
 	public function select($condition) {

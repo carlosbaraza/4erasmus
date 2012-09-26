@@ -55,5 +55,13 @@ class Validate {
 
 	public function category($category) {
 		return true;
-	} 
+	}
+
+	public function targettype($targettype) {
+		return in_array($targettype, array('group', 'event', 'place'));
+	}
+
+	public function actiontype($actiontype) {
+		return in_array($actiontype, array('like', 'follow', 'view'));
+	}
 }

@@ -39,10 +39,12 @@ class CI_Template {
    var $regions = array(
       '_scripts' => array(),
       '_styles' => array(),
+      '_less' => array()
    );
    var $output;
    var $js = array();
    var $css = array();
+   var $less = array();
    var $parser = 'parser';
    var $parser_method = 'parse';
    var $parse_template = FALSE;
@@ -203,6 +205,7 @@ class CI_Template {
          $this->regions = array(
             '_scripts' => array(),
             '_styles' => array(),
+            '_less' => array()
          );
          foreach ($regions as $key => $region) 
          {
@@ -446,7 +449,7 @@ class CI_Template {
             {
                $js .= ' defer="defer"';
             }
-            $js .= "></script>";
+            $js .= '></script>';
             break;
          
          case 'embed':
@@ -455,7 +458,7 @@ class CI_Template {
             {
                $js .= ' defer="defer"';
             }
-            $js .= ">";
+            $js .= '>';
             $js .= $script;
             $js .= '</script>';
             break;
@@ -529,6 +532,66 @@ class CI_Template {
       {
          $this->css[] = $css;
          $this->write('_styles', $css);
+      }
+      
+      return $success;
+   }
+
+
+   // --------------------------------------------------------------------
+   
+   /**
+    * Dynamically include CSS in the template
+    * 
+    * NOTE: This function does NOT check for existence of .css file
+    *
+    * @access  public
+    * @param   string   CSS file to link, import or embed
+    * @param   string  'link', 'import' or 'embed'
+    * @param   string  media attribute to use with 'link' type only, FALSE for none
+    * @return  TRUE on success, FALSE otherwise
+    */
+   
+   function less($style, $type = 'link', $media = FALSE)
+   {
+      $success = TRUE;
+      $less = NULL;
+      
+      $this->CI->load->helper('url');
+      $filepath = base_url() . RESOURCEPATH . 'less/' . $style . '.less';
+      
+      switch ($type)
+      {
+         case 'link':
+            
+            $less = '<link type="text/css" rel="stylesheet/less" href="'. $filepath .'"';
+            if ($media)
+            {
+               $less .= ' media="'. $media .'"';
+            }
+            $less .= ' />';
+            break;
+         
+         case 'import':
+            $less = '<style type="text/css">@import url('. $filepath .');</style>';
+            break;
+         
+         case 'embed':
+            $less = '<style type="text/css">';
+            $less .= $style;
+            $less .= '</style>';
+            break;
+            
+         default:
+            $success = FALSE;
+            break;
+      }
+      
+      // Add to js array if it doesn't already exist
+      if ($less != NULL && !in_array($less, $this->less))
+      {
+         $this->less[] = $less;
+         $this->write('_less', $less);
       }
       
       return $success;

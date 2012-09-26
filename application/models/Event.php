@@ -51,6 +51,7 @@ class Event extends CI_Model {
 		$event->adddate		= date('Y-m-d H:m:s'); 
 		
 		unset($event->ci);
+		$event->eventname = ucfirst($event->eventname);
 		$insert = get_object_vars($event);
 		$this->ci->db->insert('events', $insert);
 		$this->select(array('eventname' => $event->eventname));

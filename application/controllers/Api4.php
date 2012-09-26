@@ -22,7 +22,7 @@ class Api4 extends CI_Controller {
 			echo json_encode($result);
 		}
 		else {
-			echo 'wrong';
+			show_error('missing info');
 		}
 	}
 
@@ -65,6 +65,10 @@ class Api4 extends CI_Controller {
 			$this->result('date fail');
 		$this->event->eventstart = $eventstart;
 		$this->event->create();
+
+		// Update Place
+		$this->place->eventswashere = intval($this->place->eventswashere) + 1;
+		$this->place->update();
 		$this->result('success');
 	}
 
@@ -95,5 +99,25 @@ class Api4 extends CI_Controller {
 		// Access Token Validation
 		if( $this->input->get('access_token', true) != $sessid)
 			exit;
+	}
+
+	public function newAction() {
+		// Validate Request
+		$this->validateRequest();
+		$this->load->library('validate');
+		// Variables
+		$targetid 	= $this->input->post('targetid'	 , true);
+		$targettype = $this->input->post('targettype', true);
+		$actiontype = $this->input->post('actiontype', true);
+		if( !$targetid || !$this->validate->targettype($targettype) || !$this->{$targettype}->select(array($targettype.'id' => $targetid)) || !$this->validate->actiontype($actiontype)) {
+			show_error('missing target info');
+		}
+		$insert = array();
+		$insert['userid'] 	  = $this->ci->session->userdata('userid');
+		$insert['targetid']   = $targetid;
+		$insert['actiontype'] = $actiontype;
+		$insert['targettype'] = $targettype;
+		$insert['actiondate'] = date('Y-m-d H:m:s');
+		$this->ci->db->insert('actions', $insert);
 	}
 }

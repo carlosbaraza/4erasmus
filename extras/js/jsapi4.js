@@ -33,11 +33,11 @@
 		$('.event').hover( function() {
 			var that = this;
 		    myTimeout = setTimeout(function() {
-		        $(that).children('.page1,.page2').animate({top: '-164'}, 250);
+		        $(that).children('.page1,.page2').animate({top: '-164'}, 500);
 		    }, 500);
 		}, function() {
 		    clearTimeout(myTimeout);
-		    $(this).children('.page2,.page1').animate({top: '0'}, 250);
+		    $(this).children('.page2,.page1').animate({top: '0'}, 500);
 		});
 
 		/*
@@ -131,6 +131,9 @@
 				FE.autocompletePlace(needle, typeahead)
 			}
 		})
+
+		less.env = "development";
+		less.watch();
 
 	});
 

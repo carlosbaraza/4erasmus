@@ -4,7 +4,8 @@
    <meta charset="utf-8">
    <title><?= $title ?></title>
    <?= $_scripts ?>
-   <?= $_styles ?> 
+   <?= $_styles ?>
+   <?= $_less ?>
 </head>
 <body>  
       <?= $header ?>
