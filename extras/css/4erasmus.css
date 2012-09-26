@@ -118,7 +118,7 @@
   text-align: center;
   font-weight: bold;
   border: 0;
-  color: #444444;
+  color: #888888;
 }
 .ui-datepicker td {
   border: 0;
@@ -300,7 +300,7 @@
   border: 1px solid #EEE;
   background: #f6f6f6 url(JQuery-UI/JQuery-UI/images/ui-bg_highlight-soft_100_f6f6f6_1x100.png) 50% 50% repeat-x;
   font-weight: bold;
-  color: #444444;
+  color: #888888;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -5957,7 +5957,7 @@ body {
 }
 #leftContainer .title2 {
   position: relative;
-  color: #444444;
+  color: #888888;
   font-size: 28px;
   font-family: Arial;
   display: inline-block;
