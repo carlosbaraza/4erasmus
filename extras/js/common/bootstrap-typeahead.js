@@ -64,6 +64,7 @@
       this.$menu.css({
         top: pos.top + pos.height
       , left: pos.left
+      , 'z-index': 1500
       })
 
       this.$menu.show()
@@ -105,7 +106,6 @@
         return that.matcher(item)
       })
       items = this.sorter(items)
-
       if (!items.length) {
         return this.shown ? this.hide() : this
       }

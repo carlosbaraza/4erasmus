@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
 class Api4 extends CI_Controller {
 
 	public function index() {
@@ -11,13 +10,15 @@ class Api4 extends CI_Controller {
 	public function eventsOfDate() {
 		// Validate Request
 		$this->validateRequest();
-		$this->load->library('api');
+		// Variables
 		$start = $this->input->get('start', true);
 		$limit = $this->input->get('limit', true);
 		$date  = $this->input->get('date', true);
 
 		if( (!empty($start) || $start == 0) && !empty($limit) && !empty($date)) {
-			$result = $this->api->eventsOfDate($date, $start, $limit);
+			$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => date('Y:m:d H:m:s', strtotime($date) + 86400)))->limit($limit, $start);
+			$query = $this->ci->db->get();
+			$result = $query->result();
 			echo json_encode($result);
 		}
 		else {
@@ -77,7 +78,10 @@ class Api4 extends CI_Controller {
 		// Validate Request
 		$this->validateRequest();
 		// Variables
-		$needle = $this->
+		$needle = $this->input->get('needle', true);
+		$this->db->select('placename')->from('places')->like('placename', $needle)->order_by('peoplewashere + eventswashere', 'desc')->limit(5);
+		$query = $this->db->get();
+		echo json_encode($query->result());
 	}
 
 	protected function validateRequest() {
@@ -89,7 +93,7 @@ class Api4 extends CI_Controller {
 		if( !$sessid) 
 			exit;
 		// Access Token Validation
-		if( $this->input->post('access_token', true) != $sessid)
+		if( $this->input->get('access_token', true) != $sessid)
 			exit;
 	}
 }

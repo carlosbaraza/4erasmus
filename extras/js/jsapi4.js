@@ -126,7 +126,11 @@
 			$(this).removeClass("notSelected");
 			$(this).addClass("selected");
 		});
-
+		$('#addEventPlace').typeahead({
+			source : function(needle, typeahead) {
+				FE.autocompletePlace(needle, typeahead)
+			}
+		})
 
 	});
 
@@ -138,6 +142,7 @@
 		var place = $("#addEventPlace").val();
 		var category = $("#addEventCategory").val();
 		var sharewith = $("#addEventShareWith").val();
+		var description = $("#addEventDescription").val();
 
 		var selectedPic = $(".addEventGalleryPic.selected img").attr('src').split('/');
 		selectedPic = selectedPic[selectedPic.length-2]+'/'+selectedPic[selectedPic.length-1];
@@ -145,7 +150,6 @@
 		console.log('selectedPic:')
 		console.log(selectedPic)
 		$("#addEventDescription").val(title+' '+date+' '+place+' '+category+' '+sharewith+' '+selectedPic);
-		var description = $("#addEventDescription").val();
 
 		FE.newEvent({
 			'eventname' : title, 

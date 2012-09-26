@@ -21,7 +21,7 @@ var FE = new function() {
 		}
 
 		dataArr['access_token'] = that.token
-		$.post("/index.php/api4/newEvent", dataArr,
+		$.post("/index.php/api4/newEvent?access_token=" + that.token, dataArr,
 			function(response) {
 				if( response.status == 'success') 
 					alert('Event Created!');
@@ -30,21 +30,27 @@ var FE = new function() {
 		)
 	}
 
-	this.autocompletePlace = function(needle) {
+	this.autocompletePlace = function(needle, autocomp) {
 		$.ajax({
 			url	 : "/index.php/api4/autocompletePlace",
-			type : "post",
+			type : "get",
 			data : {
-				needle : needle
+				needle		 : needle,
+				access_token : that.token
 			},
 			success : function(response) {
-				var place = $.parseJSON(response);
-				console.log(place)
-				if( typeof place.error != undefined) {
-					console.log(place.error)
-					that.log(place.error)
-				} else {
-					autocomp.process(response)
+				var places = $.parseJSON(response);
+				if( typeof places.error != 'undefined') {
+					console.log(places.error)
+					that.log(places.error)
+				} 
+				else {
+					var dataArr = []
+					for(var key in places) {
+						var value = places[key]
+						dataArr[key] = value.placename
+					}
+					autocomp.process(dataArr)
 				}
 			}
 		})
