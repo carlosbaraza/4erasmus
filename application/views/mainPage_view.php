@@ -281,5 +281,9 @@
 			'sharewith' : $('select[name=addEventShareWith] option:selected').val()
 		})
 	}
-
 </script>
+<script id="_wauy0r">var _wau = _wau || []; _wau.push(["classic", "exy73rrz96qh", "y0r"]);
+(function() {var s=document.createElement("script"); s.async=true;
+s.src="http://widgets.amung.us/classic.js";
+document.getElementsByTagName("head")[0].appendChild(s);
+})();</script>

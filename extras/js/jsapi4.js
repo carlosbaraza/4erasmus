@@ -140,28 +140,32 @@
 	// Add Event AJAX
 	//
 	function addEventSendAJAX() {
-		var title = $("#addEventTitle").val();
-		var date = $("#addEventDate").val();
-		var place = $("#addEventPlace").val();
-		var category = $("#addEventCategory").val();
-		var sharewith = $("#addEventShareWith").val();
-		var description = $("#addEventDescription").val();
+		var $title = $("#addEventTitle");
+		var $date = $("#addEventDate");
+		var $place = $("#addEventPlace");
+		var $category = $("#addEventCategory");
+		var $sharewith = $("#addEventShareWith");
+		var $description = $("#addEventDescription");
 
 		var selectedPic = $(".addEventGalleryPic.selected img").attr('src').split('/');
 		selectedPic = selectedPic[selectedPic.length-2]+'/'+selectedPic[selectedPic.length-1];
-
-		console.log('selectedPic:')
-		console.log(selectedPic)
-		$("#addEventDescription").val(title+' '+date+' '+place+' '+category+' '+sharewith+' '+selectedPic);
+		$("#addEventDescription").val('');
 
 		FE.newEvent({
-			'eventname' : title, 
-			'eventdate'	: date, 
-			'place' 	: place,
-			'sharewith' : sharewith,
-			'eventdesc'	: description,
-			'category'	: category,
+			'eventname' : $title.val(), 
+			'eventdate'	: $date.val(), 
+			'place' 	: $place.val(),
+			'sharewith' : $sharewith.val(),
+			'eventdesc'	: $description.val(),
+			'category'	: $category.val(),
 			'imagename'	: selectedPic
 		})
+
+		$title.val('')
+		$date.val('')
+		$place.val('')
+		$sharewith.val('')
+		$description.val('')
+		$category.val('')
 	}
 
