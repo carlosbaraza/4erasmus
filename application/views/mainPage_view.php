@@ -33,14 +33,13 @@
 	<div id="rightContainer">
 		<div id="loginBar">
 			
-		<div id="fb-root">
-	</div>
-		<?php if( !isset($username)) { ?>
-			<p><fb:login-button></fb:login-button></p>
-		<?php } else { 
-				echo '<p><strong>'.$username.'</strong> at <strong>Waterford Institute of Technology</strong> ▼</p>';
-			  }
-		?>
+			<div id="fb-root"></div>
+			<?php if( !isset($username)) { ?>
+				<p><fb:login-button></fb:login-button></p>
+			<?php } else { 
+					echo '<p><strong>'.$username.'</strong> at <strong>Waterford Institute of Technology</strong> ▼</p>';
+				  }
+			?>
 			<div id="loginForm"></div>
 
 		</div>
@@ -55,7 +54,10 @@
 						</ul>
 
 					</div>
-					<div id="addEventButton" class="button rightButton"><p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p></div>
+					<div id="addEventButton" class="button rightButton">
+						<p><img src="extras/img/icons/addEvent.png" class="icon">Add Event</p>
+						<div class="rightColorStrip colorStripBlue"></div>
+					</div>
 
 					<div id="addEventDialog">
 						<form>
@@ -127,10 +129,13 @@
 									</select>
 							</div>
 
+
+
 						</form>
 
 						<div id="addEventDialogFooter">
-							<a class="rightButton button" href="#" onclick="addEventSendAJAX();"><p>Add Event</p></a>
+							<a class="rightButton button" href="#" onclick="addEventSendAJAX();"><p>Add Event</p>
+								<div class="rightColorStrip colorStripBlue"></div></a>
 						</div>
 					</div>
 
@@ -237,7 +242,7 @@
 
 			</div>
 			<div class="clear"></div>
-			<div id="rightColorStrip"></div>
+			<div class="rightColorStrip colorStripYellow"></div>
 		</div>
 	</div>
 </div>
