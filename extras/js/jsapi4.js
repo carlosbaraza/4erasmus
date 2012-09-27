@@ -1,3 +1,4 @@
+	
 	$(document).ready(function() {
 
 		//Show login Form
@@ -74,14 +75,6 @@
 					height: "482",
 					modal: "true",
 				});
-
-				$( "#addEventButton" ).click(function() {
-					$( "#addEventDialog" ).dialog( "open" );
-					$(".ui-widget-overlay").click( function(){
-						$('#addEventDialog').dialog("close");
-					});
-					return false;
-				});
 			});
 		} else {
 			$(function() {
@@ -95,16 +88,18 @@
 					hide: "drop",
 					modal: "true"
 				});
-
-				$( "#addEventButton" ).click(function() {
-					$( "#addEventDialog" ).dialog( "open" );
-					$(".ui-widget-overlay").click( function(){
-						$('#addEventDialog').dialog("close");
-					});
-					return false;
-				});
 			});
 		}
+
+		$( "#addEventButton" ).click(function() {
+			$( "#addEventDialog" ).dialog( "open" );
+			$(".ui-widget-overlay").click( function() {
+				$('#addEventDialog').dialog("close");
+				window.history.back()
+			});
+			window.history.pushState('add event', 'add event', 'addEvent')
+		});
+
 
         (function() {
           	var e = document.createElement('script'); e.async = true;
