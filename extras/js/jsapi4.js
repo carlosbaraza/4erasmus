@@ -1,3 +1,4 @@
+	
 	$(document).ready(function() {
 
 		//Show login Form
@@ -74,14 +75,6 @@
 					height: "482",
 					modal: "true",
 				});
-
-				$( "#addEventButton" ).click(function() {
-					$( "#addEventDialog" ).dialog( "open" );
-					$(".ui-widget-overlay").click( function(){
-						$('#addEventDialog').dialog("close");
-					});
-					return false;
-				});
 			});
 		} else {
 			$(function() {
@@ -95,16 +88,18 @@
 					hide: "drop",
 					modal: "true"
 				});
-
-				$( "#addEventButton" ).click(function() {
-					$( "#addEventDialog" ).dialog( "open" );
-					$(".ui-widget-overlay").click( function(){
-						$('#addEventDialog').dialog("close");
-					});
-					return false;
-				});
 			});
 		}
+
+		$( "#addEventButton" ).click(function() {
+			$( "#addEventDialog" ).dialog( "open" );
+			$(".ui-widget-overlay").click( function() {
+				$('#addEventDialog').dialog("close");
+				window.history.back()
+			});
+			window.history.pushState('add event', 'add event', 'addEvent')
+		});
+
 
         (function() {
           	var e = document.createElement('script'); e.async = true;
@@ -140,28 +135,32 @@
 	// Add Event AJAX
 	//
 	function addEventSendAJAX() {
-		var title = $("#addEventTitle").val();
-		var date = $("#addEventDate").val();
-		var place = $("#addEventPlace").val();
-		var category = $("#addEventCategory").val();
-		var sharewith = $("#addEventShareWith").val();
-		var description = $("#addEventDescription").val();
+		var $title = $("#addEventTitle");
+		var $date = $("#addEventDate");
+		var $place = $("#addEventPlace");
+		var $category = $("#addEventCategory");
+		var $sharewith = $("#addEventShareWith");
+		var $description = $("#addEventDescription");
 
 		var selectedPic = $(".addEventGalleryPic.selected img").attr('src').split('/');
 		selectedPic = selectedPic[selectedPic.length-2]+'/'+selectedPic[selectedPic.length-1];
-
-		console.log('selectedPic:')
-		console.log(selectedPic)
-		$("#addEventDescription").val(title+' '+date+' '+place+' '+category+' '+sharewith+' '+selectedPic);
+		$("#addEventDescription").val('');
 
 		FE.newEvent({
-			'eventname' : title, 
-			'eventdate'	: date, 
-			'place' 	: place,
-			'sharewith' : sharewith,
-			'eventdesc'	: description,
-			'category'	: category,
+			'eventname' : $title.val(), 
+			'eventdate'	: $date.val(), 
+			'place' 	: $place.val(),
+			'sharewith' : $sharewith.val(),
+			'eventdesc'	: $description.val(),
+			'category'	: $category.val(),
 			'imagename'	: selectedPic
 		})
+
+		$title.val('')
+		$date.val('')
+		$place.val('')
+		$sharewith.val('')
+		$description.val('')
+		$category.val('')
 	}
 

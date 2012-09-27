@@ -5,6 +5,7 @@ var FE = new function() {
 
 	// VARIABLES
 	var that = this
+	var cache = {}
 
 	this.init = function() {
 		that.logtext = ''
@@ -40,23 +41,25 @@ var FE = new function() {
 			},
 			success : function(response) {
 				var places = $.parseJSON(response);
-				if( typeof places.error != 'undefined') {
-					console.log(places.error)
-					that.log(places.error)
-				} 
-				else {
-					var dataArr = []
-					for(var key in places) {
-						var value = places[key]
-						dataArr[key] = value.placename
-					}
-					autocomp.process(dataArr)
+
+				var dataArr = []
+				for(var key in places) {
+					var value = places[key]
+					dataArr[key] = value.placename
 				}
+				autocomp.process(dataArr)
 			}
 		})
 	}
 
 	this.log = function(title, msg) {
 		that.logtext += title + ':  ' + msg + "\n"
+	}
+
+	this.follow = function(targetid) {
+		$.ajax({
+			url  : "/index.php/api4/newAction?access_token=" + that.token,
+			type : "post"
+		})
 	}
 }
