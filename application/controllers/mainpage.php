@@ -6,6 +6,9 @@ class Mainpage extends CI_Controller {
 		parent::__construct();
 		$this->data = new StdClass();
 		$this->template->title('4erasmus');
+
+		echo '<script> /* Provisory for dev environment: */ localStorage.clear(); </script>';
+
 		//JQuery + JQuary UI with Flick Theme
 		$this->template->js('jquery');
 		$this->template->js('jquery-ui');
@@ -29,6 +32,7 @@ class Mainpage extends CI_Controller {
 		echo '<link rel="stylesheet/less" type="text/css" href="extras/less/4erasmus.less">';
 
 		echo '<script src="extras/js/less-1.3.0.min.js" type="text/javascript"></script>';
+
 		//$this->template->js('less-1.3.0.min');
 		// Gallery plugin CSS
 		$this->template->css('addEventGalleryPlugin');
