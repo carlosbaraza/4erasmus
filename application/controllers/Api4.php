@@ -16,9 +16,10 @@ class Api4 extends CI_Controller {
 		$date  = $this->input->get('date', true);
 
 		if( (!empty($start) || $start == 0) && !empty($limit) && !empty($date)) {
-			$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => date('Y:m:d H:m:s', strtotime($date) + 86400)))->limit($limit, $start);
-			$query = $this->ci->db->get();
+			$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => date('Y:m:d H:m:s', strtotime($date) + 86400)))->limit(EVENT_REQUEST_LIMIT, $start);
+			$query  = $this->ci->db->get();
 			$result = $query->result();
+			$result['status'] = 'success';
 			echo json_encode($result);
 		}
 		else {
