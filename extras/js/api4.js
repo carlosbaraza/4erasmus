@@ -57,9 +57,20 @@ var FE = new function() {
 	}
 
 	this.follow = function(targetid) {
+		var targettype = targetid[0]
+		targetid = targetid.substring(1)
 		$.ajax({
 			url  : "/index.php/api4/newAction?access_token=" + that.token,
-			type : "post"
+			type : "post",
+			data : {
+				targetid   : targetid,
+				targettype : targettype,
+				actiontype : 'follow'
+			}
 		})
+	}
+
+	this.loadEventsOfDate = function(date) {
+		
 	}
 }

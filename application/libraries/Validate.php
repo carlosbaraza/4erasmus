@@ -58,10 +58,16 @@ class Validate {
 	}
 
 	public function targettype($targettype) {
-		return in_array($targettype, array('group', 'event', 'place'));
+		return in_array($targettype, array(
+			'group', 
+			'event', 
+			'place'
+		));
 	}
 
 	public function actiontype($actiontype) {
-		return in_array($actiontype, array('like', 'follow', 'view'));
+		return in_array($actiontype, array(
+			'follow'
+		));
 	}
 }
