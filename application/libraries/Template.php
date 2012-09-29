@@ -564,7 +564,7 @@ class CI_Template {
       {
          case 'link':
             
-            $less = '<link type="text/css" rel="stylesheet/less" href="'. $filepath .'"';
+            $less = '<link type="text/less" rel="stylesheet/less" href="'. $filepath .'"';
             if ($media)
             {
                $less .= ' media="'. $media .'"';

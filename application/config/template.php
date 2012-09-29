@@ -58,11 +58,12 @@ $template['active_template'] = 'default';
 
 $template['default']['template'] = 'common/template.php';
 $template['default']['regions'] = array(
-   'title',
-   'header',
-   'content',
-   'footer',
-   'sidebar'
+	'title',
+	'leftcontainer',
+	'loginbar',
+	'events',
+	'wall',
+	'addEventDialog'
 );
 $template['default']['parser'] = '';
 $template['default']['parser_method'] = '';
