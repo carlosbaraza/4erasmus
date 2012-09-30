@@ -29,7 +29,6 @@
 
 
 		//Event Animation for show description
-
 		var myTimeout;
 		$('.event').hover( function() {
 			var that = this;
@@ -40,27 +39,6 @@
 		    clearTimeout(myTimeout);
 		    $(this).children('.page2,.page1').animate({top: '0'}, 250);
 		});
-
-		/*
-		$('.event').hover( function() {
-			$(this).children('.page1,.page2').animate({top: '-=164'}, 500);
-		}, function() {
-			$(this).children('.page2,.page1').animate({top: '+=164'}, 500)
-		})
-		*/
-
-		/*
-		$('.event').bind('mouseover', function() {
-			$(this).find('.page1,.page2').animate({top: '-=164'},500,function(){});
-			console.log('in');
-		});
-
-		//Event Animation for show description
-		$('.event').bind('mouseout', function() {
-			$(this).find('.page1,.page2').animate({top: '+=164'},500,function(){});
-			console.log('out');
-		});
-*/
 
 
 		// Add Event Dialog with JQuery UI Dialog
@@ -129,6 +107,9 @@
 
 		less.env = "development";
 		less.watch();
+
+		
+
 
 	});
 

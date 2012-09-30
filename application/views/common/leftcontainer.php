@@ -16,7 +16,8 @@
 
 			// Datepicker
 			$('#datepicker').datepicker({
-				inline: true
+				inline: true,
+				onSelect: function(dateText, inst) { alert(dateText) }
 			});
 
 			//hover states on the static widgets

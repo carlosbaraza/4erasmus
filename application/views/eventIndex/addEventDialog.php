@@ -73,7 +73,6 @@
 	</form>
 
 	<div id="addEventDialogFooter">
-		<a class="rightButton button" href="javascript:void(0)" onclick="addEventSendAJAX();"><p>Add Event</p>
-			<div class="rightColorStrip colorStripBlue"></div></a>
+		<a class="rightButton btn btn-primary" href="javascript:void(0)" onclick="addEventSendAJAX();"><p>Add Event</p></a>
 	</div>
 </div>
