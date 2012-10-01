@@ -62,8 +62,8 @@
 					resizable: "false",
 					width: "900",
 					height: "482",
-					show: "drop",
-					hide: "drop",
+					show: "puff",
+					hide: "puff",
 					modal: "true"
 				});
 			});

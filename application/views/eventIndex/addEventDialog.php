@@ -68,7 +68,23 @@
 				</select>
 		</div>
 
-
+		<div id="addEventImgUploader"></div>
+		<script type="text/javascript" src="extras/js/fileuploader.js"></script>
+		<script>        
+        function createUploader(){            
+            var uploader = new qq.FileUploader({
+                element: document.getElementById('addEventImgUploader'),
+                action: 'do-nothing.htm',
+                debug: true,
+                multiple: false
+            });           
+        }
+        
+        // in your app create uploader as soon as the DOM is ready
+        // don't wait for the window to load  
+        window.onload = createUploader;     
+    	</script>
+    	<link rel="stylesheet" type="text/css" href="extras/css/fileuploader.css">
 
 	</form>
 

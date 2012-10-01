@@ -1,0 +1,127 @@
+
+
+			#leftContent .event {
+				position: relative;
+				float: left;
+				width: 294px;
+				height: 214px; /* (157+7+40)x2 */
+				border-right: 1px solid #CCC;
+				border-bottom: 1px solid #CCC;
+
+				overflow: hidden;
+
+				-webkit-transition: all .25s ease;
+				   -moz-transition: all .25s ease;
+				    -ms-transition: all .25s ease;
+				     -o-transition: all .25s ease;
+				        transition: all .25s ease;
+				
+			}
+
+			.event .page1 {
+				position: relative;
+				height: 215px;
+				overflow: hidden;
+			}
+
+			.event .page2 {
+				position: relative;
+				height: 164px;
+
+			}
+			.event .page2 .description {
+				width: 280px;
+				height: 113px; //159px;
+				padding: 7px;
+				border-top: 1px solid #CCC;
+				overflow: hidden;
+				float: left;
+				clear: both;
+				margin: 0;
+			}
+			.event .page2 .btn {
+				float: right;
+				margin-right: 7px;
+			}
+
+				#leftContent .event .eventImg {
+					position: relative;
+					width: 280px;
+					height: 157px;
+					margin: 7px 7px 0 7px;
+					background-color: #F0F0F0;
+					clear: both;
+				}
+
+				#leftContent .event .eventImg img {
+					opacity: .9;
+
+					-webkit-transition: all .25s ease;
+					   -moz-transition: all .25s ease;
+					    -ms-transition: all .25s ease;
+					     -o-transition: all .25s ease;
+					        transition: all .25s ease;
+					
+				}
+
+					.eventImgBorder {
+						border: 7px solid white;
+						width: 266px;
+						height: 143px;
+						position: absolute;
+						top: 0;
+						left: 0;
+						opacity: .8;
+						z-index: 2;
+
+						-webkit-transition: all .25s ease;
+						   -moz-transition: all .25s ease;
+						    -ms-transition: all .25s ease;
+						     -o-transition: all .25s ease;
+						        transition: all .25s ease;
+						
+					}
+
+				#leftContent .event .title {
+					position: relative;
+					
+					color: #222;
+					font-size: 12px;
+					margin: 0 0 0 7px;
+					float: left;
+					font-weight: bold;
+				}
+
+				#leftContent .event .date {
+					position: relative;
+					
+					color: #777;
+					font-weight: normal;
+					font-size: 12px;
+					margin: 0 7px 0 0;
+					float: right;
+				}
+
+				#leftContent .event .place {
+					color: #777;
+					font-weight: normal;
+					font-size: 12px;
+					margin: 0 0 0 7px;
+					float: left;
+
+					position: relative;
+					bottom: 4px;
+				}
+
+			#leftContent .event:hover {
+				background-color: #EEE;
+				cursor: pointer;
+			}
+
+				#leftContent .event:hover .eventImg img {
+					opacity: 1;
+				}
+
+				#leftContent .event:hover .eventImg .eventImgBorder {
+					opacity: 0;
+				}

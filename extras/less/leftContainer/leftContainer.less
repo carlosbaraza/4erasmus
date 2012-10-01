@@ -1,0 +1,118 @@
+/* Left container for navigation */
+
+	#leftContainer .mainTitle {
+		margin: 38px 40px 0 0;
+		display: inline-block;
+		float: right;
+		width: auto;
+	}
+
+	#leftContainer .mainTitle h1 {
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		font-weight: normal;
+
+		-webkit-transition: all .25s ease;
+		   -moz-transition: all .25s ease;
+		    -ms-transition: all .25s ease;
+		     -o-transition: all .25s ease;
+		        transition: all .25s ease;
+	}
+
+	/* Change color when mouse over div title */
+	#leftContainer .mainTitle:hover h1 {
+		color: #a0cce5 !important;
+		cursor: pointer;
+	}
+
+	#leftContainer .title1 {
+		position: relative;
+		right: -3px; /*Move the 4 to right to be closer to Erasmus */
+		color: @color4Erasmus4;
+		font-size: 48px;
+		font-family: Arial;
+		display: inline-block;
+	}
+
+	#leftContainer .title2 {
+		position: relative;
+		color: @color4ErasmusErasmus;
+		font-size: 28px;
+		font-family: Arial;
+		display: inline-block;
+	}
+
+	/* Datepicker de jQuery UI Flick */
+	#datepickerTopColorStrip {
+		position: relative;
+		width: 90px;
+		margin: 20px 40px 0 0;
+		background-color: #b4d436;
+		height: 7px;
+		float: right;
+	}
+
+	.ui-datepicker {
+		width: 180px !important;
+		float: right !important;
+		margin: 0px 40px 0 0 !important;
+	}
+	.ui-widget-header {
+		border: none !important;
+		background: none !important;
+	}
+	.ui-datepicker th {
+		font-weight: normal !important;
+	}
+	.ui-widget-content {
+		border: none !important;
+		background: #FAFAFA !important;
+	}
+	.ui-widget-header {
+		color: #666 !important;
+		font-weight: normal !important;
+	}
+
+	#datepickerBottomColorStrip {
+		position: relative;
+		width: 90px;
+		margin: 0 40px+90px+6px 0 0;
+		background-color: #d43636;
+		height: 7px;
+		float: right;
+	}
+
+	/* Date Time Picker addon */
+	.ui-timepicker-div .ui-widget-header { margin-bottom: 8px !important; }
+	.ui-timepicker-div dl { text-align: left !important; }
+	.ui-timepicker-div dl dt { height: 25px !important; margin-bottom: -25px !important; }
+	.ui-timepicker-div dl dd { margin: 0 10px 10px 65px !important; }
+	.ui-timepicker-div td { font-size: 90% !important; }
+	.ui-tpicker-grid-label { background: none !important; border: none !important; margin: 0 !important; padding: 0 !important; }
+	.ui-timepicker-div .ui-slider-handle {
+		background: #BBB !important;
+		border: 1px solid #888 !important;
+	}
+	.ui_tpicker_hour_slider {
+		background: #CCC !important;
+	}
+	.ui_tpicker_minute_slider {
+		background: #CCC !important;
+	}
+	#ui-datepicker-div {
+		border: 1px solid #888 !important;
+	}
+
+
+	#europeMap {
+		background-image: url("../img/europeMap600.png");
+		width: 600px;
+		height: 366px;
+		position: absolute;
+		z-index: -100;
+		top: 200px;
+		left: -50px;
+
+		opacity: 0.5;
+	}
