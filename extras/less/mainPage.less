@@ -30,6 +30,7 @@ body {
 	width: 230px;
 	float: left;
 	height: 600px;
+	position: relative;
 }
 	
 	#leftContainer .mainTitle {
@@ -208,9 +209,10 @@ body {
 		width: 100%;
 
 		border: 1px solid #DDD;
+		border-top: 1px solid #DDD;
 		position: relative;
 		top: -1px;
-		left: -1px;		
+		left: -1px;
 	}
 
 		#content .bar {
@@ -220,7 +222,12 @@ body {
 		}
 
 			#addEventButton {
-				margin: 0 6px 0 0;
+				margin: 0 3px 0 0;
+			}
+
+			.button .rightColorStrip {
+				width: 4px;
+				right: -4px;
 			}
 
 			.button:hover .rightColorStrip {
@@ -375,18 +382,43 @@ body {
 					left: 0px;
 					height: 42px;
 					width: 100%;
-					border-top: 1px solid #BBB;
+					//border-top: 1px solid #BBB;
 				}
 
-				#addEventDialogFooter .button {
+				#addEventDialogFooter .btn {
 					font-weight: bold;
-					margin: 0 7px 0 0;
+					margin: 0 0 0 0;
+					border-top: none;
+					border-right: none;
+					border-bottom: none;
+
+					position: relative;
+					display: inline-block;
+					height: 100%;
+					padding: 0 20px;
+
+					border-radius: 25px 0 0 0;
+					
+
+					-webkit-transition: all .25s ease;
+					   -moz-transition: all .25s ease;
+					    -ms-transition: all .25s ease;
+					     -o-transition: all .25s ease;
+					        transition: all .25s ease;
+
+					//.buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
 				}
 
-				#addEventDialogFooter .button:hover {
-					background-color: #EEE;
-					color: black;
-				}
+					#addEventDialogFooter .btn p {
+						position: relative;
+						top: 13px;
+						font-size: 13px;
+						color: #DDD;
+					}
+
+					#addEventDialogFooter .btn:hover p {
+						color: white;
+					}
 
 		#leftContent {
 			float: left;
@@ -413,18 +445,28 @@ body {
 
 			.event .page1 {
 				position: relative;
+				height: 215px;
+				overflow: hidden;
 			}
 
 			.event .page2 {
 				position: relative;
+				height: 164px;
+
 			}
-			.event .page2 p {
+			.event .page2 .description {
 				width: 280px;
-				height: 159px;
+				height: 113px; //159px;
 				padding: 7px;
 				border-top: 1px solid #CCC;
 				overflow: hidden;
 				float: left;
+				clear: both;
+				margin: 0;
+			}
+			.event .page2 .btn {
+				float: right;
+				margin-right: 7px;
 			}
 
 				#leftContent .event .eventImg {
@@ -454,7 +496,7 @@ body {
 						position: absolute;
 						top: 0;
 						left: 0;
-						opacity: .5;
+						opacity: .8;
 						z-index: 2;
 
 						-webkit-transition: all .25s ease;
@@ -523,13 +565,21 @@ body {
 				height: 100%;
 			}
 
+			.colorStripGreen {
+				background-color: @colorGreen;
+			}
+
+			.colorStripRed {
+				background-color: @colorRed;
+			}
+
 			.colorStripYellow {
-				background-color: #ffdf47;
+				background-color: @colorYellow;
 			}
 
 
 			.colorStripBlue {
-				background-color: #0096C1;
+				background-color: @colorBlue;
 			}
 
 			.wallEntry {
