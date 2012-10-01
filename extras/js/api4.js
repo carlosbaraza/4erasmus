@@ -66,11 +66,55 @@ var FE = new function() {
 				targetid   : targetid,
 				targettype : targettype,
 				actiontype : 'follow'
+			},
+			success : function(response) {
+				try {
+					var resobj = $.parseJSON(response)	
+				} catch(err) {
+					console.log(response)
+					return
+				}
+				if( resobj.status == 'success') {
+
+				}
 			}
 		})
 	}
 
-	this.loadEventsOfDate = function(date) {
-		
+	this.loadEventsOfDate = function(date, start) {
+		var outdiv = document.createElement('div')
+		$(outdiv).addClass('event').append(
+			$(document.createElement('div')).addClass('page1').append(
+				$(document.createElement('div')).addClass('eventImg').append(
+					$(document.createElement('div')).addClass('eventImgBorder') ).append(
+					document.createElement('img').src = 'extras/img/GallerysDefPics/Misc/3.png')).append(
+				$(document.createElement('h3')).addClass('title').text('Claire\'s birthday party')).append(
+				$(document.createElement('h3')).addClass('date').text('Mon 16, 2012 8:30pm')).append(
+				$(document.createElement('h3')).addClass('place').text('Riverwalk, block 9, apartment 18'))).append(
+			$(document.createElement('div')).addClass('page2').append(
+				$(document.createElement('p')).text('Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.')
+		))
+		console.log($(outdiv))
+		return
+		$.ajax({
+			url  : '/index.php/api4/eventsOfDate?access_token=' + that.token,
+			type : 'get',
+			data : {
+				date  : date,
+				start : start,
+				limit : 10
+			},
+			success : function(response) {
+				try {
+					var eventarr = $.parseJSON(response)
+				} catch(err) {
+					console.log(response)
+					return
+				}
+				if( eventarr.status == 'success') {
+					var outdiv = document.createElement('div')
+				}
+			}
+		})
 	}
 }

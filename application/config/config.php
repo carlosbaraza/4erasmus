@@ -362,3 +362,6 @@ $config['proxy_ips'] = '';
 /* Location: ./application/config/config.php */
 
 define('RESOURCEPATH', 'extras/');
+
+// API Constants
+define('EVENT_REQUEST_LIMIT', 10);

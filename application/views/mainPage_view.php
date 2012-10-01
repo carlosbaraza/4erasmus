@@ -5,23 +5,6 @@
 			<h1 class="title2">ERASMUS</h1>-->
 			<img src="extras/img/logo.png">
 		</div>
-
-		<script type="text/javascript">
-			$(function(){
-
-				// Datepicker
-				$('#datepicker').datepicker({
-					inline: true
-				});
-
-				//hover states on the static widgets
-				$('#dialog_link, ul#icons li').hover(
-					function() { $(this).addClass('ui-state-hover'); },
-					function() { $(this).removeClass('ui-state-hover'); }
-				);
-
-			});
-		</script>
 		
 		<div id="datepickerTopColorStrip"></div>
 		<div id="datepicker"></div>
@@ -67,20 +50,6 @@
 
 							<label for="addEventDate">Date (MM/DD/YYYY HH:MM): </label>
 								<input TYPE="text" id="addEventDate"><br>
-							<script type="text/javascript">
-								$(function(){
-
-									// Datepicker
-									$('#addEventDate').datetimepicker();
-
-									//hover states on the static widgets
-									$('#dialog_link, ul#icons li').hover(
-										function() { $(this).addClass('ui-state-hover'); },
-										function() { $(this).removeClass('ui-state-hover'); }
-									);
-
-								});
-							</script>
 
 							<label for="addEventPlace">Place: </label>
 								<input TYPE="text" id="addEventPlace"><br>

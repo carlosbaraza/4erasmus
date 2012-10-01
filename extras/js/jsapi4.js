@@ -130,6 +130,29 @@
 		less.env = "development";
 		less.watch();
 
+		// Datepicker
+		$('#datepicker').datepicker({
+			inline: true,
+			onselect : function() {
+				alert()
+			}
+		});
+
+		//hover states on the static widgets
+		$('#dialog_link, ul#icons li').hover(
+			function() { $(this).addClass('ui-state-hover'); },
+			function() { $(this).removeClass('ui-state-hover'); }
+		);
+
+		// Datepicker
+		$('#addEventDate').datetimepicker();
+
+		//hover states on the static widgets
+		$('#dialog_link, ul#icons li').hover(
+			function() { $(this).addClass('ui-state-hover'); },
+			function() { $(this).removeClass('ui-state-hover'); }
+		);
+
 	});
 
 	// Add Event AJAX
