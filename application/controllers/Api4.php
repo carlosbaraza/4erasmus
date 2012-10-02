@@ -121,4 +121,25 @@ class Api4 extends CI_Controller {
 		$insert['actiondate'] = date('Y-m-d H:m:s');
 		$this->ci->db->insert('actions', $insert);
 	}
+
+	public function addEventDialogUploadPicture() {
+		// list of valid extensions, ex. array("jpeg", "xml", "bmp")
+		$allowedExtensions = array("jpg","jpeg","png","bmp","pdf");
+		// max file size in bytes
+		$sizeLimit = 10 * 1024 * 1024;
+
+		//$this->load->library(array('qqUploadedFileXhr','qqUploadedFileForm','qqFileUploader'));
+		require(RESOURCEPATH . 'inc/fileuploader.php');
+		$uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+
+		// Call handleUpload() with the name of the folder, relative to PHP's getcwd()
+		$result = $uploader->handleUpload('extras/img/GallerysDefPics/Users/ozan/');
+
+		// to pass data through iframe you will need to encode all html tags
+		echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+
+		/*$res = array();
+		$res['success'] = 'true';
+		die(json_encode($res));*/
+	}
 }

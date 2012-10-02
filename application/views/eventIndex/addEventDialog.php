@@ -38,25 +38,16 @@
 
 			<label for="addEventGallery">Select an image for event:</label>
 			<div id="addEventGallery">
-				<div class="addEventGalleryPic selected"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/3.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/4.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/1.png"></div>
-				<div class="addEventGalleryPic"><img src="extras/img/GallerysDefPics/Misc/2.png"></div>
+
+				<?php
+					$folder = 'extras/img/GallerysDefPics/Users/ozan/';
+					$images = glob( $folder . '*.{jpg,jpeg,gif,png}', GLOB_BRACE);
+
+					foreach ($images as $image) {
+						echo '<div class="addEventGalleryPic"><img src="' . $image . '"></div>';
+					}
+				?>
+
 			</div>
 		</div>
 
@@ -74,7 +65,7 @@
         function createUploader(){            
             var uploader = new qq.FileUploader({
                 element: document.getElementById('addEventImgUploader'),
-                action: 'do-nothing.htm',
+                action: 'index.php/api4/addEventDialogUploadPicture',
                 debug: true,
                 multiple: false
             });           
