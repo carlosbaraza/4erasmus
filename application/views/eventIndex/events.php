@@ -14,7 +14,7 @@
 		</div>
 	</div>
 
-	<div id="events">
+	<div id="eventContainer">
 		<div id="id1" class="event">
 			<div class="page1">
 				<div class="eventImg"><div class="eventImgBorder"></div><img src="extras/img/GallerysDefPics/Misc/3.png"></div>

@@ -57,7 +57,19 @@ var FE = new function() {
 	}
 
 	this.follow = function(targetid) {
-		var targettype = targetid[0]
+		switch(targetid[0]) {
+			case 'e':
+				var targettype = 'event'
+				break
+			case 'n':
+				var targettype = 'network'
+				break
+			case 'p':
+			 	var targettype = 'place'
+			 	break
+			default:
+				return
+		}
 		targetid = targetid.substring(1)
 		$.ajax({
 			url  : "/index.php/api4/newAction?access_token=" + that.token,
@@ -82,21 +94,6 @@ var FE = new function() {
 	}
 
 	this.loadEventsOfDate = function(date, start) {
-		var outdiv = document.createElement('div')
-		$(outdiv).addClass('event').append(
-			$(document.createElement('div')).addClass('page1').append(
-				$(document.createElement('div')).addClass('eventImg').append(
-					$(document.createElement('div')).addClass('eventImgBorder') ).append(
-					document.createElement('img').src = 'extras/img/GallerysDefPics/Misc/3.png')).append(
-				$(document.createElement('h3')).addClass('title').text('Claire\'s birthday party')).append(
-				$(document.createElement('h3')).addClass('date').text('Mon 16, 2012 8:30pm')).append(
-				$(document.createElement('h3')).addClass('place').text('Riverwalk, block 9, apartment 18'))).append(
-			$(document.createElement('div')).addClass('page2').append(
-				$(document.createElement('p')).text('Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.')
-		))
-		//$("#events").append(outdiv);
-		console.log($(outdiv))
-		return
 		$.ajax({
 			url  : '/index.php/api4/eventsOfDate?access_token=' + that.token,
 			type : 'get',
@@ -113,9 +110,44 @@ var FE = new function() {
 					return
 				}
 				if( eventarr.status == 'success') {
-					var outdiv = document.createElement('div')
+					var output = ''
+					for( var key in eventarr.data) {
+						var event = eventarr.data[key]
+						output += '' +
+						'<div class="event">' +
+							'<div class="page1">' +
+								'<div class="eventImg"><div class="eventImgBorder"></div><img src="'+ event.imageurl +'"></div>' +
+								'<h3 class = "title">'+ event.eventname +'</h3>' +
+								'<h3 class = "date">'+ event.eventstart +'</h3>' +
+								'<h3 class = "place">'+ event.placeid +'</h3>' +
+							'</div>' +
+							'<div class="page2">' +
+								'<p>'+ event.eventdesc +'</p>' +
+								'<a href="javascript:void(0)" class="btn btn-primary" onclick="FE.follow(\'e' + event.eventid + '\')">Follow</a>' +
+							'</div>' +
+						'</div>'
+					}
+					$('#eventContainer').html(output)
 				}
+
+				//Event Animation for show description
+				var myTimeout;
+				$('.event').hover( function() {
+					var that = this;
+				    myTimeout = setTimeout(function() {
+				        $(that).children('.page1,.page2').animate({top: '-164'}, 250);
+				    }, 500);
+				}, function() {
+				    clearTimeout(myTimeout);
+				    $(this).children('.page2,.page1').animate({top: '0'}, 250);
+				});
 			}
 		})
+	}
+
+	this.cache = function(key) {
+		if( that.cache[key] != 'undefined') {
+			
+		}
 	}
 }

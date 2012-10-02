@@ -13,18 +13,26 @@ class Api4 extends CI_Controller {
 		// Variables
 		$start = $this->input->get('start', true);
 		$limit = $this->input->get('limit', true);
-		$date  = $this->input->get('date', true);
+		$date  = $this->input->get('date' , true);
 
 		if( (!empty($start) || $start == 0) && !empty($limit) && !empty($date)) {
-			$this->ci->db->select()->from('events')->where(array('eventstart >' => $date.' 00:00:00', 'eventstart <' => date('Y:m:d H:m:s', strtotime($date) + 86400)))->limit(EVENT_REQUEST_LIMIT, $start);
-			$query  = $this->ci->db->get();
-			$result = $query->result();
-			$result['status'] = 'success';
+			$this->db->select()->from('events')->where(array('eventstart >=' => date('Y-m-d', strtotime($date)).' 00:00:00', 'eventstart <=' => date('Y-m-d', strtotime($date) + 86400).' 00:00:00'))->limit(EVENT_REQUEST_LIMIT, $start);
+			$query  = $this->db->get();
+
+			// Structure Output
+			$result 		= new StdClass();
+			$result->data   = $query->result();
+			array_walk($result->data, array($this, 'eventCallback'));
+			$result->status = 'success';
 			echo json_encode($result);
 		}
 		else {
 			show_error('missing info');
 		}
+	}
+
+	protected function eventCallback(&$value, $key) {
+		$value->imageurl = RESOURCEPATH . 'img/GallerysDefPics/'. $value->imageurl;
 	}
 
 	public function newEvent() {
@@ -92,14 +100,14 @@ class Api4 extends CI_Controller {
 	protected function validateRequest() {
 		// Is AJAX Validation
 		if( !$this->input->is_ajax_request())
-			exit;
+			die('not ajax');
 		// Session Validation
 		$sessid = $this->session->userdata('session_id');
 		if( !$sessid) 
-			exit;
+			die('no sessid');
 		// Access Token Validation
 		if( $this->input->get('access_token', true) != $sessid)
-			exit;
+			die('access denied');
 	}
 
 	public function newAction() {
@@ -110,16 +118,20 @@ class Api4 extends CI_Controller {
 		$targetid 	= $this->input->post('targetid'	 , true);
 		$targettype = $this->input->post('targettype', true);
 		$actiontype = $this->input->post('actiontype', true);
+		// Load Target Type Model
+		$this->load->model($targettype);
+		// Specific Validation
 		if( !$targetid || !$this->validate->targettype($targettype) || !$this->{$targettype}->select(array($targettype.'id' => $targetid)) || !$this->validate->actiontype($actiontype)) {
 			show_error('missing target info');
 		}
 		$insert = array();
-		$insert['userid'] 	  = $this->ci->session->userdata('userid');
+		$insert['userid'] 	  = $this->session->userdata('userid');
 		$insert['targetid']   = $targetid;
 		$insert['actiontype'] = $actiontype;
 		$insert['targettype'] = $targettype;
 		$insert['actiondate'] = date('Y-m-d H:m:s');
-		$this->ci->db->insert('actions', $insert);
+		$this->db->insert('actions', $insert);
+		$this->result('success');
 	}
 
 	public function addEventDialogUploadPicture() {

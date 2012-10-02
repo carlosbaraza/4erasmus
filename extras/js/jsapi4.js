@@ -68,6 +68,15 @@
 				});
 			});
 		}
+		
+		// Datepicker
+		$('#addEventDate').datetimepicker();
+
+		//hover states on the static widgets
+		$('#dialog_link, ul#icons li').hover(
+			function() { $(this).addClass('ui-state-hover'); },
+			function() { $(this).removeClass('ui-state-hover'); }
+		);
 
 		$( "#addEventButton" ).click(function() {
 			$( "#addEventDialog" ).dialog( "open" );
@@ -78,14 +87,14 @@
 			window.history.pushState('add event', 'add event', 'addEvent')
 		});
 
-
+		/*
         (function() {
           	var e = document.createElement('script'); e.async = true;
           	e.src = document.location.protocol +
           	'//connect.facebook.net/en_US/all.js';
           	document.getElementById('fb-root').appendChild(e);
         }());
-
+*/
 
         /* Add Add Event Gallery to the form */
         $("#addEventGallery").mCustomScrollbar({
@@ -108,24 +117,35 @@
 		less.env = "development";
 		less.watch();
 
-		
 
+		// Datepicker
+		$('#datepicker').datepicker({
+			inline: true,
+			onSelect: function(dateText, inst) { 
+				FE.loadEventsOfDate(dateText, 0)
+			}
+		});
+
+		//hover states on the static widgets
+		$('#dialog_link, ul#icons li').hover(
+			function() { $(this).addClass('ui-state-hover'); },
+			function() { $(this).removeClass('ui-state-hover'); }
+		);
 
 	});
 
 	// Add Event AJAX
 	//
 	function addEventSendAJAX() {
-		var $title = $("#addEventTitle");
-		var $date = $("#addEventDate");
-		var $place = $("#addEventPlace");
-		var $category = $("#addEventCategory");
-		var $sharewith = $("#addEventShareWith");
-		var $description = $("#addEventDescription");
+		var $title = $("#addEventTitle")
+		var $date = $("#addEventDate")
+		var $place = $("#addEventPlace")
+		var $category = $("#addEventCategory")
+		var $sharewith = $("#addEventShareWith")
+		var $description = $("#addEventDescription")
 
-		var selectedPic = $(".addEventGalleryPic.selected img").attr('src').split('/');
-		selectedPic = selectedPic[selectedPic.length-2]+'/'+selectedPic[selectedPic.length-1];
-		$("#addEventDescription").val('');
+		var selectedPic = $(".addEventGalleryPic.selected img").attr('src').split('/')
+		selectedPic = selectedPic[selectedPic.length-2]+'/'+selectedPic[selectedPic.length-1]
 
 		FE.newEvent({
 			'eventname' : $title.val(), 
