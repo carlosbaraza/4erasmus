@@ -32,7 +32,11 @@ class Api4 extends CI_Controller {
 	}
 
 	protected function eventCallback(&$value, $key) {
+		$this->load->model('place');
 		$value->imageurl = RESOURCEPATH . 'img/GallerysDefPics/'. $value->imageurl;
+		$this->place->select(array('placeid' => $value->placeid));
+		unset($value->placeid);
+		$value->place = $this->place->instance();
 	}
 
 	public function newEvent() {

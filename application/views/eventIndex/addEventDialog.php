@@ -40,7 +40,7 @@
 			<div id="addEventGallery">
 
 				<?php
-					$folder = 'extras/img/GallerysDefPics/Users/ozan/';
+					$folder = 'extras/img/GallerysDefPics/Misc/';
 					$images = glob( $folder . '*.{jpg,jpeg,gif,png}', GLOB_BRACE);
 
 					foreach ($images as $image) {

@@ -119,10 +119,10 @@ var FE = new function() {
 								'<div class="eventImg"><div class="eventImgBorder"></div><img src="'+ event.imageurl +'"></div>' +
 								'<h3 class = "title">'+ event.eventname +'</h3>' +
 								'<h3 class = "date">'+ event.eventstart +'</h3>' +
-								'<h3 class = "place">'+ event.placeid +'</h3>' +
+								'<h3 class = "place">'+ event.place.placename +'</h3>' +
 							'</div>' +
 							'<div class="page2">' +
-								'<p>'+ event.eventdesc +'</p>' +
+								'<p class="description">'+ (event.eventdesc == null ? '' : event.eventdesc) +'</p>' +
 								'<a href="javascript:void(0)" class="btn btn-primary" onclick="FE.follow(\'e' + event.eventid + '\')">Follow</a>' +
 							'</div>' +
 						'</div>'
