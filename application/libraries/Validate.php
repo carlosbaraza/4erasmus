@@ -57,7 +57,15 @@ class Validate {
 		return true;
 	}
 
-	public function targettype($targettype) {
+	public function actiontarget($targettype) {
+		return in_array($targettype, array(
+			'group', 
+			'event', 
+			'place'
+		));
+	}
+
+	public function commenttarget($targettype) {
 		return in_array($targettype, array(
 			'group', 
 			'event', 
@@ -67,7 +75,8 @@ class Validate {
 
 	public function actiontype($actiontype) {
 		return in_array($actiontype, array(
-			'follow'
+			'follow',
+			'view'
 		));
 	}
 }

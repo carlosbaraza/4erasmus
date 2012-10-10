@@ -87,7 +87,8 @@
 			window.history.pushState('add event', 'add event', 'addEvent')
 		});
 
-		/*
+		// FACEBOOK
+/*
         (function() {
           	var e = document.createElement('script'); e.async = true;
           	e.src = document.location.protocol +
@@ -114,6 +115,7 @@
 			}
 		})
 
+		window.localStorage.clear()
 		less.env = "development";
 		less.watch();
 

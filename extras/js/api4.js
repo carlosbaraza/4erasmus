@@ -56,7 +56,7 @@ var FE = new function() {
 		that.logtext += title + ':  ' + msg + "\n"
 	}
 
-	this.follow = function(targetid) {
+	this.action = function(targetid, actiontype) {
 		switch(targetid[0]) {
 			case 'e':
 				var targettype = 'event'
@@ -86,9 +86,43 @@ var FE = new function() {
 					console.log(response)
 					return
 				}
-				if( resobj.status == 'success') {
+				//if( resobj.status == 'success') {}
+			}
+		})
+	}
 
+	this.comment = function(targetid, commentmsg) {
+		switch(targetid[0]) {
+			case 'e':
+				var targettype = 'event'
+				break
+			case 'n':
+				var targettype = 'network'
+				break
+			case 'p':
+			 	var targettype = 'place'
+			 	break
+			default:
+				return
+		}
+		targetid = targetid.substring(1)
+		$.ajax({
+			url  : "/index.php/api4/newComment?access_token=" + that.token,
+			type : "post",
+			data : {
+				targetid   : targetid,
+				targettype : targettype,
+				commentmsg : commentmsg
+			},
+			success : function(response) {
+				try {
+					console.log(resobj)
+					var resobj = $.parseJSON(response)
+				} catch(err) {
+					console.log(response)
+					return
 				}
+				//if( resobj.status == 'success') {}
 			}
 		})
 	}
@@ -145,9 +179,56 @@ var FE = new function() {
 		})
 	}
 
-	this.cache = function(key) {
-		if( that.cache[key] != 'undefined') {
-			
-		}
+	this.loadCommentsOfObject = function(objid) {
+		$.ajax({
+			url  : '/index.php/api4/readComments?access_token=' + that.token,
+			type : 'get',
+			data : {
+				id : objid
+			}
+		})
 	}
 }
+
+var Fish = new function() {
+	var that = this
+
+	this.init = function() {
+		that.cache = {}
+		that.intervalKey = setInterval(that.update, 1000)
+	}
+
+	this.setUpdate = function(key) {
+		var item = that.cache[key]
+		that.cache[key].intervalId = setInterval(item.func, item.interval)
+	}
+
+	this.cache = function(key, interval, func) {
+		// Create Object
+		var item
+		item.interval 	= interval
+		item.func 	 	= func
+		item.
+		item.func(that)
+
+		// Add item to List
+		that.cache[key] = item
+	}
+
+	this.setData = function(key, data) {
+		if( that.cache.hasOwnProperty(key)) {
+			that.cache[key].data = data
+			that.setUpdate(key)
+		}
+	}
+
+	this.update = function() {
+
+	}
+
+	this.disable = function(key) {
+		
+	}
+}
+
+Fish.init()

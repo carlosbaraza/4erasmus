@@ -125,17 +125,70 @@ class Api4 extends CI_Controller {
 		// Load Target Type Model
 		$this->load->model($targettype);
 		// Specific Validation
-		if( !$targetid || !$this->validate->targettype($targettype) || !$this->{$targettype}->select(array($targettype.'id' => $targetid)) || !$this->validate->actiontype($actiontype)) {
+		if( !$targetid || !$this->validate->actiontarget($targettype) || !$this->{$targettype}->select(array($targettype.'id' => $targetid)) || !$this->validate->actiontype($actiontype)) {
 			show_error('missing target info');
+			$this->result('error');
 		}
 		$insert = array();
 		$insert['userid'] 	  = $this->session->userdata('userid');
 		$insert['targetid']   = $targetid;
-		$insert['actiontype'] = $actiontype;
 		$insert['targettype'] = $targettype;
-		$insert['actiondate'] = date('Y-m-d H:m:s');
-		$this->db->insert('actions', $insert);
+		$insert[$actiontype.'date'] = date('Y-m-d H:m:s');
+		$this->db->insert($actiontype.'s', $insert);
 		$this->result('success');
+	}
+
+	public function newComment() {
+		// Validate Request
+		$this->validateRequest();
+		$this->load->library('validate');
+		// Variables
+		$targetid 	= $this->input->post('targetid'	 , true);
+		$targettype = $this->input->post('targettype', true);
+		$commentmsg = $this->input->post('commentmsg', true);
+		// Load Target Type Model
+		$this->load->model($targettype);
+		// Specific Validation
+		if( !$targetid || !$this->validate->commenttarget($targettype) || !$this->{$targettype}->select(array($targettype.'id' => $targetid))  || !$commentmsg ) {
+			show_error('missing target info');
+			$this->result('error');
+		}
+		$insert = array();
+		$insert['userid'] 	  = $this->session->userdata('userid');
+		$insert['targetid']   = $targetid;
+		$insert['targettype'] = $targettype;
+		$insert['commentmsg'] = $commentmsg;
+		$insert['adddate'] = date('Y-m-d H:m:s');
+		$this->db->insert('comments', $insert);
+		$this->result('success');
+	}
+
+	public function readComments() {
+		// Validate Request
+		$this->validateRequest();
+		// Variables
+		$id = $this->input->post('id', true);
+		if( !$id) {
+			show_error('missing info');
+			$this->result('error');
+		}
+
+		// Detect Type and Validate
+		switch( $id) {
+			case 'e' : 
+				$type = 'event';
+				break;
+			case 'n' :
+				$type = 'network';
+				break;
+			case 'p' : 
+				$type = 'place';
+				break;
+			default :
+				$this->result('error');
+				break;
+		}
+
 	}
 
 	public function addEventDialogUploadPicture() {

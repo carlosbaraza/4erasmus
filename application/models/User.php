@@ -47,9 +47,6 @@ class User extends CI_Model {
 	}
 
 	public function fblogin() {
-		if( $this->ci->session->userdata('userid')) {
-			return;
-		}
 		// Facebook PHP-SDK
 		require_once RESOURCEPATH.'inc/facebook.php';
 		// Initialize Facebook
@@ -72,7 +69,8 @@ class User extends CI_Model {
 				$this->ci->data->username = $this->fbname;
 				$this->seslogin();
 			} catch (FacebookApiException $e) {
-				echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+				echo 'Please <a href="' . $this->facebook->getLoginUrl() . '">login.</a>';
+			//	echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
 			}
 		}
 	}
@@ -103,7 +101,7 @@ class User extends CI_Model {
 		$insert['signdate'] = date('Y-m-d H:i:s');
 		try {
 			$this->ci->db->insert('users', $insert);
-			$this->ci->db->select(array('username' => $username));
+			$this->select(array('fbname' => $username));
 		} catch(Exception $e) {
 			return false;
 		}

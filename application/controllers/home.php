@@ -4,31 +4,22 @@ class Home extends CI_Controller {
 
 	public function Home() {
 		parent::__construct();
-//		$this->load->library('raintpl');
-		// VARIABLES
-		$this->img_base = RESOURCEPATH.'img/';
-		// HEAD
-		$this->template->title('Home');
-		$this->template->add_js('common/jquery');
-		$this->template->add_js('common/bootstrap.min');
-		$this->template->add_js('common/bootstrap-typeahead');
-		$this->template->add_css('common/bootstrap.min');
-		$this->template->add_css('home');
-		$this->template->add_css('4erasmus');
-		$this->template->add_css('blueprint/screen');
+
 	}
 
 	public function index() {
 		// BODY
+		set_time_limit(0);
 
-
-
-
-		// DISPLAY
-		$this->template->write_view('header', 'common/header');
-		$this->template->write_view('footer', 'common/footer');
-		$this->template->write_view('content', 'home', get_object_vars($this));
-		$this->template->render();
+		for($i = 500000; $i < 3000000; $i++) {	
+			$insert = array();
+			$insert['userid'] 	  = $i / 1000 + 4;
+			$insert['targetid']   = $i;
+			$insert['actiontype'] = 'follow';
+			$insert['targettype'] = 'event';
+			$insert['actiondate'] = date('Y-m-d H:m:s', strtotime('+'. $i/10000 . ' DAYS'));
+			$this->db->insert('actions', $insert);
+		}
 	}
 
 }
