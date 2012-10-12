@@ -5,11 +5,25 @@
 	background-color: rgba(255,255,255,.8);
 	position: absolute;
 	z-index: 3;
+
+	-webkit-animation: AJAXLoadingLayerFadeIn 0.25s ease 0 1 normal;
+	   -moz-animation: AJAXLoadingLayerFadeIn 0.25s ease 0 1 normal;
+	    -ms-animation: AJAXLoadingLayerFadeIn 0.25s ease 0 1 normal;
+	     -o-animation: AJAXLoadingLayerFadeIn 0.25s ease 0 1 normal;
+	        animation: AJAXLoadingLayerFadeIn 0.25s ease 0 1 normal;
+	
+
 }
 
-.AJAXLoadingLayer img {
+.AJAXLoadingLayer .spinner {
 	position: absolute;
-	top: 200px;
+	top: 150px;
+	left: 47%;
+}
+
+.AJAXLoadingLayer .pacman {
+	position: absolute;
+	top: 225px;
 
 	-webkit-animation: pacmanMovement 5s linear 0 infinite normal;
 	   -moz-animation: pacmanMovement 5s linear 0 infinite normal;
@@ -39,3 +53,26 @@
 	0% { left: 0 }
 	100% { left: 100%; }
 }
+
+@-webkit-keyframes AJAXLoadingLayerFadeIn {
+	0% { background-color: rgba(255,255,255,0) }
+	100% { background-color: rgba(255,255,255,.8) }
+}
+@-moz-keyframes AJAXLoadingLayerFadeIn {
+	0% { background-color: rgba(255,255,255,0) }
+	100% { background-color: rgba(255,255,255,.8) }
+}
+@-ms-keyframes AJAXLoadingLayerFadeIn {
+	0% { background-color: rgba(255,255,255,0) }
+	100% { background-color: rgba(255,255,255,.8) }
+}
+@-o-keyframes AJAXLoadingLayerFadeIn {
+	0% { background-color: rgba(255,255,255,0) }
+	100% { background-color: rgba(255,255,255,.8) }
+}
+@keyframes AJAXLoadingLayerFadeIn {
+	0% { background-color: rgba(255,255,255,0) }
+	100% { background-color: rgba(255,255,255,.8) }
+}
+
+
