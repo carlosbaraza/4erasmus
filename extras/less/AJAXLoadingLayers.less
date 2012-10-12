@@ -1,0 +1,41 @@
+
+.AJAXLoadingLayer {
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255,255,255,.8);
+	position: absolute;
+	z-index: 3;
+}
+
+.AJAXLoadingLayer img {
+	position: absolute;
+	top: 200px;
+
+	-webkit-animation: pacmanMovement 5s linear 0 infinite normal;
+	   -moz-animation: pacmanMovement 5s linear 0 infinite normal;
+	    -ms-animation: pacmanMovement 5s linear 0 infinite normal;
+	     -o-animation: pacmanMovement 5s linear 0 infinite normal;
+	        animation: pacmanMovement 5s linear 0 infinite normal;
+
+}
+
+@-webkit-keyframes pacmanMovement {
+	0% { left: 0 }
+	100% { left: 100%; }
+}
+@-moz-keyframes pacmanMovement {
+	0% { left: 0 }
+	100% { left: 100%; }
+}
+@-ms-keyframes pacmanMovement {
+	0% { left: 0 }
+	100% { left: 100%; }
+}
+@-o-keyframes pacmanMovement {
+	0% { left: 0 }
+	100% { left: 100%; }
+}
+@keyframes pacmanMovement {
+	0% { left: 0 }
+	100% { left: 100%; }
+}

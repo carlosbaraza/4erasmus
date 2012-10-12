@@ -134,6 +134,8 @@
 					$('#datepickerBottomColorStrip').removeClass('switched');
 				}
 				
+				$('#eventContainer').append('<div class="AJAXLoadingLayer"><img src="extras/img/ajax-loader.gif"></img></div>');
+
 			}
 		});
 
