@@ -7,6 +7,32 @@ class Api4 extends CI_Controller {
 		die('it works!');
 	}
 
+	public function readComments() {
+		// Validate Request
+		$this->validateRequest();
+		// Variables
+		$targetid 	= $this->input->get('targetid', true);
+		$targettype = $this->input->get('targettype', true);
+		$limit 		= $this->input->get('limit', true);
+		$start  	= $this->input->get('start' , true);
+
+		if( !$targetid || !$targettype || !$limit || (!$start && $start != 0) || $this->validate->commenttarget($targettype) ) {
+			show_error('missing info');
+			$this->result('error');
+		}
+		else {
+			$this->db->select()->from('comments')->where(array( 'targetid' => $targetid, 'targettype' => $targettype
+			))->order_by('adddate', 'desc')->limit($limit, $start);
+			$query = $this->db->get();
+
+			// Structure Output
+			$result 		= new StdClass();
+			$result->data 	= $query->result();
+			$result->status = 'success';
+			echo json_encode($result);
+		}
+	}
+
 	public function eventsOfDate() {
 		// Validate Request
 		$this->validateRequest();
@@ -15,19 +41,20 @@ class Api4 extends CI_Controller {
 		$limit = $this->input->get('limit', true);
 		$date  = $this->input->get('date' , true);
 
-		if( (!empty($start) || $start == 0) && !empty($limit) && !empty($date)) {
+		if( (!$start || $start == 0) && !$limit && !empty($date)) {
 			$this->db->select()->from('events')->where(array('eventstart >=' => date('Y-m-d', strtotime($date)).' 00:00:00', 'eventstart <=' => date('Y-m-d', strtotime($date) + 86400).' 00:00:00'))->limit(EVENT_REQUEST_LIMIT, $start);
 			$query  = $this->db->get();
 
 			// Structure Output
 			$result 		= new StdClass();
 			$result->data   = $query->result();
-			array_walk($result->data, array($this, 'eventCallback'));
 			$result->status = 'success';
+			array_walk($result->data, array($this, 'eventCallback'));
 			echo json_encode($result);
 		}
 		else {
 			show_error('missing info');
+			$this->result('error');
 		}
 	}
 
@@ -161,34 +188,6 @@ class Api4 extends CI_Controller {
 		$insert['adddate'] = date('Y-m-d H:m:s');
 		$this->db->insert('comments', $insert);
 		$this->result('success');
-	}
-
-	public function readComments() {
-		// Validate Request
-		$this->validateRequest();
-		// Variables
-		$id = $this->input->post('id', true);
-		if( !$id) {
-			show_error('missing info');
-			$this->result('error');
-		}
-
-		// Detect Type and Validate
-		switch( $id) {
-			case 'e' : 
-				$type = 'event';
-				break;
-			case 'n' :
-				$type = 'network';
-				break;
-			case 'p' : 
-				$type = 'place';
-				break;
-			default :
-				$this->result('error');
-				break;
-		}
-
 	}
 
 	public function addEventDialogUploadPicture() {

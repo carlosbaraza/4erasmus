@@ -179,12 +179,43 @@ var FE = new function() {
 		})
 	}
 
-	this.loadCommentsOfObject = function(objid) {
+	this.loadCommentsOfObject = function(targetid, start) {
+		switch(targetid[0]) {
+			case 'e':
+				var targettype = 'event'
+				break
+			case 'n':
+				var targettype = 'network'
+				break
+			case 'p':
+			 	var targettype = 'place'
+			 	break
+			default:
+				return
+		}
+
 		$.ajax({
 			url  : '/index.php/api4/readComments?access_token=' + that.token,
 			type : 'get',
 			data : {
-				id : objid
+				targetid   	: targetid,
+				targettype 	: targettype,
+				start 	   	: start,
+				limit		: 10
+			},
+			success : function(response) {
+				try {
+					var commentarr = $.parseJSON(response)
+				} catch(err) {
+					console.log(response)
+					return
+				}
+				if( commentarr.status == 'success') {
+					for( var key in commentarr) {
+						var comment = commentarr[key]
+						
+					}
+				}
 			}
 		})
 	}
@@ -208,7 +239,7 @@ var Fish = new function() {
 		var item
 		item.interval 	= interval
 		item.func 	 	= func
-		item.
+		item.nextUpdate = new Date().getTime() + interval
 		item.func(that)
 
 		// Add item to List
@@ -217,17 +248,24 @@ var Fish = new function() {
 
 	this.setData = function(key, data) {
 		if( that.cache.hasOwnProperty(key)) {
-			that.cache[key].data = data
-			that.setUpdate(key)
+			var item = that.cache[key]
+			item.data = data
+			item.nextUpdate = new Date().getTime() + item.interval
 		}
 	}
 
 	this.update = function() {
-
+		var currentTime = new Date().getTime()
+		for( var key in that.cache) {
+			var item = that.cache(key)
+			if( currentTime < item.nextUpdate) {
+				item.func(that)
+			}
+		}
 	}
 
 	this.disable = function(key) {
-		
+
 	}
 }
 
