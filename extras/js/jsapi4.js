@@ -125,6 +125,15 @@
 			inline: true,
 			onSelect: function(dateText, inst) { 
 				FE.loadEventsOfDate(dateText, 0)
+
+				if (!$('#datepickerTopColorStrip').hasClass('switched')) {
+					$('#datepickerTopColorStrip').addClass('switched');
+					$('#datepickerBottomColorStrip').addClass('switched');
+				} else {
+					$('#datepickerTopColorStrip').removeClass('switched');
+					$('#datepickerBottomColorStrip').removeClass('switched');
+				}
+				
 			}
 		});
 
