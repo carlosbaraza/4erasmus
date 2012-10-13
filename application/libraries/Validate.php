@@ -59,7 +59,7 @@ class Validate {
 
 	public function actiontarget($targettype) {
 		return in_array($targettype, array(
-			'group', 
+			'network', 
 			'event', 
 			'place'
 		));
@@ -67,7 +67,7 @@ class Validate {
 
 	public function commenttarget($targettype) {
 		return in_array($targettype, array(
-			'group', 
+			'network', 
 			'event', 
 			'place'
 		));
