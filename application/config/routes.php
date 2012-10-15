@@ -39,7 +39,10 @@
 */
 
 $route['default_controller'] = 'mainpage';
-$route['404_override'] = '';
+$route['date/?.*'] 			 = 'mainpage';
+$route['event/?.*']			 = 'mainpage';
+$route['network/?.*']		 = 'mainpage';
+$route['404_override'] 		 = '';
 
 
 /* End of file routes.php */

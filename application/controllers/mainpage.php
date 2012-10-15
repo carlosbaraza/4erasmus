@@ -37,10 +37,8 @@ class Mainpage extends CI_Controller {
 		//JS 
 		$this->template->js('api4');
 		$this->template->js('jsapi4');
-	}
 
-	public function index()
-	{
+		// Facebook Login
 		if( $this->input->ip_address() == '127.0.0.1') {
 			$this->user->select(array('username' => 'ozan'));
 			$this->user->seslogin();
@@ -49,6 +47,10 @@ class Mainpage extends CI_Controller {
 		else {
 			$this->user->fblogin();
 		}
+	}
+
+	public function index()
+	{
 
 		$this->template->write_view('leftcontainer', 'common/leftcontainer', get_object_vars($this->data));
 		$this->template->write_view('loginbar', 'common/loginbar', get_object_vars($this->data));

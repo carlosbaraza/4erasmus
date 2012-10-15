@@ -24,8 +24,9 @@ var FE = new function() {
 		dataArr['access_token'] = that.token
 		$.post("/index.php/api4/newEvent?access_token=" + that.token, dataArr,
 			function(response) {
+				response = $.parseJSON(response)
 				if( response.status == 'success') 
-					alert('Event Created!');
+					alert('Event Created!')
 				console.log(response)
 			}
 		)
@@ -132,6 +133,7 @@ var FE = new function() {
 			url  : '/index.php/api4/eventsOfDate?access_token=' + that.token,
 			type : 'get',
 			data : {
+			//	date  : new Date(date).getTime() / 1000,
 				date  : date,
 				start : start,
 				limit : 10
@@ -148,7 +150,7 @@ var FE = new function() {
 					for( var key in eventarr.data) {
 						var event = eventarr.data[key]
 						output += '' +
-						'<div class="event">' +
+						'<div class="event" id="'+ event.eventid +'">' +
 							'<div class="page1">' +
 								'<div class="eventImg"><div class="eventImgBorder"></div><img src="'+ event.imageurl +'"></div>' +
 								'<h3 class = "title">'+ event.eventname +'</h3>' +
@@ -157,7 +159,7 @@ var FE = new function() {
 							'</div>' +
 							'<div class="page2">' +
 								'<p class="description">'+ (event.eventdesc == null ? '' : event.eventdesc) +'</p>' +
-								'<a href="javascript:void(0)" class="btn btn-primary" onclick="FE.follow(\'e' + event.eventid + '\')">Follow</a>' +
+								'<a href="javascript:void(0)" class="btn btn-primary" onclick="FE.action(\'e\' + $(this).attr(\'id\', \'follow\'))">Follow</a>' +
 							'</div>' +
 						'</div>'
 					}
@@ -175,6 +177,12 @@ var FE = new function() {
 				    clearTimeout(myTimeout);
 				    $(this).children('.page2,.page1').animate({top: '0'}, 250);
 				});
+
+				$( ".event").click( function() {
+					console.log($(this).attr('id'))
+					window.history.pushState('add event', 'add event', '/event/' + $(this).attr('id'))
+					$('.wallEntry').html('<div class="fb-comments" data-href="http://www.4erasmus.com/event/'+ $(this).attr('id') +'" data-num-posts="2" data-width="370"></div>')
+				})
 			}
 		})
 	}
@@ -210,19 +218,34 @@ var FE = new function() {
 					console.log(response)
 					return
 				}
+				var output = ''
 				if( commentarr.status == 'success') {
-					for( var key in commentarr) {
+					for( var key in commentarr.data) {
 						var comment = commentarr[key]
-						
+						output += '' + 
+						'<p class="name">'+ comment.user.fbname +'</p>' + 
+						'<p class="text">'+ comment.commentmsg +'</p>'
 					}
 				}
 			}
 		})
 	}
+
+	this.loadSpecificPage = function() {
+		var querystring = window.location.path
+	}
 }
 
 var Fish = new function() {
 	var that = this
+
+	/* item Object Description
+	 * item.data
+	 * item.func
+	 * item.interval
+	 * item.lastupdate
+	 * item.nextupdate
+	*/
 
 	this.init = function() {
 		that.cache = {}
@@ -248,9 +271,11 @@ var Fish = new function() {
 
 	this.setData = function(key, data) {
 		if( that.cache.hasOwnProperty(key)) {
+			var currentTime = new Date().getTime()
 			var item = that.cache[key]
-			item.data = data
-			item.nextUpdate = new Date().getTime() + item.interval
+			item.data[item.data.length] = data
+			item.lastupdate = currentTime
+			item.nextUpdate = currentTime + item.interval
 		}
 	}
 
@@ -258,14 +283,19 @@ var Fish = new function() {
 		var currentTime = new Date().getTime()
 		for( var key in that.cache) {
 			var item = that.cache(key)
-			if( currentTime < item.nextUpdate) {
-				item.func(that)
+			if( item.active && currentTime < item.nextUpdate) {
+				item.func(that, item.lastupdate)
 			}
 		}
 	}
 
 	this.disable = function(key) {
+		that.cache[key].active = false
+		return that.cache[key]
+	}
 
+	this.enable = function(key) {
+		that.cache[key].active = true
 	}
 }
 

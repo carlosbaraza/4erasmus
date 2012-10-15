@@ -69,8 +69,8 @@ class User extends CI_Model {
 				$this->ci->data->username = $this->fbname;
 				$this->seslogin();
 			} catch (FacebookApiException $e) {
-				echo 'Please <a href="' . $this->facebook->getLoginUrl() . '">login.</a>';
-			//	echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+			//	echo 'Please <a href="' . $this->facebook->getLoginUrl() . '">login.</a>';
+				echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
 			}
 		}
 	}

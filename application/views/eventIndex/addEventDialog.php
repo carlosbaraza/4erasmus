@@ -1,3 +1,6 @@
+
+<link rel="stylesheet" type="text/css" href="<?=RESOURCEPATH?>css/fileuploader.css">
+
 <div id="addEventDialog">
 	<form>
 		
@@ -40,7 +43,7 @@
 			<div id="addEventGallery">
 
 				<?php
-					$folder = 'extras/img/GallerysDefPics/Misc/';
+					$folder = RESOURCEPATH . 'img/GallerysDefPics/Misc/';
 					$images = glob( $folder . '*.{jpg,jpeg,gif,png}', GLOB_BRACE);
 
 					foreach ($images as $image) {
@@ -60,7 +63,6 @@
 		</div>
 
 	
-    	<link rel="stylesheet" type="text/css" href="extras/css/fileuploader.css">
 
 	</form>
 

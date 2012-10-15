@@ -3,7 +3,7 @@
 		<div class="mainTitle">
 			<!--<h1 class="title1">4</h1>
 			<h1 class="title2">ERASMUS</h1>-->
-			<img src="extras/img/logo.png">
+			<img src="<?=RESOURCEPATH?>img/logo.png">
 		</div>
 		
 		<div id="datepickerTopColorStrip"></div>

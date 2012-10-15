@@ -29,8 +29,16 @@ class Api4 extends CI_Controller {
 			$result 		= new StdClass();
 			$result->data 	= $query->result();
 			$result->status = 'success';
+			array_walk($result->data, array($this, 'commentHook'));
 			echo json_encode($result);
 		}
+	}
+
+	protected function commentHook(&$comment, $key) {
+		$this->load->model('user');
+		$this->user->select(array('userid' => $comment->userid));
+		unset($comment->userid);
+		$comment->user = $this->user->instance();
 	}
 
 	public function eventsOfDate() {
@@ -41,15 +49,20 @@ class Api4 extends CI_Controller {
 		$limit = $this->input->get('limit', true);
 		$date  = $this->input->get('date' , true);
 
-		if( (!$start || $start == 0) && !$limit && !empty($date)) {
-			$this->db->select()->from('events')->where(array('eventstart >=' => date('Y-m-d', strtotime($date)).' 00:00:00', 'eventstart <=' => date('Y-m-d', strtotime($date) + 86400).' 00:00:00'))->limit(EVENT_REQUEST_LIMIT, $start);
+		if( (!empty($start) || $start == 0) && !empty($limit) && !empty($date)) {
+			$this->db->select()->from('events')->where(array(
+				'eventstart >=' => date('Y-m-d', strtotime($date)).' 00:00:00', 
+				'eventstart <=' => date('Y-m-d', strtotime($date) + 86400).' 00:00:00'))
+			//	'eventstart >=' => date('Y-m-d H:m:s', $date), 
+			//	'eventstart <=' => date('Y-m-d H:m:s', $date + 86400)))
+			->limit(EVENT_REQUEST_LIMIT, $start);
 			$query  = $this->db->get();
 
 			// Structure Output
 			$result 		= new StdClass();
 			$result->data   = $query->result();
 			$result->status = 'success';
-			array_walk($result->data, array($this, 'eventCallback'));
+			array_walk($result->data, array($this, 'eventHook'));
 			echo json_encode($result);
 		}
 		else {
@@ -58,12 +71,12 @@ class Api4 extends CI_Controller {
 		}
 	}
 
-	protected function eventCallback(&$value, $key) {
+	protected function eventHook(&$event, $key) {
 		$this->load->model('place');
-		$value->imageurl = RESOURCEPATH . 'img/GallerysDefPics/'. $value->imageurl;
-		$this->place->select(array('placeid' => $value->placeid));
-		unset($value->placeid);
-		$value->place = $this->place->instance();
+		$event->imageurl = RESOURCEPATH . 'img/GallerysDefPics/'. $event->imageurl;
+		$this->place->select(array('placeid' => $event->placeid));
+		unset($event->placeid);
+		$event->place = $this->place->instance();
 	}
 
 	public function newEvent() {

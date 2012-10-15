@@ -40,6 +40,12 @@
 		    $(this).children('.page2,.page1').animate({top: '0'}, 250);
 		});
 
+		$( "#addEventButton" ).click(function() {
+			$( "#addEventDialog" ).dialog( "open" );
+			$(".ui-widget-overlay").click( function() {
+				$('#addEventDialog').dialog("close");
+			});
+		})
 
 		// Add Event Dialog with JQuery UI Dialog
 		$.fx.speeds._default = 400;
@@ -78,24 +84,6 @@
 			function() { $(this).removeClass('ui-state-hover'); }
 		);
 
-		$( "#addEventButton" ).click(function() {
-			$( "#addEventDialog" ).dialog( "open" );
-			$(".ui-widget-overlay").click( function() {
-				$('#addEventDialog').dialog("close");
-				window.history.back()
-			});
-			window.history.pushState('add event', 'add event', 'addEvent')
-		});
-
-		// FACEBOOK
-/*
-        (function() {
-          	var e = document.createElement('script'); e.async = true;
-          	e.src = document.location.protocol +
-          	'//connect.facebook.net/en_US/all.js';
-          	document.getElementById('fb-root').appendChild(e);
-        }());
-*/
 
         /* Add Add Event Gallery to the form */
         $("#addEventGallery").mCustomScrollbar({
@@ -134,7 +122,7 @@
 					$('#datepickerBottomColorStrip').removeClass('switched');
 				}
 				
-				$('#eventContainer').append('<div class="AJAXLoadingLayer"><img src="extras/img/ajax-spinner.gif" class="spinner"></img><img class="pacman" src="extras/img/ajax-loader.gif"></img></div>');
+				$('#eventContainer').append('<div class="AJAXLoadingLayer"><img src="'+ FE.resourcepath +'/img/ajax-spinner.gif" class="spinner"></img><img class="pacman" src="'+ FE.resourcepath +'/img/ajax-loader.gif"></img></div>');
 
 			}
 		});

@@ -7,7 +7,7 @@
    <?= $_styles ?>
 
    <?= $_less ?>
-   <script src="extras/js/less-1.3.0.min.js" type="text/javascript"></script>
+   <script src="/extras/js/less-1.3.0.min.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -36,7 +36,7 @@
 	           var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
 	           if (d.getElementById(id)) {return;}
 	           js = d.createElement('script'); js.id = id; js.async = true;
-	           js.src = "//connect.facebook.net/en_US/all.js";
+	           js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=529250917090161";
 	           ref.parentNode.insertBefore(js, ref);
 	           }(document)); 
 		        window.fbAsyncInit = function() {
@@ -73,6 +73,7 @@
 							echo $access_token;
 						else 
 							echo ""?>'
+			FE.resourcepath = <?=RESOURCEPATH?>
 		})
 	</script>
 
