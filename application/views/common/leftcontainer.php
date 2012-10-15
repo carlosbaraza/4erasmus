@@ -11,6 +11,15 @@
 
 	</div>
 
+	<div class="bocaRightContainer"><img src="extras/img/boca.png"/></div>
+
+	<div class="schoolsMenu">
+		<p class="schoolsMenuItem">Waterford Institute of Technology</p>
+		<p class="schoolsMenuItem">Cork Ins. of Technology</p>
+
+	</div>
+
+
 	<script type="text/javascript">
 		$(function(){
 
