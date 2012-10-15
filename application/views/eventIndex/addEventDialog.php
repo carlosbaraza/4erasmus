@@ -43,7 +43,7 @@
 			<div id="addEventGallery">
 
 				<?php
-					$folder = RESOURCEPATH . 'img/GallerysDefPics/Misc/';
+					$folder = 'extras/img/GallerysDefPics/Misc/';
 					$images = glob( $folder . '*.{jpg,jpeg,gif,png}', GLOB_BRACE);
 
 					foreach ($images as $image) {
