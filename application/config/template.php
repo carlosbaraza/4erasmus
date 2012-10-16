@@ -63,7 +63,8 @@ $template['default']['regions'] = array(
 	'loginbar',
 	'events',
 	'wall',
-	'addEventDialog'
+	'addEventDialog',
+	'schoolProfile'
 );
 $template['default']['parser'] = '';
 $template['default']['parser_method'] = '';
