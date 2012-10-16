@@ -74,7 +74,8 @@
 							echo $access_token;
 						else 
 							echo ""?>'
-			FE.resourcepath = <?=RESOURCEPATH?>
+			FE.resourcepath = <?=RESOURCEPATH?>;
+			FE.loadSpecificPage()
 		})
 	</script>
 
