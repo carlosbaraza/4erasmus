@@ -112,6 +112,7 @@
 		$('#datepicker').datepicker({
 			inline: true,
 			onSelect: function(dateText, inst) { 
+				console.log(dateText)
 				FE.loadEventsOfDate(dateText, 0)
 
 				if (!$('#datepickerTopColorStrip').hasClass('switched')) {

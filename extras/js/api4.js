@@ -1,9 +1,6 @@
 
 var FE = new function() {
 
-	// GOOGLE ANALYTICS
-
-	// VARIABLES
 	var that = this
 	var cache = {}
 
@@ -176,13 +173,17 @@ var FE = new function() {
 				}, function() {
 				    clearTimeout(myTimeout);
 				    $(this).children('.page2,.page1').animate({top: '0'}, 250);
-				});
-
-				$( ".event").click( function() {
+				})
+				// Clickevent for Events
+				// Change URL and load comments
+				.click( function() {
 					console.log($(this).attr('id'))
 					window.history.pushState('add event', 'add event', '/event/' + $(this).attr('id'))
 					$('.wallEntry').html('<div class="fb-comments" data-href="http://www.4erasmus.com/event/'+ $(this).attr('id') +'" data-num-posts="2" data-width="370"></div>')
 				})
+
+				var requestDate = new Date(date)
+				window.history.pushState('date', 'date', '/date/' + (requestDate.getMonth()+1) + '-' + requestDate.getDate() + '-' + requestDate.getFullYear())
 			}
 		})
 	}
@@ -232,7 +233,22 @@ var FE = new function() {
 	}
 
 	this.loadSpecificPage = function() {
-		var querystring = window.location.path
+		var querystring = window.location.pathname.split('/')
+		switch(querystring[1]) {
+			case 'date':
+				if( querystring.hasOwnProperty(2)) {
+					var requestDate = new Date(querystring[2])
+					var formattedDate = (requestDate.getMonth()+1)+'/'+requestDate.getDate()+'/'+requestDate.getFullYear()
+					that.loadEventsOfDate(formattedDate, 0)
+					$('#datepicker').datepicker('setDate', new Date(formattedDate))
+				}
+				break;
+			default:
+				var requestDate = new Date()
+				var formattedDate = (requestDate.getMonth()+1)+'/'+requestDate.getDate()+'/'+requestDate.getFullYear()
+				that.loadEventsOfDate(formattedDate, 0)
+				break;
+		}
 	}
 }
 

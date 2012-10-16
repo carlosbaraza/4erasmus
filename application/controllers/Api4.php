@@ -150,7 +150,7 @@ class Api4 extends CI_Controller {
 		if( !$sessid) 
 			die('no sessid');
 		// Access Token Validation
-		if( $this->input->get('access_token', true) != $sessid)
+		if( $this->input->get('access_token', true) != $sessid) 
 			die('access denied');
 	}
 
