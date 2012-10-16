@@ -19,6 +19,7 @@
 
 		 	<div id="content">
 				<?= $events ?>
+				<?= $schoolProfile ?>
 				<?= $wall ?>
 				<div class="clear"></div>
 				<div class="rightColorStrip colorStripYellow"></div>

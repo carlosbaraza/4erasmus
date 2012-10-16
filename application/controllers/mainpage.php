@@ -65,7 +65,7 @@ class Mainpage extends CI_Controller {
 
 		$this->template->write_view('leftcontainer', 'common/leftcontainer', get_object_vars($this->data));
 		$this->template->write_view('loginbar', 'common/loginbar', get_object_vars($this->data));
-
+		$this->template->write_view('schoolProfile', 'schoolProfile/schoolProfile', get_object_vars($this->data));
 		$this->template->write_view('wall', 'eventIndex/wall', get_object_vars($this->data));
 		$this->template->render();
 	}

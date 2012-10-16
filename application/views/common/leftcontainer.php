@@ -12,6 +12,7 @@
 	</div>
 
 	<div class="bocaRightContainer"><img src="<?=RESOURCEPATH?>img/boca.png"/></div>
+	<!--$('.bocaRightContainer').animate({top: $('#datepicker .ui-datepicker').offset()['top']},5000)-->
 
 	<div class="schoolsMenu">
 		<p class="schoolsMenuItem">Waterford Institute of Technology</p>
