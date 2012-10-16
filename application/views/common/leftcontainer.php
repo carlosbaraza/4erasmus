@@ -1,4 +1,6 @@
 <div id="leftContainer">
+
+	<a href="/">
 	<div class="mainTitle">
 		<!--<h1 class="title1">4</h1>
 		<h1 class="title2">ERASMUS</h1>-->
@@ -10,12 +12,13 @@
 		<div id="titleStrip4" class="titleStrip"></div>
 
 	</div>
+	</a>
 
 	<div class="bocaRightContainer"><img src="<?=RESOURCEPATH?>img/boca.png"/></div>
 	<!--$('.bocaRightContainer').animate({top: $('#datepicker .ui-datepicker').offset()['top']},5000)-->
 
 	<div class="schoolsMenu">
-		<p class="schoolsMenuItem">Waterford Institute of Technology</p>
+		<a href="/school/1"><p class="schoolsMenuItem">Waterford Institute of Technology</p></a>
 		<p class="schoolsMenuItem">Cork Ins. of Technology</p>
 
 	</div>
