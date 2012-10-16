@@ -117,15 +117,7 @@
 
 				$('#datepickerTopColorStrip').toggleClass('switched');
 				$('#datepickerBottomColorStrip').toggleClass('switched');
-/*
-				if (!$('#datepickerTopColorStrip').hasClass('switched')) {
-					$('#datepickerTopColorStrip').addClass('switched');
-					$('#datepickerBottomColorStrip').addClass('switched');
-				} else {
-					$('#datepickerTopColorStrip').removeClass('switched');
-					$('#datepickerBottomColorStrip').removeClass('switched');
-				}
-		*/		
+
 				$('#eventContainer').append('<div class="AJAXLoadingLayer"><img src="'+ FE.resourcepath +'/img/ajax-spinner.gif" class="spinner"></img><img class="pacman" src="'+ FE.resourcepath +'/img/ajax-loader.gif"></img></div>');
 
 				var requestDate = new Date(dateText)
@@ -172,3 +164,17 @@
 		$category.val('')
 	}
 
+	// Togle editing for School content and AJAX storing
+	var area1 = null;
+	function schoolContentEdit () {
+		if ($('#schoolContent').hasClass("editing")) {
+			$('#schoolContent').removeClass("editing");
+			$('.schoolContentEditBtn').html('<i class="icon-pencil"></i> Edit');
+			area1.removeInstance('schoolContent');
+			area1 = null;
+		} else {
+			$('#schoolContent').addClass("editing");
+			$('.schoolContentEditBtn').html('<i class="icon-ok"></i> Save');
+			area1 = new nicEditor({fullPanel : true}).panelInstance('schoolContent',{hasPanel : true});
+		}
+	}
