@@ -47,9 +47,16 @@ class Mainpage extends CI_Controller {
 		else {
 			$this->user->fblogin();
 		}
+		define('FULLRESOURCEPATH', base_url() . RESOURCEPATH);
+		$folder = RESOURCEPATH . 'img/GallerysDefPics/Misc/';
+		$this->data->defaultEventImages = glob( $folder . '*.{jpg,jpeg,gif,png}', GLOB_BRACE);
+		foreach ($this->data->defaultEventImages as $key => $value) {
+			$this->data->defaultEventImages[$key] = base_url() . $value;
+		}
 	}
 
 	public function index() {
+
 
 		$this->template->write_view('leftcontainer', 'common/leftcontainer', get_object_vars($this->data));
 		$this->template->write_view('loginbar', 'common/loginbar', get_object_vars($this->data));

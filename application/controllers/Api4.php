@@ -73,7 +73,8 @@ class Api4 extends CI_Controller {
 
 	protected function eventHook(&$event, $key) {
 		$this->load->model('place');
-		$event->imageurl = RESOURCEPATH . 'img/GallerysDefPics/'. $event->imageurl;
+		$this->load->helper('url');
+		$event->imageurl = base_url() . RESOURCEPATH . 'img/GallerysDefPics/'. $event->imageurl;
 		$this->place->select(array('placeid' => $event->placeid));
 		unset($event->placeid);
 		$event->place = $this->place->instance();

@@ -53,11 +53,10 @@
 			          window.location.reload();
 			        });
 			        FB.api('/<?=$fbid?>/?fields=picture.width(34).height(34)&access_token=<?=$facebook->getAccessToken()?>', function(response) { 
-			        	console.log(response)
 			        	$('#loginBar p').prepend('<img src="'+ response.picture.data.url +'">')
 					});
 		        };
-		        <?php } ?>
+		    <?php } ?>
 	        /*
 			(function() {
 			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -73,7 +72,7 @@
 							echo $access_token;
 						else 
 							echo ""?>'
-			FE.resourcepath = <?=RESOURCEPATH?>;
+			FE.resourcepath = '<?=FULLRESOURCEPATH?>';
 			FE.loadSpecificPage()
 		})
 	</script>

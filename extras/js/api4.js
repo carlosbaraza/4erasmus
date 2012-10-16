@@ -180,10 +180,9 @@ var FE = new function() {
 					console.log($(this).attr('id'))
 					window.history.pushState('add event', 'add event', '/event/' + $(this).attr('id'))
 					$('.wallEntry').html('<div class="fb-comments" data-href="http://www.4erasmus.com/event/'+ $(this).attr('id') +'" data-num-posts="2" data-width="370"></div>')
+					FB.XFBML.parse()
 				})
 
-				var requestDate = new Date(date)
-				window.history.pushState('date', 'date', '/date/' + (requestDate.getMonth()+1) + '-' + requestDate.getDate() + '-' + requestDate.getFullYear())
 			}
 		})
 	}

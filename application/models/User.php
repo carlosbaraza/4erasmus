@@ -70,7 +70,7 @@ class User extends CI_Model {
 				$this->seslogin();
 			} catch (FacebookApiException $e) {
 			//	echo 'Please <a href="' . $this->facebook->getLoginUrl() . '">login.</a>';
-				echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
+			//	echo '<pre>'.htmlspecialchars(print_r($e, true)).'</pre>';
 			}
 		}
 	}

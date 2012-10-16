@@ -9,7 +9,7 @@
 
 		</div>
 		<div id="addEventButton" class="button rightButton">
-			<p><img src="<?=RESOURCEPATH?>img/icons/addEvent.png" class="icon">Add Event</p>
+			<p><img src="<?=FULLRESOURCEPATH?>img/icons/addEvent.png" class="icon">Add Event</p>
 			<div class="rightColorStrip colorStripBlue"></div>
 		</div>
 	</div>

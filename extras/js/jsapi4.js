@@ -23,7 +23,7 @@
 
 		// Hide all the forms and menus clicking on the body
 		$('html').click(function() {
-		 	$('.leftButton').find('ul').css('visibility', 'hidden');
+		 	$('.leftButton ul').css('visibility', 'hidden');
 		 	$('#loginForm').css('visibility','hidden');
 		});
 
@@ -115,6 +115,9 @@
 				console.log(dateText)
 				FE.loadEventsOfDate(dateText, 0)
 
+				$('#datepickerTopColorStrip').toggleClass('switched');
+				$('#datepickerBottomColorStrip').toggleClass('switched');
+/*
 				if (!$('#datepickerTopColorStrip').hasClass('switched')) {
 					$('#datepickerTopColorStrip').addClass('switched');
 					$('#datepickerBottomColorStrip').addClass('switched');
@@ -122,9 +125,11 @@
 					$('#datepickerTopColorStrip').removeClass('switched');
 					$('#datepickerBottomColorStrip').removeClass('switched');
 				}
-				
+		*/		
 				$('#eventContainer').append('<div class="AJAXLoadingLayer"><img src="'+ FE.resourcepath +'/img/ajax-spinner.gif" class="spinner"></img><img class="pacman" src="'+ FE.resourcepath +'/img/ajax-loader.gif"></img></div>');
 
+				var requestDate = new Date(dateText)
+				window.history.pushState('date', 'date', '/date/' + (requestDate.getMonth()+1) + '-' + requestDate.getDate() + '-' + requestDate.getFullYear())
 			}
 		});
 

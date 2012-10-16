@@ -245,14 +245,14 @@ $config['encryption_key'] = 'enc_4erasmus';
 |
 */
 $config['sess_cookie_name']		= '4e_session';
-$config['sess_expiration']		= 86400;
+$config['sess_expiration']		= 43200;
 $config['sess_expire_on_close']	= TRUE;
 $config['sess_encrypt_cookie']	= TRUE;
 $config['sess_use_database']	= FALSE;
 $config['sess_table_name']		= '4e_sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
-$config['sess_time_to_update']	= 86400;
+$config['sess_time_to_update']	= 43200;
 
 /*
 |--------------------------------------------------------------------------
@@ -360,8 +360,3 @@ $config['proxy_ips'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
-
-define('RESOURCEPATH', '/extras/');
-
-// API Constants
-define('EVENT_REQUEST_LIMIT', 10);
