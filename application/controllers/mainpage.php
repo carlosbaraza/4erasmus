@@ -53,6 +53,9 @@ class Mainpage extends CI_Controller {
 		foreach ($this->data->defaultEventImages as $key => $value) {
 			$this->data->defaultEventImages[$key] = base_url() . $value;
 		}
+
+		//Nic Text Edit WYSIWYG for edit profiles online with AJAX
+		$this->template->js('nicEdit');
 	}
 
 	public function index() {

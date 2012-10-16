@@ -39,17 +39,34 @@
 }
 
 .schoolContentContainer {
+	position: relative;
 	border-right: 1px solid #CCC;
 	width: 589px;
 	min-height: 405px;
 	float: left;
 }
 
-.schoolContent p {
-	margin: 0 20px 10px 20px;
-	text-indent: 2em;
+#schoolContent {
+	position: relative;
 }
 
-.schoolContent p:first-child {
+#schoolContent p , .nicEdit-main p {
+	margin: 0 20px 10px 20px;
+	text-indent: 2em;
+	font-size: .9em;
+}
+
+#schoolContent p:first-child, .nicEdit-main p:first-child {
 	margin-top: 15px;
+}
+
+.schoolContentEditBtn {
+	position: absolute;
+	z-index: 5;
+	right: 7px;
+	top: 7px;
+}
+
+.nicEdit-panelContain {
+	border: none !important;
 }
