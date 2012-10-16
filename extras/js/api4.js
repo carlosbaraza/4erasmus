@@ -242,6 +242,9 @@ var FE = new function() {
 					$('#datepicker').datepicker('setDate', new Date(formattedDate))
 				}
 				break;
+			case 'school':
+
+				break;
 			default:
 				var requestDate = new Date()
 				var formattedDate = (requestDate.getMonth()+1)+'/'+requestDate.getDate()+'/'+requestDate.getFullYear()
