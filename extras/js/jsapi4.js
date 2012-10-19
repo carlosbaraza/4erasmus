@@ -121,7 +121,7 @@
 				$('#eventContainer').append('<div class="AJAXLoadingLayer"><img src="'+ FE.resourcepath +'/img/ajax-spinner.gif" class="spinner"></img><img class="pacman" src="'+ FE.resourcepath +'/img/ajax-loader.gif"></img></div>');
 
 				var requestDate = new Date(dateText)
-				window.history.pushState('date', 'date', '/date/' + (requestDate.getMonth()+1) + '-' + requestDate.getDate() + '-' + requestDate.getFullYear())
+				window.history.pushState('date', 'date', '/date/' + requestDate.getDate() + '-' + (requestDate.getMonth()+1) + '-' + requestDate.getFullYear())
 			}
 		});
 

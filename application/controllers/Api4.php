@@ -145,14 +145,14 @@ class Api4 extends CI_Controller {
 	protected function validateRequest() {
 		// Is AJAX Validation
 		if( !$this->input->is_ajax_request())
-			die('not ajax');
+			$this->result('401');
 		// Session Validation
 		$sessid = $this->session->userdata('session_id');
 		if( !$sessid) 
-			die('no sessid');
+			$this->result('403');
 		// Access Token Validation
 		if( $this->input->get('access_token', true) != $sessid) 
-			die('access denied');
+			$this->result('404');
 	}
 
 	public function newAction() {

@@ -236,7 +236,8 @@ var FE = new function() {
 		switch(querystring[1]) {
 			case 'date':
 				if( querystring.hasOwnProperty(2)) {
-					var requestDate = new Date(querystring[2])
+					var requestDate = querystring[2].split('-')
+					requestDate = new Date(requestDate[1]+'-'+requestDate[0]+'-'+requestDate[2])
 					var formattedDate = (requestDate.getMonth()+1)+'/'+requestDate.getDate()+'/'+requestDate.getFullYear()
 					that.loadEventsOfDate(formattedDate, 0)
 					$('#datepicker').datepicker('setDate', new Date(formattedDate))
@@ -251,6 +252,10 @@ var FE = new function() {
 				that.loadEventsOfDate(formattedDate, 0)
 				break;
 		}
+	}
+
+	this.errorHandler = function(errorCode) {
+
 	}
 }
 

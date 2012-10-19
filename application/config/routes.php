@@ -41,7 +41,7 @@
 $route['default_controller'] = 'mainpage';
 $route['date/?.*'] 			 = 'mainpage';
 $route['event/?.*']			 = 'mainpage';
-$route['school/?(:any)']	 = 'mainpage/school/$1';
+$route['school/?(:any)?']	 = 'mainpage/school/$1';
 $route['404_override'] 		 = '';
 
 
