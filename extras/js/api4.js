@@ -319,6 +319,7 @@ var Fish = new function() {
 
 	this.enable = function(key) {
 		that.cache[key].active = true
+		alert()
 	}
 }
 
